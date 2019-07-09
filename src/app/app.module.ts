@@ -12,8 +12,12 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
  
 import * as firebase from 'firebase';
+
+firebase.initializeApp(environment.firebase);
+
 import { AuthenticateService } from './services/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
