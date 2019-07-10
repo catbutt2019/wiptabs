@@ -1,5 +1,7 @@
 {
   "name": "wiptabs",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
