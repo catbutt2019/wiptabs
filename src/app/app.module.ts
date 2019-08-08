@@ -18,6 +18,10 @@ firebase.initializeApp(environment.firebase);
 import { AuthenticateService } from './services/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
       IonicModule.forRoot(),
       AppRoutingModule,
       ReactiveFormsModule,
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireStorageModule ,
+      AngularFireDatabaseModule
     ],
   providers: [
     StatusBar,
