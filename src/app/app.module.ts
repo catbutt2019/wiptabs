@@ -16,12 +16,15 @@ import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
 
 import { AuthenticateService } from './services/authentication.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,17 +33,23 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
       BrowserModule,
       IonicModule.forRoot(),
       AppRoutingModule,
+      FormsModule,
       ReactiveFormsModule,
       AngularFireAuthModule,
       AngularFireModule.initializeApp(environment.firebase),
       AngularFireStorageModule ,
-      AngularFireDatabaseModule
+      AngularFireDatabaseModule,
+      AngularFirestoreModule
     ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthenticateService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ImagePicker,
+    WebView,
+    { provide: FirestoreSettingsToken, useValue: {} },
+    { provide: RouteReuseStrategy, 
+      useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
