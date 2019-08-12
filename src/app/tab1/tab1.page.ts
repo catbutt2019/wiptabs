@@ -47,7 +47,7 @@ export class Tab1Page {
     this.firebaseService.createTask(data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/tabs/tab2"]);
       }
     )
   }

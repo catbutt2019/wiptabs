@@ -6,50 +6,44 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
- 
-import * as firebase from 'firebase';
-
-firebase.initializeApp(environment.firebase);
-
-import { AuthenticateService } from './services/authentication.service';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from "@angular/fire/storage";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AppRoutingModule } from './app-routing.module';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { NewTaskModalPage } from './new-task-modal/new-task-modal.page';
+
+
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  // declarations: [AppComponent, NewTaskModalPage],
+  // entryComponents: [NewTaskModalPage],
   imports: [
-      BrowserModule,
-      IonicModule.forRoot(),
-      AppRoutingModule,
-      FormsModule,
-      ReactiveFormsModule,
-      AngularFireAuthModule,
-      AngularFireModule.initializeApp(environment.firebase),
-      AngularFireStorageModule ,
-      AngularFireDatabaseModule,
-      AngularFirestoreModule
-    ],
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase), // imports firebase/app
+    AngularFirestoreModule, // imports firebase/firestore
+    AngularFireAuthModule, // imports firebase/auth
+    AngularFireStorageModule, // imports firebase/storage
+  ],
   providers: [
     StatusBar,
     SplashScreen,
-    AuthenticateService,
     ImagePicker,
     WebView,
     { provide: FirestoreSettingsToken, useValue: {} },
-    { provide: RouteReuseStrategy, 
-      useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

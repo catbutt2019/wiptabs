@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { AuthenticateService } from '../services/authentication.service';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +13,24 @@ export class LoginPage implements OnInit {
   validations_form: FormGroup;
   errorMessage: string = '';
 
+  validation_messages = {
+   'email': [
+     { type: 'required', message: 'Email is required.' },
+     { type: 'pattern', message: 'Please enter a valid email.' }
+   ],
+   'password': [
+     { type: 'required', message: 'Password is required.' },
+     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+   ]
+ };
+
   constructor(
-
-    private navCtrl: NavController,
-    private authService: AuthenticateService,
-    private formBuilder: FormBuilder
-
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
-
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -35,32 +43,17 @@ export class LoginPage implements OnInit {
     });
   }
 
-
-  validation_messages = {
-    'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
-    ],
-    'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-    ]
-  };
- 
-
-  loginUser(value){
-    this.authService.loginUser(value)
+  tryLogin(value){
+    this.authService.doLogin(value)
     .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.navCtrl.navigateForward('/tabs');
+      this.router.navigate(["/home"]);
     }, err => {
       this.errorMessage = err.message;
+      console.log(err)
     })
   }
 
-  goToRegisterPage(){
-    this.navCtrl.navigateForward('/register');
+  goRegisterPage(){
+    this.router.navigate(["/register"]);
   }
-
 }
