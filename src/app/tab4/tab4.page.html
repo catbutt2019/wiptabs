@@ -5,6 +5,23 @@
   </ion-toolbar>
 </ion-header>
  
+<ion-content padding>
+ 
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        Welcome to Dashboard!
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        Your Registered EmailID : {{userEmail}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+  
+  
+</ion-content>
 <ion-content *ngIf="items" class="list-mini-content" padding>
   <div *ngIf="items.length > 0" class="list-mini">
     <ion-list>
