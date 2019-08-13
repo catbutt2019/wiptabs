@@ -6,12 +6,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { Tab4Page } from './tab4.page';
+import { HomeResolver } from './home.resolver';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: Tab4Page
+    component: Tab4Page,
+    resolve: {
+      data: HomeResolver
+    }
   }
 ];
 
@@ -25,7 +29,7 @@ const routes: Routes = [
   ],
   declarations: [Tab4Page],
   providers: [
-    
+    HomeResolver
   ]
 })
 export class Tab4PageModule {}
