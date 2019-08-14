@@ -44,17 +44,16 @@ const routes: Routes = [
         ]
       },
       {
+         path: 'details/:id', 
+         loadChildren: '../details/details.module#DetailsPageModule' 
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+  } 
 ];
 
 @NgModule({
