@@ -25,7 +25,7 @@
 <ion-content *ngIf="items" class="list-mini-content" padding>
   <div *ngIf="items.length > 0" class="list-mini">
     <ion-list>
-      <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
+      <ion-item *ngFor="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
         <ion-thumbnail slot="start">
           <img [src]="item.payload.doc.data().image">
         </ion-thumbnail>
