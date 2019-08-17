@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FirebaseService } from '../services/firebase.service';
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -47,7 +46,7 @@ export class Tab1Page {
     this.firebaseService.createTask(data)
     .then(
       res => {
-        this.router.navigate(["/tabs/tab2"]);
+        this.router.navigate(["/tabs/tab4"]);
       }
     )
   }
@@ -61,7 +60,7 @@ export class Tab1Page {
       }
       else if(result == true){
         this.imagePicker.getPictures({
-          maximumImagesCount: 1
+          maximumImagesCount: 3
         }).then(
           (results) => {
             for (var i = 0; i < results.length; i++) {
