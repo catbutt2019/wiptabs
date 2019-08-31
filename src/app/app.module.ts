@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticateService } from './services/authentication.service';
 // import { NewTaskModalPage } from './new-task-modal/new-task-modal.page';
 
+import { Camera} from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,13 +40,15 @@ import { AuthenticateService } from './services/authentication.service';
     AngularFireStorageModule, // imports firebase/storage
   ],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
     ImagePicker,
     AuthenticateService,
     WebView,
     { provide: FirestoreSettingsToken, useValue: {} },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+ 
   ],
   bootstrap: [AppComponent]
 })

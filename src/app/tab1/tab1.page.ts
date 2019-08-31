@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FirebaseService } from '../services/firebase.service';
+import 'firebase/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { storage } from 'firebase';
+
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -13,7 +18,10 @@ import { FirebaseService } from '../services/firebase.service';
 export class Tab1Page {
 
   validations_form: FormGroup;
+
   image: any;
+
+  currentImage: any;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -22,14 +30,18 @@ export class Tab1Page {
     public router: Router,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
-    private webview: WebView
+    private webview: WebView,
+    private camera: Camera,
+    public platform: Platform
+
   ) { }
 
   ngOnInit() {
-    this.resetFields();
+    // this.resetFields();
   }
 
-  resetFields(){
+
+  /* resetFields(){
     this.image = "./assets/imgs/default_image.jpg";
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
@@ -100,7 +112,24 @@ export class Tab1Page {
 
   async presentLoading(loading) {
     return await loading.present();
-  }
+  } */
 
+  takePicture() {
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.currentImage = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+      console.log("Camera issue:" + err);
+    });
+  }
 }
+   
 

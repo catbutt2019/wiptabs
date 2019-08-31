@@ -7,7 +7,16 @@
 </ion-header>
 
 <ion-content>
-    <div>
+  
+    <img [src]="currentImage" *ngIf="currentImage">
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="takePicture()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    
+    <!-- <div>
         <ion-row no-padding>
           <ion-col size="6" offset="3">
             <img [src]="image" alt="this is the image"/>
@@ -29,5 +38,5 @@
           <ion-input type="text" formControlName="description"></ion-input>
         </ion-item>
         <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>
-      </form>
+      </form> -->
 </ion-content>

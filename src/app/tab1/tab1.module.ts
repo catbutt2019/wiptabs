@@ -6,6 +6,7 @@ import { CommonModule, Location  } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 
+
 @NgModule({
   imports: [
     IonicModule,
