@@ -51,30 +51,8 @@ export class Tab1Page {
     )
   }
 
-  openImagePicker(){
-    this.imagePicker.hasReadPermission()
-    .then((result) => {
-      if(result == false){
-        // no callbacks required as this opens a popup which returns async
-        this.imagePicker.requestReadPermission();
-      }
-      else if(result == true){
-        this.imagePicker.getPictures({
-          maximumImagesCount: 3
-        }).then(
-          (results) => {
-            for (var i = 0; i < results.length; i++) {
-              this.uploadImageToFirebase(results[i]);
-            }
-          }, (err) => console.log(err)
-        );
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
-
   async uploadImageToFirebase(image){
+
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...'
     });
@@ -95,6 +73,29 @@ export class Tab1Page {
     }, err =>{
       console.log(err);
     })
+  }
+
+  openImagePicker(){
+    this.imagePicker.hasReadPermission()
+    .then((result) => {
+      if(result == false){
+        // no callbacks required as this opens a popup which returns async
+        this.imagePicker.requestReadPermission();
+      }
+      else if(result == true){
+        this.imagePicker.getPictures({
+          maximumImagesCount: 1
+        }).then(
+          (results) => {
+            for (var i = 0; i < results.length; i++) {
+              this.uploadImageToFirebase(results[i]);
+            }
+          }, (err) => console.log(err)
+        );
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   async presentLoading(loading) {
