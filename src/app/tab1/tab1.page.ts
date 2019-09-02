@@ -18,9 +18,7 @@ import { storage } from 'firebase';
 export class Tab1Page {
 
   validations_form: FormGroup;
-
   image: any;
-
   currentImage: any;
 
   constructor(
@@ -31,17 +29,17 @@ export class Tab1Page {
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private webview: WebView,
-    private camera: Camera,
+    public camera: Camera,
     public platform: Platform
 
   ) { }
 
   ngOnInit() {
-    // this.resetFields();
+    this.resetFields();
   }
 
 
-  /* resetFields(){
+  resetFields(){
     this.image = "./assets/imgs/default_image.jpg";
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
@@ -112,24 +110,49 @@ export class Tab1Page {
 
   async presentLoading(loading) {
     return await loading.present();
-  } */
+  }
 
-  takePicture() {
+takePicture() {
 
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
+  const options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  };
 
-    this.camera.getPicture(options).then((imageData) => {
-      this.currentImage = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      // Handle error
-      console.log("Camera issue:" + err);
+  this.camera.getPicture(options).then((imageData) => {
+    this.currentImage = 'data:image/jpeg;base64,' + imageData;
+    // this.uploadImageToFirebase(imageData);
+  }, (err) => {
+    // Handle error
+    console.log("Camera issue:" + err);
     });
   }
 }
+
+
+/* 
+takePhoto () {
+
+     
+  const options: CameraOptions = {
+    quality: 60,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+ 
+  const result = this.camera.getPicture(options);
+
+  const image = `data:image/jpeg;base64,${result}`;
+
+
+  const pictures = storage().ref('pictures');
+  pictures.putString(image, 'data_url');
+
+
+} */
    
 
