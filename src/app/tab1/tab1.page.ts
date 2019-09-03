@@ -117,7 +117,7 @@ export class Tab1Page {
 takePicture() {
 
   const options: CameraOptions = {
-    quality: 100,
+    quality: 60,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
@@ -125,7 +125,6 @@ takePicture() {
 
   this.camera.getPicture(options)
   .then((imageData) => {
-     this.currentImage = 'data:image/jpeg;base64,' + imageData;
      this.uploadImageToFirebase(imageData);
   }, (err) => {
     // Handle error
