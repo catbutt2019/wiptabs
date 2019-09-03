@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { LoadingController, ToastController, Platform } from '@ionic/angular';
+import { LoadingController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FirebaseService } from '../services/firebase.service';
 import 'firebase/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { storage } from 'firebase';
+
 
 
 @Component({
@@ -30,7 +30,9 @@ export class Tab1Page {
     private firebaseService: FirebaseService,
     private webview: WebView,
     public camera: Camera,
-    public platform: Platform
+    public platform: Platform,
+    public actionSheetController: ActionSheetController,
+    private file: File
 
   ) { }
 
@@ -121,9 +123,10 @@ takePicture() {
     mediaType: this.camera.MediaType.PICTURE
   };
 
-  this.camera.getPicture(options).then((imageData) => {
-    this.currentImage = 'data:image/jpeg;base64,' + imageData;
-    // this.uploadImageToFirebase(imageData);
+  this.camera.getPicture(options)
+  .then((imageData) => {
+     this.currentImage = 'data:image/jpeg;base64,' + imageData;
+     this.uploadImageToFirebase(imageData);
   }, (err) => {
     // Handle error
     console.log("Camera issue:" + err);

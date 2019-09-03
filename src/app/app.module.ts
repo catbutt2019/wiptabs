@@ -23,6 +23,7 @@ import { AuthenticateService } from './services/authentication.service';
 // import { NewTaskModalPage } from './new-task-modal/new-task-modal.page';
 
 import { Camera} from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +42,7 @@ import { Camera} from '@ionic-native/camera/ngx';
   ],
   providers: [
     Camera,
+    File,
     StatusBar,
     SplashScreen,
     ImagePicker,
