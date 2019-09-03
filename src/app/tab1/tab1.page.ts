@@ -7,6 +7,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FirebaseService } from '../services/firebase.service';
 import 'firebase/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 
 
@@ -124,8 +125,18 @@ takePicture() {
   };
 
   this.camera.getPicture(options)
-  .then((imageData) => {
-     this.uploadImageToFirebase(imageData);
+  .then((result) => {
+     if(result == false){
+       this.camera.getPicture()
+     }
+     else if(result == true){
+       this.camera.getPicture({
+       }).then((results) =>{
+         for (var i = 0; i < results.length; i ++) {
+           this.uploadImageToFirebase(results[i]);
+         }
+       })
+     }
   }, (err) => {
     // Handle error
     console.log("Camera issue:" + err);
