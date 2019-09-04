@@ -43,7 +43,7 @@ export class Tab1Page {
 
 
   resetFields(){
-    this.image = "./assets/imgs/default_image.jpg";
+    this.image = "";
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
@@ -125,7 +125,7 @@ async takePicture() {
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation: true
   };
-  
+
   this.camera.getPicture(options)
   .then((imageData) => {
     this.image = 'data:image/jpeg;base64,' + imageData;

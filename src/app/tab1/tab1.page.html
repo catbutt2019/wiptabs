@@ -1,33 +1,38 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Add 
+      Add Media
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-<p>Open image picker </p>
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button (click)="takePicture()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+  
     
      <div>
         <ion-row no-padding>
           <ion-col size="6" offset="3">
-            <img [src]="image" alt="this is the image"/>
+            <img [src]="image" alt="" *ngIf="!image" />
           </ion-col>
         </ion-row>
-        <ion-row no-padding>
-          <ion-col size="6" offset="3">
-            <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+      <!--   <ion-row no-padding>
+          <ion-col size="11" style="text-align: center">
+            <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Photo Gallery</ion-button>
           </ion-col>
-        </ion-row>
+          <ion-col size="11" >
+            <ion-button fill="outline" expand="block" size="small" (click)="takePicture()">Camera</ion-button>
+          </ion-col>
+        </ion-row> -->
       </div>
-      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+      <section>
+        <ion-button *ngIf="!image" expand="block" color="light" (click)="takePicture()"><ion-icon name="camera" style="margin-right: 10px"></ion-icon>Camera
+          </ion-button>
+      </section>
+      <section>
+        <ion-button *ngIf="!image" expand="block" color="medium" (click)="openImagePicker()"><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon>Gallery</ion-button>
+      </section>
+      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" *ngIf="image" >
         <ion-item>
           <ion-label position="floating" color="primary">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
@@ -38,4 +43,5 @@
         </ion-item>
         <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>
       </form> 
+
 </ion-content>
