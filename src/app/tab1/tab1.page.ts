@@ -16,7 +16,7 @@ import { File } from '@ionic-native/file/ngx';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
   validations_form: FormGroup;
   image: any;
@@ -43,12 +43,13 @@ export class Tab1Page {
 
 
   resetFields(){
-    this.image = "";
+    this.image = null;
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
     });
   }
+
 
   onSubmit(value){
     let data = {
