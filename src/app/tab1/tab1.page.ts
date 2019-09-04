@@ -20,7 +20,7 @@ export class Tab1Page {
 
   validations_form: FormGroup;
   image: any;
-  currentImage: any;
+  
 
   constructor(
     private imagePicker: ImagePicker,
@@ -109,35 +109,26 @@ export class Tab1Page {
     }, (err) => {
       console.log(err);
     });
-  }
+  } 
 
   async presentLoading(loading) {
     return await loading.present();
   }
 
-takePicture() {
+async takePicture() {
 
   const options: CameraOptions = {
-    quality: 60,
+    quality: 100,
+    sourceType: this.camera.PictureSourceType.CAMERA,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
   };
-
   this.camera.getPicture(options)
-  .then((result) => {
-     if(result == false){
-       this.camera.getPicture()
-     }
-     else if(result == true){
-       this.camera.getPicture({
-       }).then((results) =>{
-         for (var i = 0; i < results.length; i ++) {
-           this.uploadImageToFirebase(results[i]);
-         }
-       })
-     }
-  }, (err) => {
+  .then((imageData) => {
+    this.image = 'data:image/jpeg;base64,' + imageData;
+    this.uploadImageToFirebase('data:image/jpeg;base64,' + imageData );        
+  }, (err) => {`              `
     // Handle error
     console.log("Camera issue:" + err);
     });
