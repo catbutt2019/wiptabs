@@ -19,8 +19,9 @@ import { File } from '@ionic-native/file/ngx';
 export class Tab1Page implements OnInit {
 
   validations_form: FormGroup;
-  image: any;
-  
+  image: string;
+  description: string;
+  title: string;
 
   constructor(
     private imagePicker: ImagePicker,
