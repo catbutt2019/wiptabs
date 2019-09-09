@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file/ngx';
 
 
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -19,9 +20,8 @@ import { File } from '@ionic-native/file/ngx';
 export class Tab1Page implements OnInit {
 
   validations_form: FormGroup;
-  image: string;
-  description: string;
-  title: string;
+  image: any;
+  
 
   constructor(
     private imagePicker: ImagePicker,
@@ -40,17 +40,15 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
     this.resetFields();
+    
   }
-
-
-  resetFields(){
-    this.image = null;
+  resetFields() {
+    this.image = "./assets/imgs/default_image.jpg";
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
     });
   }
-
 
   onSubmit(value){
     let data = {
@@ -65,6 +63,37 @@ export class Tab1Page implements OnInit {
       }
     )
   }
+
+
+ /*  resetFields(){
+    this.image = "./assets/imgs/default_image.jpg";
+    
+    this.validations_form = this.formBuilder.group({
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
+      
+    });
+  } */
+
+  
+
+
+
+ resetForm() {
+    this.image = "./assets/imgs/default_image.jpg";
+  
+    this.validations_form.reset();
+    this.validations_form.setValue({
+      
+      title: '',
+      description: 'ddd'
+    });
+   
+
+  }
+
+
+  
 
   async uploadImageToFirebase(image){
 
@@ -113,9 +142,7 @@ export class Tab1Page implements OnInit {
     });
   } 
 
-  async presentLoading(loading) {
-    return await loading.present();
-  }
+ 
 
 async takePicture() {
 
@@ -137,6 +164,11 @@ async takePicture() {
     console.log("Camera issue:" + err);
     });
   }
+
+  async presentLoading(loading) {
+    return await loading.present();
+  }
+  
 }
 
 

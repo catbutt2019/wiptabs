@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -34,6 +34,7 @@ import { File } from '@ionic-native/file/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+   
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app
     AngularFirestoreModule, // imports firebase/firestore
