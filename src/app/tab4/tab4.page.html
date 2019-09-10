@@ -8,6 +8,20 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-toolbar>
+<ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="secondary">
+  <ion-segment-button value = "0">
+    <ion-icon name="heart"></ion-icon>WIPPED
+  </ion-segment-button>
+  <ion-segment-button value="2">
+    <ion-icon name="heart-half"></ion-icon>WIPPING
+  </ion-segment-button>
+</ion-segment>
+</ion-toolbar>
+
+
  
 <!-- <ion-content padding>
  
@@ -21,7 +35,8 @@
   
   
 </ion-content>  -->
-<ion-content>
+<ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
+  <ion-slide>
   <ion-grid>
   <ion-row>
   <ion-col size="11" *ngIf="items">
@@ -45,7 +60,9 @@
   </ion-col>
 </ion-row>
 </ion-grid>
+</ion-slide>
+<ion-slide>
+  slide two
+</ion-slide>
+</ion-slides>
 </ion-content>
-<ion-footer >
-  
-</ion-footer>

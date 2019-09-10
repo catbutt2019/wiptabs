@@ -25,6 +25,7 @@ import { AuthenticateService } from './services/authentication.service';
 import { Camera} from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 
+
 @NgModule({
   declarations: [AppComponent],
   // declarations: [AppComponent, NewTaskModalPage],

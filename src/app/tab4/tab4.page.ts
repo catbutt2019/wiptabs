@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild  } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tab4',
@@ -11,6 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+  
+  @ViewChild('slides') slider: IonSlides;
+
+  segment = 0; 
 
   userEmail: string;
   items: Array<any>;
@@ -35,9 +41,17 @@ export class Tab4Page implements OnInit {
     if (this.route && this.route.data) {
       this.getData();
     }
-
-
   }
+
+  async segmentChanged() {
+    await this.slider.slideTo(this.segment);
+  }
+
+  async slideChanged() {
+    this.segment = await this.slider.getActiveIndex();
+  }
+
+
 
   async getData(){
     const loading = await this.loadingCtrl.create({
