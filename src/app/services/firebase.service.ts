@@ -73,6 +73,7 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('tasks').add({
+        category: value.category,
         title: value.title,
         description: value.description,
         image: value.image
@@ -102,7 +103,7 @@ export class FirebaseService {
   uploadImage(imageURI, randomId){
     return new Promise<any>((resolve, reject) => {
       let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('imagecategory').child(randomId);
+      let imageRef = storageRef.child('imagetest').child(randomId);
       this.encodeImageUri(imageURI, function(image64){
         imageRef.putString(image64, 'data_url')
         .then(snapshot => {

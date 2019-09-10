@@ -46,7 +46,9 @@ export class Tab1Page implements OnInit {
     this.image = "./assets/imgs/default_image.jpg";
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      description: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required)
+      
     });
   }
 
@@ -54,7 +56,8 @@ export class Tab1Page implements OnInit {
     let data = {
       title: value.title,
       description: value.description,
-      image: this.image
+      image: this.image,
+      category: value.category
     }
     this.firebaseService.createTask(data)
     .then(

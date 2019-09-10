@@ -8,7 +8,7 @@
 
 <ion-content>
  
-  <p>category working???</p>
+  <p>category working??? image test</p>
     
      <div>
         <ion-row no-padding>
@@ -41,6 +41,13 @@
         <ion-item>
           <ion-label position="floating" color="primary">Description</ion-label>
           <ion-input type="text" formControlName="description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select placeholder="Select One" formControlName="category">
+            <ion-select-option value="Wipped">Wipped</ion-select-option>
+            <ion-select-option value="Wipping">Wipping</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-button class="submit-btn" expand="block" type="submit" color="medium" [disabled]="!validations_form.valid">Create</ion-button>
       </form> 
