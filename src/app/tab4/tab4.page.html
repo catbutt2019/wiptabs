@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding >
   <ion-toolbar>
 <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="secondary">
   <ion-segment-button value = "0">
@@ -62,7 +62,29 @@
 </ion-grid>
 </ion-slide>
 <ion-slide>
-  slide two
+    <ion-grid>
+        <ion-row>
+        <ion-col size="11" *ngIf="items">
+        <!-- <div *ngIf="items.length > 0" class="list-mini">
+          <ion-list>
+            <ion-item *ngFor="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
+              <ion-thumbnail slot="start">
+                <img [src]="item.payload.doc.data().image">
+              </ion-thumbnail>
+              <ion-label>{{item.payload.doc.data().title}}</ion-label>
+              <ion-button fill="clear" slot="end">Details</ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div *ngIf="items.length == 0" class="empty-list">
+          Show your work in progress :) 
+        </div> -->
+        <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
+          <img [src]="item.payload.doc.data().image">
+        </ion-card>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
 </ion-slide>
 </ion-slides>
 </ion-content>
