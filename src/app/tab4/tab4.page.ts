@@ -20,7 +20,7 @@ export class Tab4Page implements OnInit {
 
   userEmail: string;
   items: Array<any>;
- 
+
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
@@ -43,6 +43,7 @@ export class Tab4Page implements OnInit {
     }
   }
 
+  //this is for the segments to slide 
   async segmentChanged() {
     await this.slider.slideTo(this.segment);
   }
@@ -50,7 +51,6 @@ export class Tab4Page implements OnInit {
   async slideChanged() {
     this.segment = await this.slider.getActiveIndex();
   }
-
 
 
   async getData(){
