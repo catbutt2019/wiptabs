@@ -15,7 +15,7 @@
   <ion-segment-button value = "0">
     <ion-icon name="heart"></ion-icon>WIPPED
   </ion-segment-button>
-  <ion-segment-button value="2">
+  <ion-segment-button value="1">
     <ion-icon name="heart-half"></ion-icon>WIPPING
   </ion-segment-button>
 </ion-segment>
@@ -71,9 +71,8 @@
         </ion-list-header>
         <ion-item tappable *ngFor="let event of eventList" routerLink="/event-detail/{{ event.id }}">
           <ion-label>
-            <h2>{{event?.name}}</h2>
-            <p>Ticket: <strong>${{event?.price}}</strong></p>
-            <p>Date: <strong>{{event?.date}}</strong></p>
+            <h2>{{event?.description}}</h2>
+         
           </ion-label>
         </ion-item>
       </ion-list>

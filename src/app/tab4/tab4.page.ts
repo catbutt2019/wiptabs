@@ -39,9 +39,10 @@ export class Tab4Page implements OnInit {
       eventListSnapshot.forEach(snap => {
         this.eventList.push({
           id: snap.id,
-          name: snap.data().name,
-          price: snap.data().price,
-          date: snap.data().date
+         title: snap.data().title,
+         caption: snap.data().caption,
+         description: snap.data().description
+      
         });
         return false;
       });

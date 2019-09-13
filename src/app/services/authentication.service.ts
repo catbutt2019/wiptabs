@@ -12,6 +12,7 @@ export class AuthenticateService {
         user => {
           if (user) {
             resolve(user);
+            console.log(user);
           } else {
             reject(null);
           }
