@@ -1,10 +1,11 @@
 import { Component, OnInit,ViewChild  } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
-import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { EventService } from '../services/event.service';
+
 
 
 @Component({
@@ -20,17 +21,34 @@ export class Tab4Page implements OnInit {
 
   userEmail: string;
   items: Array<any>;
+  public eventList: Array<any>;
 
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
     public loadingCtrl: LoadingController,
-    private authService2: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private eventService: EventService
   ) {}
  
   ngOnInit(){
+
+    this.eventService.getEventList().then(eventListSnapshot => {
+      this.eventList = [];
+      eventListSnapshot.forEach(snap => {
+        this.eventList.push({
+          id: snap.id,
+          name: snap.data().name,
+          price: snap.data().price,
+          date: snap.data().date
+        });
+        return false;
+      });
+    });
+
+
+
     
     if(this.authService.userDetails()){
       this.userEmail = this.authService.userDetails().email;

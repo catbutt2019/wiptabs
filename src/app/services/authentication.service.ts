@@ -6,6 +6,23 @@ export class AuthenticateService {
 
   constructor(){}
 
+  getUser(): Promise<firebase.User> {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(
+        user => {
+          if (user) {
+            resolve(user);
+          } else {
+            reject(null);
+          }
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   registerUser(value){
    return new Promise<any>((resolve, reject) => {
      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
