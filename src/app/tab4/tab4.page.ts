@@ -43,7 +43,7 @@ export class Tab4Page implements OnInit {
          description: snap.data().description,
          image: snap.data().image
         });
-        return false;
+        return true;
       });
     });
 
