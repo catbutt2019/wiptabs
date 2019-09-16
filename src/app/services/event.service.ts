@@ -19,7 +19,7 @@ export class EventService {
     this.eventListRef = firebase
       .firestore()
       .collection(`people/${user.uid}/tasks`);
-    return this.eventListRef.orderByChild("name").equalTo("John").get();
+    return this.eventListRef.where('category', '==', 'Wipping').get();
     } 
 
 }
