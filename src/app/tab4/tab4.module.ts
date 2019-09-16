@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { Tab4Page } from './tab4.page';
 import { HomeResolver } from './home.resolver';
+import { WippingResolver } from './wipping.resolver';
+
+
 
 
 const routes: Routes = [
@@ -14,7 +17,8 @@ const routes: Routes = [
     path: '',
     component: Tab4Page,
     resolve: {
-      data: HomeResolver
+      data: HomeResolver,  WippingResolver 
+    
     }
   }
 ];
@@ -29,7 +33,8 @@ const routes: Routes = [
   ],
   declarations: [Tab4Page],
   providers: [
-    HomeResolver
+    HomeResolver,
+    WippingResolver
   ]
 })
 export class Tab4PageModule {}

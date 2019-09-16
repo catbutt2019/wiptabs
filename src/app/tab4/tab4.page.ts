@@ -34,7 +34,7 @@ export class Tab4Page implements OnInit {
  
   ngOnInit(){
 
-    this.eventService.getEventList().then(eventListSnapshot => {
+     this.eventService.getEventList().then(eventListSnapshot => {
       this.eventList = [];
       eventListSnapshot.forEach(snap => {
         this.eventList.push({
@@ -43,7 +43,7 @@ export class Tab4Page implements OnInit {
          description: snap.data().description,
          image: snap.data().image
         });
-        return true;
+        return false;
       });
     });
 
@@ -58,6 +58,7 @@ export class Tab4Page implements OnInit {
 
     if (this.route && this.route.data) {
       this.getData();
+      
     }
   }
 
@@ -99,4 +100,5 @@ export class Tab4Page implements OnInit {
       console.log(error);
     })
   }
+
 }
