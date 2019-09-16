@@ -40,9 +40,8 @@ export class Tab4Page implements OnInit {
         this.eventList.push({
           id: snap.id,
          title: snap.data().title,
-         caption: snap.data().caption,
-         description: snap.data().description
-      
+         description: snap.data().description,
+         image: snap.data().image
         });
         return false;
       });

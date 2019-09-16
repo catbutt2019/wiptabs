@@ -65,17 +65,27 @@
 
 
 <ion-slide>
-    <ion-list>
+    <ion-grid>
+        <ion-row>
+        <ion-col size="11" *ngIf="eventList">
+        <ion-card *ngFor ="let event of eventList">
+          <ion-card-title>{{event?.title}}</ion-card-title>
+          <img [src]="event?.image">
+          <ion-card-content>{{event?.description}}</ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+   <!--  <ion-list>
         <ion-list-header>
           <ion-label>Your next events</ion-label>
         </ion-list-header>
         <ion-item tappable *ngFor="let event of eventList" routerLink="/event-detail/{{ event.id }}">
           <ion-label>
             <h2>{{event?.description}}</h2>
-         
           </ion-label>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 </ion-slide>
 </ion-slides>
 </ion-content>
