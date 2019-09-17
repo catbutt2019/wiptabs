@@ -38,18 +38,7 @@ export class Tab4Page implements OnInit {
  
   ngOnInit(){
 
-     this.eventService.getEventList().then(eventListSnapshot => {
-      this.eventList = [];
-      eventListSnapshot.forEach(snap => {
-        this.eventList.push({
-          id: snap.id,
-         title: snap.data().title,
-         description: snap.data().description,
-         image: snap.data().image
-        });
-        return false;
-      });
-    });
+   
 
 
 
@@ -69,10 +58,23 @@ export class Tab4Page implements OnInit {
   //this is for the segments to slide 
   async segmentChanged() {
     await this.slider.slideTo(this.segment);
+    this.eventService.getEventList().then(eventListSnapshot => {
+      this.eventList = [];
+      eventListSnapshot.forEach(snap => {
+        this.eventList.push({
+          id: snap.id,
+         title: snap.data().title,
+         description: snap.data().description,
+         image: snap.data().image
+        });
+        return false;
+      });
+    });
   }
 
   async slideChanged() {
     this.segment = await this.slider.getActiveIndex();
+
   }
 
 
