@@ -68,7 +68,7 @@
     <ion-grid>
         <ion-row>
         <ion-col size="11" *ngIf="eventList">
-        <ion-card *ngFor ="let event of eventList">
+        <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details/', event?.id]">
           <ion-card-title>{{event?.title}}</ion-card-title>
           <img [src]="event?.image">
           <ion-card-content>{{event?.description}}</ion-card-content>
