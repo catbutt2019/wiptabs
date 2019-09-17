@@ -5,6 +5,9 @@ import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { EventService } from '../services/event.service';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 
 
@@ -22,6 +25,7 @@ export class Tab4Page implements OnInit {
   userEmail: string;
   items: Array<any>;
   public eventList: Array<any>;
+  public eventListRef: firebase.firestore.CollectionReference;
 
   constructor(
     private navCtrl: NavController,
@@ -85,6 +89,17 @@ export class Tab4Page implements OnInit {
       })
     })
   }
+
+
+  async getEventList(): Promise<firebase.firestore.QuerySnapshot> {
+    const user: firebase.User = await this.authService.getUser();
+    this.eventListRef = firebase
+      .firestore()
+      .collection(`people/${user.uid}/tasks`);
+    return this.eventListRef.where('category', '==', 'Wipping').get();
+    } 
+
+
 
   async presentLoading(loading) {
     return await loading.present();
