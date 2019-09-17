@@ -74,7 +74,19 @@ export class Tab4Page implements OnInit {
 
   async slideChanged() {
     this.segment = await this.slider.getActiveIndex();
-
+    await this.slider.slideTo(this.segment);
+    this.eventService.getEventList().then(eventListSnapshot => {
+      this.eventList = [];
+      eventListSnapshot.forEach(snap => {
+        this.eventList.push({
+          id: snap.id,
+         title: snap.data().title,
+         description: snap.data().description,
+         image: snap.data().image
+        });
+        return false;
+      });
+    });
   }
 
 
