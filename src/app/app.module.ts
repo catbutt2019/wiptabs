@@ -25,6 +25,8 @@ import { AuthenticateService } from './services/authentication.service';
 import { Camera} from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 
+import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions'
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +43,7 @@ import { File } from '@ionic-native/file/ngx';
     AngularFirestoreModule, // imports firebase/firestore
     AngularFireAuthModule, // imports firebase/auth
     AngularFireStorageModule, // imports firebase/storage
+    AngularFireFunctionsModule
   ],
   providers: [
     Camera,
@@ -49,6 +52,7 @@ import { File } from '@ionic-native/file/ngx';
     SplashScreen,
     ImagePicker,
     AuthenticateService,
+    { provide: FunctionsRegionToken, useValue: 'us-central1' },
     WebView,
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

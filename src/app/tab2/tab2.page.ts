@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/functions'
 
 
 @Component({
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
- 
 
-  constructor() {}
+  posts
+  sub
 
+  constructor(private aff: AngularFireFunctions) {}
+  ngOnInit() {
+  
+    const getFeed = this.aff.httpsCallable('getFeed')
+    this.posts = getFeed({}).subscribe(data=> {
+      console.log(data)
+      // this.posts = data
+        })
+    }
+    //coment
+  
+    ngOnDestroy() {
+      this.sub.unsubscribe()
+    }
+  
 
 }
