@@ -31,7 +31,7 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
+          this.snapshotChangesSubscription = this.afs.doc<any>('tasks/' + taskId).valueChanges()
           .subscribe(snapshots => {
             resolve(snapshots);
           }, err => {
