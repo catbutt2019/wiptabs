@@ -16,10 +16,12 @@ export class EventService {
 
    async getEventList(): Promise<firebase.firestore.QuerySnapshot> {
     const user: firebase.User = await this.authService.getUser();
+    if (user) {
     this.eventListRef = firebase
       .firestore()
-      .collection(`people/${user.uid}/tasks`);
+      .collection(`tasks`);
     return this.eventListRef.where('category', '==', 'Wipping').get();
+    }
     } 
 
 }
