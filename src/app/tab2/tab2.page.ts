@@ -18,7 +18,7 @@ export class Tab2Page {
     const getFeed = this.aff.httpsCallable('getFeed')
     this.posts = getFeed({}).subscribe(data=> {
       console.log(data)
-      // this.posts = data
+      this.posts = data
         })
     }
     //coment
