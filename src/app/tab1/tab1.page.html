@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Add Media 3
+    Create Post
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,7 @@
      <div>
         <ion-row no-padding>
           <ion-col size="6" offset="3">
-            <img [src]="image" alt=""  />
+            <img [src]="image" alt="" *ngIf="image" />
           </ion-col>
         </ion-row>
       <!--   <ion-row no-padding>
@@ -25,31 +25,29 @@
           </ion-col>
         </ion-row> -->
       </div>
-      <ion-row>
-        <ion-col>
-      <ion-button size="large" color="light" (click)="openImagePicker()" offset="2px"><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon>Gallery</ion-button>
-        </ion-col>
-        <ion-col>
-      <ion-button size="large" color="medium" (click)="takePicture()"><ion-icon name="camera" style="margin-right: 10px"></ion-icon>Camera</ion-button>
-    </ion-col>
-    </ion-row>
+     
+      <ion-button size="large" color="dark" (click)="openImagePicker()" offset="-50%"><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon>Gallery</ion-button>
+      
+      <ion-button size="large" color="dark" (click)="takePicture()"><ion-icon name="camera" style="margin-right: 10px"></ion-icon>Camera</ion-button>
+       
+  
       <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
-        <ion-item>
-          <ion-label position="floating" color="primary">Title</ion-label>
+        <ion-card color="light">
+          <ion-label position="floating" >Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
+        </ion-card>
+        <ion-item>
+          <ion-label position="floating" color="light">Description</ion-label>
+          <ion-input type="text" formControlName="description"  color="light"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating" color="primary">Description</ion-label>
-          <ion-input type="text" formControlName="description"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Category</ion-label>
-          <ion-select placeholder="Select One" formControlName="category">
-            <ion-select-option value="Wipped">Wipped</ion-select-option>
-            <ion-select-option value="Wipping">Wipping</ion-select-option>
+          <ion-label color="light">Category</ion-label>
+          <ion-select color="light" placeholder="Select One" formControlName="category">
+            <ion-select-option color="light" value="Wipped">Wipped</ion-select-option>
+            <ion-select-option  color="light"value="Wipping">Wipping</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-button class="submit-btn" expand="block" type="submit" color="medium" [disabled]="!validations_form.valid">Create</ion-button>
+        <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
       </form> 
-
+   
 </ion-content>

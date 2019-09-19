@@ -17,6 +17,7 @@ export class DetailsPage implements OnInit {
   image: any;
   item: any;
   load: boolean = false;
+  category: any;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -52,12 +53,13 @@ export class DetailsPage implements OnInit {
     let data = {
       title: value.title,
       description: value.description,
-      image: this.image
+      image: this.image,
+      category: this.category
     }
     this.firebaseService.updateTask(this.item.id,data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/tabs/tab4"]);
       }
     )
   }
@@ -79,7 +81,7 @@ export class DetailsPage implements OnInit {
             this.firebaseService.deleteTask(this.item.id)
             .then(
               res => {
-                this.router.navigate(["/home"]);
+                this.router.navigate(["/tabs/tab4"]);
               },
               err => console.log(err)
             )

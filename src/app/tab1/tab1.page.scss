@@ -3,3 +3,14 @@
       margin-top: 1em;
       margin-bottom: 2.5em;
     }
+
+    ion-content {
+
+      --ion-background-color:#111D12;
+  } 
+
+  ion-tabs{
+
+    --ion-tabbar-background-color:rgb(12, 12, 12);
+    --ion-tabs-background-color:var(--ion-tabbar-background-color, #ffffff);
+    }

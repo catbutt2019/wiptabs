@@ -1,15 +1,33 @@
 
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Profile refresh resolver</ion-title>
-    <ion-button type ="round" slot="end" (click)="logout()">
+  <ion-toolbar color="dark">
+    <ion-title >Profile</ion-title>
+    <ion-button type ="round" slot="end"  fill = "outline"(click)="logout()" color="light">
       <ion-icon name="exit">
       </ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+<ion-grid>
+  <ion-row align-items-center>
+    <ion-col ></ion-col>
+    <ion-col size="4" offset="1">
+ <img src="./assets/imgs/generic_woman_circle.png" height="70px">
+ </ion-col>
+ <ion-col ></ion-col>
+</ion-row>
+<ion-row align-items-center>
+    <ion-col ></ion-col>
+    <ion-col size="4" offset="1">
+ <p>Username</p>
+ </ion-col>
+ <ion-col ></ion-col>
+</ion-row>
 
-<ion-content padding >
+</ion-grid>
+
+
   <ion-toolbar>
 <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="secondary">
   <ion-segment-button value = "0">
@@ -39,7 +57,7 @@
   <ion-slide>
   <ion-grid>
   <ion-row>
-  <ion-col size="11" *ngIf="items">
+  <ion-col size="12" *ngIf="items">
   <!-- <div *ngIf="items.length > 0" class="list-mini">
     <ion-list>
       <ion-item *ngFor="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
@@ -67,7 +85,7 @@
 <ion-slide>
     <ion-grid>
         <ion-row>
-        <ion-col size="11" *ngIf="eventList">
+        <ion-col size="12" *ngIf="eventList">
         <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details/', event?.id]">
           <ion-card-title>{{event?.title}}</ion-card-title>
           <img [src]="event?.image">
