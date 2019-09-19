@@ -13,7 +13,7 @@ admin.initializeApp()
 
 export const getFeed = functions.https.onCall(async (req,res) =>{
    // const docs = await admin.firestore().collection('people/{peopleId}/tasks').limit(5).get()
-  const docs = await admin.firestore().collection('tasks').limit(5).get()
+  const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipped').limit(5).get()
    // const docs = await admin.firestore().collection('people').where("category", "==", "Wipping").limit(5).get()
    // const docs = await admin.firestore().collection('tasks').where("category", "==", "Wipping").limit(5).get()
     //const docs = await admin.firestore().collection('people').where("tasks", "==", "Wipped").limit(5).get()
@@ -23,6 +23,23 @@ export const getFeed = functions.https.onCall(async (req,res) =>{
     return {
         postID: doc.id,
         ...doc.data()
-    }
-}) })
+         }
+     }) 
+ })
+
+ export const getWipping = functions.https.onCall(async (req,res) =>{
+    // const docs = await admin.firestore().collection('people/{peopleId}/tasks').limit(5).get()
+   const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipping').get()
+    // const docs = await admin.firestore().collection('people').where("category", "==", "Wipping").limit(5).get()
+    // const docs = await admin.firestore().collection('tasks').where("category", "==", "Wipping").limit(5).get()
+     //const docs = await admin.firestore().collection('people').where("tasks", "==", "Wipped").limit(5).get()
+     // const docs = await admin.firestore().collection("people").where("tasks", "array-contains", "category").limit(5).get()
+     
+     return docs.docs.map(doc => {
+     return {
+         postID: doc.id,
+         ...doc.data()
+          }
+      }) 
+  })
 

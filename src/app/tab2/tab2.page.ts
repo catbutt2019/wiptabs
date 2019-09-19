@@ -11,6 +11,7 @@ export class Tab2Page {
 
   posts
   sub
+  postsWipping
 
   constructor(private aff: AngularFireFunctions) {}
   ngOnInit() {
@@ -20,8 +21,12 @@ export class Tab2Page {
       console.log(data)
       this.posts = data
         })
+
+     
+  
+      
     }
-    //coment
+      //coment
   
     ngOnDestroy() {
       this.sub.unsubscribe()
