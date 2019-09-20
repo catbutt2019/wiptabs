@@ -8,7 +8,7 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="card-background-page" color="medium">
 <ion-grid>
   <ion-row align-items-center>
     <ion-col ></ion-col>
@@ -28,7 +28,7 @@
 </ion-grid>
 
 
-  <ion-toolbar>
+  <ion-toolbar color="medium">
 <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="secondary">
   <ion-segment-button value = "0">
     <ion-icon name="heart"></ion-icon>WIPPED
@@ -74,7 +74,7 @@
   </div> -->
   <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
     <img [src]="item.payload.doc.data().image">
-    <ion-card-title>{{item.payload.doc.data().title}}</ion-card-title>
+    <div class="card-title">{{item.payload.doc.data().title}}</div>
   </ion-card>
   </ion-col>
 </ion-row>
@@ -87,9 +87,8 @@
         <ion-row>
         <ion-col size="12" *ngIf="eventList">
         <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details/', event?.id]">
-          <ion-card-title>{{event?.title}}</ion-card-title>
           <img [src]="event?.image">
-          <ion-card-content>{{event?.description}}</ion-card-content>
+          <div class="card-title">{{event?.title}}</div>
         </ion-card>
         </ion-col>
       </ion-row>
