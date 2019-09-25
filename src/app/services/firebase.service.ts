@@ -51,7 +51,7 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       // this.afs.collection('people').doc(currentUser.uid)
-      this.afs.collection('tasks').doc(taskKey).set(value)
+      this.afs.collection('tasks').doc(taskKey).update(value)
       .then(
         res => resolve(res),
         err => reject(err)

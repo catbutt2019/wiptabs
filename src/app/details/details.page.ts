@@ -40,8 +40,7 @@ export class DetailsPage implements OnInit {
      let data = routeData['data'];
      if (data) {
        this.item = data;
-       this.image = this.item.image;
-       
+       this.image = this.item.image;   
      }
     })
     this.validations_form = this.formBuilder.group({
