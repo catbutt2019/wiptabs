@@ -17,7 +17,7 @@ export class DetailsPage implements OnInit {
   image: any;
   item: any;
   load: boolean = false;
-  category: any;
+  category: string;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -41,11 +41,13 @@ export class DetailsPage implements OnInit {
      if (data) {
        this.item = data;
        this.image = this.item.image;
+       
      }
     })
     this.validations_form = this.formBuilder.group({
       title: new FormControl(this.item.title, Validators.required),
-      description: new FormControl(this.item.description, Validators.required)
+      description: new FormControl(this.item.description, Validators.required),
+      category: new FormControl(this.item.category, Validators.required)
     });
   }
 
@@ -54,7 +56,7 @@ export class DetailsPage implements OnInit {
       title: value.title,
       description: value.description,
       image: this.image,
-      category: this.category
+      category: value.category
     }
     this.firebaseService.updateTask(this.item.id,data)
     .then(

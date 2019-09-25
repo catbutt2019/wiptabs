@@ -50,7 +50,7 @@ export class FirebaseService {
   updateTask(taskKey, value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid)
+      // this.afs.collection('people').doc(currentUser.uid)
       this.afs.collection('tasks').doc(taskKey).set(value)
       .then(
         res => resolve(res),
@@ -62,7 +62,8 @@ export class FirebaseService {
   deleteTask(taskKey){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
+      // this.afs.collection('people').doc(currentUser.uid).
+      this.afs.collection('tasks').doc(taskKey).delete()
       .then(
         res => resolve(res),
         err => reject(err)
