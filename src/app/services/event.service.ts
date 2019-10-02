@@ -12,15 +12,13 @@ export class EventService {
 
   constructor(private authService: AuthenticateService) { }
 
-
-
    async getEventList(): Promise<firebase.firestore.QuerySnapshot> {
     const user: firebase.User = await this.authService.getUser();
     if (user) {
     this.eventListRef = firebase
       .firestore()
       .collection(`tasks`);
-    return this.eventListRef.where('category', '==', 'Wipping').get();
+    return this.eventListRef.where('category', '==', 'Wipping').where('category', '==', user.uid).get();
     }
     } 
 

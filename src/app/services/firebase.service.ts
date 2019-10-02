@@ -18,9 +18,11 @@ export class FirebaseService {
 
   getTasks(){
     return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipped')).snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipped').where('uid','==', currentUser.uid
+          )).snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -74,12 +76,14 @@ export class FirebaseService {
   createTask(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid)
-      this.afs.collection('tasks').add({
+      // this.afs.collection('people').doc(currentUser.uid).collection('tasks')
+      this.afs.collection('tasks')
+      .add({
         category: value.category,
         title: value.title,
         description: value.description,
-        image: value.image
+        image: value.image,
+        uid: currentUser.uid
       })
       .then(
         res => resolve(res),
