@@ -9,15 +9,16 @@ import { AngularFireFunctions } from '@angular/fire/functions'
 })
 export class Tab2Page {
 
-  posts
+  posts =[];
   sub
   postsWipping
+  ajax
 
   constructor(private aff: AngularFireFunctions) {}
   ngOnInit() {
   
     const getFeed = this.aff.httpsCallable('getFeed')
-    this.posts = getFeed({}).subscribe(data=> {
+    this.ajax = getFeed({}).subscribe(data=> {
       console.log(data)
       this.posts = data
         })

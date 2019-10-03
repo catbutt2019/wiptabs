@@ -10,14 +10,16 @@ export class Tab3Page {
 
   posts
   sub
+  ajax
   constructor(private aff: AngularFireFunctions) {}
   ngOnInit() {
 
-    const getWipping = this.aff.httpsCallable('getWipping')
-    this.posts = getWipping({}).subscribe(data=> {
+    const getFeed = this.aff.httpsCallable('getWipping')
+    this.ajax = getFeed({}).subscribe(data=> {
       console.log(data)
-     this.posts = data
+      this.posts = data
         })
+
   }
 
   ngOnDestroy() {
