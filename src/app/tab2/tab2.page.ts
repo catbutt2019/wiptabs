@@ -26,8 +26,8 @@ export class Tab2Page {
     const getFeed = this.aff.httpsCallable('getFeed')
     this.ajax = getFeed({}).subscribe(data=> {
       console.log(data)
-      this.posts = data
-      
+      this.posts =  data
+
       if(event) {
         event.target.complete();
       }
