@@ -131,7 +131,7 @@ export class Tab1Page implements OnInit {
       }
       else if(result == true){
         this.imagePicker.getPictures({
-          maximumImagesCount: 1
+          maximumImagesCount: 10
         }).then(
           (results) => {
             for (var i = 0; i < results.length; i++) {

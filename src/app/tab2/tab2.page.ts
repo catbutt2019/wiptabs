@@ -14,20 +14,25 @@ export class Tab2Page {
   postsWipping
   ajax
 
-  constructor(private aff: AngularFireFunctions) {}
+  constructor(private aff: AngularFireFunctions) {
+   
+  }
   ngOnInit() {
+    this.tabTwoFeed();
+    }
   
+   
+    tabTwoFeed (event?){    
     const getFeed = this.aff.httpsCallable('getFeed')
     this.ajax = getFeed({}).subscribe(data=> {
       console.log(data)
       this.posts = data
-        })
-
-     
-  
       
+      if(event) {
+        event.target.complete();
+      }
+        })  
     }
-      //coment
   
     ngOnDestroy() {
       this.sub.unsubscribe()
