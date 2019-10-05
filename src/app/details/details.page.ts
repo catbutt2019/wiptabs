@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, ToastController, AlertController } from '@ionic/angular';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,6 +15,7 @@ export class DetailsPage implements OnInit {
 
   validations_form: FormGroup;
   image: any;
+  public imageLists: any[] = [];
   item: any;
   load: boolean = false;
   category: string;
@@ -115,6 +116,8 @@ export class DetailsPage implements OnInit {
       console.log(err);
     });
   }
+
+  
 
   async uploadImageToFirebase(image){
     const loading = await this.loadingCtrl.create({
