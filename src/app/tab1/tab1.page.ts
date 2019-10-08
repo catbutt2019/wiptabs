@@ -20,7 +20,7 @@ import { File } from '@ionic-native/file/ngx';
 export class Tab1Page implements OnInit {
 
   validations_form: FormGroup;
-  image: any;
+  image :any ;
   
 
   constructor(
@@ -43,7 +43,7 @@ export class Tab1Page implements OnInit {
     
   }
   resetFields() {
-    this.image =  "./assets/imgs/default_image.jpg";
+    this.image =  ["./assets/imgs/default_image.jpg"];
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -83,7 +83,7 @@ export class Tab1Page implements OnInit {
 
 
  resetForm() {
-    this.image = "./assets/imgs/default_image.jpg";
+    this.image = ["./assets/imgs/default_image.jpg"];
   
     this.validations_form.reset();
     this.validations_form.setValue({
@@ -114,7 +114,8 @@ export class Tab1Page implements OnInit {
     //uploads img to firebase storage
     this.firebaseService.uploadImage(image_src, randomId)
     .then(photoURL => {
-      this.image = photoURL;
+     
+      this.image= [ photoURL ];
       loading.dismiss();
       toast.present();
     }, err =>{
@@ -146,7 +147,7 @@ export class Tab1Page implements OnInit {
   } 
 
  
-
+/* 
 async takePicture() {
 
   const options: CameraOptions = {
@@ -166,7 +167,7 @@ async takePicture() {
     // Handle error
     console.log("Camera issue:" + err);
     });
-  }
+  } */
 
   async presentLoading(loading) {
     return await loading.present();

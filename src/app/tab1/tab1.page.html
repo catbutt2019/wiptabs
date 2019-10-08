@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
-    Create Post
+this image = [photoURL]
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,11 +10,12 @@
  
   
     
-     <div>
+     <div *ngFor ="let image of image">
         <ion-row no-padding>
           <ion-col size="11" offset="0.5">
-             
-         <img [src]="image" alt="" *ngIf="image" /> -->
+            <div>
+         <ion-img [src]="image" ></ion-img>
+        </div> 
           </ion-col>
         </ion-row>
       <!--   <ion-row no-padding>
