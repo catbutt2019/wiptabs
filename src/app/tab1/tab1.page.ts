@@ -115,7 +115,33 @@ export class Tab1Page implements OnInit {
     this.firebaseService.uploadImage(image_src, randomId)
     .then(photoURL => {
      
-      this.image= [ photoURL ];
+      this.image.push(photoURL);
+      loading.dismiss();
+      toast.present();
+    }, err =>{
+      console.log(err);
+    })
+  }
+
+
+  async uploadImageToFirebaseCamera(image){
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    const toast = await this.toastCtrl.create({
+      message: 'Image was updated successfully',
+      duration: 3000
+    });
+    this.presentLoading(loading);
+    let image_src = this.webview.convertFileSrc(image);
+    let randomId = Math.random().toString(36).substr(2, 5);
+
+    //uploads img to firebase storage
+    this.firebaseService.uploadImage(image_src, randomId)
+    .then(photoURL => {
+     
+      this.image = [photoURL];
       loading.dismiss();
       toast.present();
     }, err =>{
@@ -147,7 +173,7 @@ export class Tab1Page implements OnInit {
   } 
 
  
-/* 
+
 async takePicture() {
 
   const options: CameraOptions = {
@@ -162,12 +188,12 @@ async takePicture() {
   this.camera.getPicture(options)
   .then((imageData) => {
     this.image = 'data:image/jpeg;base64,' + imageData;
-    this.uploadImageToFirebase('data:image/jpeg;base64,' + imageData );        
+    this.uploadImageToFirebaseCamera('data:image/jpeg;base64,' + imageData );        
   }, (err) => {`              `
     // Handle error
     console.log("Camera issue:" + err);
     });
-  } */
+  }
 
   async presentLoading(loading) {
     return await loading.present();
