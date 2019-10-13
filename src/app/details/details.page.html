@@ -8,17 +8,18 @@
 </ion-header>
 
 <ion-content padding color="medium">
-  <div>
+    <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-button color="light" fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+        </ion-col>
+      </ion-row>
+  <div  *ngFor ="let image of image">
     <ion-row>
       <ion-col size="12" offset="0">
         <img id ="image" [src]="image" alt="this is the image"/>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="6" offset="3">
-        <ion-button color="light" fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
-      </ion-col>
-    </ion-row>
+  
   </div>
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
