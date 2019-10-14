@@ -39,6 +39,7 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.image =  [];
     this.resetFields();
     
   }
@@ -63,6 +64,17 @@ export class Tab1Page implements OnInit {
     .then(
       res => {
         this.router.navigate(["/tabs/tab4"]);
+      }
+    ).then(
+      res => {
+        this.image = [];
+        this.validations_form = this.formBuilder.group({
+          title: new FormControl('', Validators.required),
+          description: new FormControl('', Validators.required),
+          category: new FormControl('', Validators.required)
+          
+        });
+        this.image = [];
       }
     )
   }
