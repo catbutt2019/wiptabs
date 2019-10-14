@@ -19,6 +19,14 @@ import { File } from '@ionic-native/file/ngx';
 })
 export class Tab1Page implements OnInit {
 
+
+  sliderOpts= {
+    zoom: false,
+    slidesPerView: 1.2,
+    centeredSlides: true,
+    spaceBetween: 20
+  };
+
   validations_form: FormGroup;
   image :any ;
   
@@ -44,7 +52,7 @@ export class Tab1Page implements OnInit {
     
   }
   resetFields() {
-    this.image =  [];
+    this.image =  ["./assets/imgs/default_image.jpg"];
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),

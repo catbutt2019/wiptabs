@@ -10,14 +10,13 @@ reset
  
   
     
-     <div *ngFor ="let image of image">
-        <ion-row no-padding>
-          <ion-col size="11" offset="0.5">
-            <div>
-         <ion-img [src]="image" ></ion-img>
-        </div> 
-          </ion-col>
-        </ion-row>
+  <ion-slides [options] = "sliderOpts">
+    <ion-slide *ngFor="let image of image">
+           <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
+      <img [src]= "image" > 
+         <!-- <img [src]= "assets/{{img}}.png" tappaple (click) ="openPreview(img)"> -->
+       </ion-slide>
+     </ion-slides>
       <!--   <ion-row no-padding>
           <ion-col size="11" style="text-align: center">
             <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Photo Gallery</ion-button>
@@ -26,7 +25,7 @@ reset
             <ion-button fill="outline" expand="block" size="small" (click)="takePicture()">Camera</ion-button>
           </ion-col>
         </ion-row> -->
-      </div>
+    
 
      <ion-grid>
        <ion-row>
