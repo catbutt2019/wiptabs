@@ -7,7 +7,7 @@ import { AngularFireFunctions } from '@angular/fire/functions'
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit{
 
   posts =[];
   sub
@@ -18,21 +18,33 @@ export class Tab2Page {
    
   }
   ngOnInit() {
-    this.tabTwoFeed();
+    this.tabTwoFeedInit();
     }
+
+    tabTwoFeedInit (){    
+      const getFeed = this.aff.httpsCallable('getFeed')
+      this.ajax = getFeed({}).subscribe(data=> {
+        console.log(data)
+        this.posts =  data
+          })  
+      }
   
    
-    tabTwoFeed (event?){    
-    const getFeed = this.aff.httpsCallable('getFeed')
-    this.ajax = getFeed({}).subscribe(data=> {
-      console.log(data)
-      this.posts =  data
+    tabTwoFeed (event){    
+      const getFeed = this.aff.httpsCallable('getFeed')
+      this.ajax = getFeed({}).subscribe(data=> {
+        console.log(data)
+        this.posts =  data
+          })  
 
-      if(event) {
-        event.target.complete();
+          setTimeout(()=>{
+            event.target.complete();
+          },2000);
       }
-        })  
-    }
+
+
+
+      
   
     ngOnDestroy() {
       this.sub.unsubscribe()

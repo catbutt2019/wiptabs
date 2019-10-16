@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,24 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ){}
 
+  
+
   getTasks(){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipped').where('uid','==', currentUser.uid
-          )).snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipped') 
+          .where('uid','==', currentUser.uid
+          ).orderBy("date", "desc")).snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
     })
   }
+ 
+ 
+
 
   getTask(taskId){
     return new Promise<any>((resolve, reject) => {
@@ -76,14 +83,23 @@ export class FirebaseService {
   createTask(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      // this.afs.collection('people').doc(currentUser.uid).collection('tasks')
+
+     /* this.afs.collection('people').doc(peopleId).collection('tasks')
+      .add({ category: value.category,
+        title: value.title,
+        description: value.description,
+        image: value.image,
+        uid: currentUser.uid }) */
+
+        
       this.afs.collection('tasks')
       .add({
         category: value.category,
         title: value.title,
         description: value.description,
         image: value.image,
-        uid: currentUser.uid
+        uid: currentUser.uid,
+        date: new Date()
       })
       .then(
         res => resolve(res),

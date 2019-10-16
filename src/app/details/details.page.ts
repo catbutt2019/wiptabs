@@ -103,7 +103,7 @@ export class DetailsPage implements OnInit {
       }
       else if(result == true){
         this.imagePicker.getPictures({
-          maximumImagesCount: 1
+          maximumImagesCount: 10
         }).then(
           (results) => {
             for (var i = 0; i < results.length; i++) {
@@ -135,7 +135,7 @@ export class DetailsPage implements OnInit {
     //uploads img to firebase storage
     this.firebaseService.uploadImage(image_src, randomId)
     .then(photoURL => {
-      this.image = photoURL;
+      this.image.push(photoURL);
       loading.dismiss();
       toast.present();
     }, err =>{
