@@ -47,7 +47,7 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.image =  [];
+    this.image =  ["./assets/imgs/default_image.jpg"];
     this.resetFields();
     
   }
