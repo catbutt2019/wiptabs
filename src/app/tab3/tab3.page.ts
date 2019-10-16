@@ -13,14 +13,32 @@ export class Tab3Page {
   ajax
   constructor(private aff: AngularFireFunctions) {}
   ngOnInit() {
+    this.tabThreeFeedInit()
+  }
 
+  tabThreeFeedInit() {
     const getFeed = this.aff.httpsCallable('getWipping')
     this.ajax = getFeed({}).subscribe(data=> {
-      console.log(data)
-      this.posts = data
-        })
+    console.log(data)
+    this.posts = data
+      })
+    }
 
-  }
+
+    tabThreeFeed(event){    
+      const getFeed = this.aff.httpsCallable('getWipping')
+      this.ajax = getFeed({}).subscribe(data=> {
+        console.log(data)
+        this.posts =  data
+          })  
+
+          setTimeout(()=>{
+            event.target.complete();
+          },2000);
+      }
+
+
+
 
   ngOnDestroy() {
     this.sub.unsubscribe()

@@ -6,15 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="card-background-page">
-
-	<div *ngIf="posts">
-    <ion-card *ngFor ="let post of posts">
-      <img [src]="post.image">
-
-        <div class="card-title">{{ post.title}}</div>
-    
-     
-    </ion-card>
-     </div>    
+<ion-content class="card-background-page" color="medium">
+    <div class="ion-padding">
+    <ion-refresher  (ionRefresh)="tabThreeFeed($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" 
+       refreshingSpinner="circles" refreshingText="refreshing..">
+      </ion-refresher-content>
+      </ion-refresher>
+    </div>  
+    <div *ngIf="posts">
+        <ion-card *ngFor ="let post of posts">
+          <img [src]="post.image">
+            <div class="card-title">{{ post.title}}</div>
+        </ion-card>
+         </div>  
 </ion-content> 
