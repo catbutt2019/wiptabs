@@ -13,7 +13,7 @@ admin.initializeApp()
 
 export const getFeed = functions.https.onCall(async (req,res) =>{
    // const docs = await admin.firestore().collection('people/{peopleId}/tasks').limit(5).get()
-  const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipped').limit(20).get()
+  const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipped').orderBy('date','desc').limit(20).get()
    // const docs = await admin.firestore().collection('people').where("category", "==", "Wipping").limit(5).get()
    // const docs = await admin.firestore().collection('tasks').where("category", "==", "Wipping").limit(5).get()
     //const docs = await admin.firestore().collection('people').where("tasks", "==", "Wipped").limit(5).get()
@@ -29,7 +29,7 @@ export const getFeed = functions.https.onCall(async (req,res) =>{
 
  export const getWipping = functions.https.onCall(async (req,res) =>{
     // const docs = await admin.firestore().collection('people/{peopleId}/tasks').limit(5).get()
-   const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipping').limit(20).get()
+   const docs = await admin.firestore().collection('tasks').where('category', '==', 'Wipping').orderBy('date','desc').limit(20).get()
     // const docs = await admin.firestore().collection('people').where("category", "==", "Wipping").limit(5).get()
     // const docs = await admin.firestore().collection('tasks').where("category", "==", "Wipping").limit(5).get()
      //const docs = await admin.firestore().collection('people').where("tasks", "==", "Wipped").limit(5).get()
