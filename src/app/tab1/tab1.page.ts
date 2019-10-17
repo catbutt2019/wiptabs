@@ -47,12 +47,12 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.image =  ["./assets/imgs/default_image.jpg"];
+    this.image =  [];
     this.resetFields();
     
   }
   resetFields() {
-    this.image =  ["./assets/imgs/default_image.jpg"];
+    this.image =  [];
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),

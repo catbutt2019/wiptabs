@@ -7,7 +7,10 @@ photo add
 </ion-header>
 
 <ion-content>
- 
+  <ion-button class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
+    
+  <ion-button size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="camera" ></ion-icon></ion-button>
+
   
     
   <ion-slides [options] = "sliderOpts">
@@ -27,18 +30,10 @@ photo add
         </ion-row> -->
     
 
-     <ion-grid>
-       <ion-row>
-         <ion-col offset ="0.9"size="1">
-      <ion-button class="imagebutton" size="large" color="secondary" (click)="openImagePicker()" offset="5"><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon>Gallery</ion-button>
-         </ion-col>
-         <ion-col offset ="4" size="1" >
-      <ion-button size="large" color="tertiary" (click)="takePicture()"><ion-icon name="camera" style="margin-right: 10px"></ion-icon>Camera</ion-button>
-    </ion-col>
-    </ion-row>
-    </ion-grid>
+    
+    
   
-      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
+      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" *ngIf="!image">
         <ion-item color="dark">
           <ion-label position="floating">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>

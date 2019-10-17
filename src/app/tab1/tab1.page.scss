@@ -4,7 +4,7 @@
       margin-bottom: 2.5em;
     }
 
-    ion-content {
+  ion-content {
 
       --ion-background-color:#111D12;
   } 
@@ -15,7 +15,25 @@
     --ion-tabs-background-color:var(--ion-tabbar-background-color, #ffffff);
     }
 
-    #imagebutton {
+   /* #imagebutton {
       margin-left: 300px !important;
       height: 400px;
+    } */
+
+    ion-button {
+      position: relative;
+      animation-name: button;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      z-index: 100;
+    }
+    
+    @keyframes button {
+      0%   {left:0%; top:100%;}
+      100% { left:30%; top:60%;}
+    }
+
+    ion-slides {
+     z-index: -30;
+     position: absolute;
     }
