@@ -3,11 +3,12 @@
     <ion-title>
 photo add 
     </ion-title>
+   <!-- *ngIf="image.length == 0"  -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
+  <ion-button  *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
     
   <ion-button  *ngIf="image.length == 0" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="camera" ></ion-icon></ion-button>
 
@@ -28,12 +29,8 @@ photo add
             <ion-button fill="outline" expand="block" size="small" (click)="takePicture()">Camera</ion-button>
           </ion-col>
         </ion-row> -->
-    
-
-    
-    
-  
-      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" *ngIf="image.length > 0" >
+   <div id="form" *ngIf ="image.length > 0">
+   <form  [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
         <ion-item color="dark">
           <ion-label position="floating">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
@@ -51,6 +48,7 @@ photo add
         </ion-item>
         <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
       </form> 
+    </div>
 
    
 </ion-content>

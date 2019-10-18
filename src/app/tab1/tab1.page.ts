@@ -51,7 +51,7 @@ export class Tab1Page implements OnInit {
     
   }
   resetFields() {
-    this.image = [];
+    this.image = ["./assets/imgs/me.jpg","./assets/imgs/default_image.jpg"];
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
