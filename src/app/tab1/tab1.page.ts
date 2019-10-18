@@ -28,7 +28,7 @@ export class Tab1Page implements OnInit {
   };
 
   validations_form: FormGroup;
-  image :any ;
+  image : any =[];
   
 
   constructor(
@@ -47,12 +47,11 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.image =  [];
     this.resetFields();
     
   }
   resetFields() {
-    this.image =  [];
+    this.image = [];
     this.validations_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
