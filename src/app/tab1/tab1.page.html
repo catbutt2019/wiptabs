@@ -7,9 +7,9 @@ photo add
 </ion-header>
 
 <ion-content>
-  <ion-button class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
+  <ion-button *ngIf="image" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
     
-  <ion-button size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="camera" ></ion-icon></ion-button>
+  <ion-button   *ngIf="image" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="camera" ></ion-icon></ion-button>
 
   
     
