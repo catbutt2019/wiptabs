@@ -21,17 +21,35 @@
       height: 400px;
     } */
 
-    ion-button {
+   /* ion-button {
+      position: relative;
+      animation-name: button;
+      animation-duration: 0.7s;
+      animation-fill-mode: forwards;
+      z-index: 100;
+    } */
+    
+    @keyframes button {
+      0%   {left:0%; top:100% }
+      100% { left:25%; top:60%;}
+    }
+
+    #categorybtn {
       position: relative;
       animation-name: button;
       animation-duration: 0.7s;
       animation-fill-mode: forwards;
       z-index: 100;
     }
-    
-    @keyframes button {
-      0%   {left:0%; top:100% }
-      100% { left:25%; top:60%;}
+
+    #picturebtn {
+      left: 25%;
+      top: 60%;
+      position: relative;
+      animation-name: picturebutton;
+      animation-duration: 0.7s;
+      animation-fill-mode: forwards;
+      z-index: 100;
     }
 
     ion-slides  {
@@ -41,7 +59,6 @@
      float: left !important;
      margin: 3px !important;
      padding: 3px !important;
-   
     }
 
     ion-slide {

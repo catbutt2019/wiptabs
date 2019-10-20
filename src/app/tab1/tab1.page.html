@@ -8,12 +8,23 @@ Post
 </ion-header>
 
 <ion-content>
-  
-  <ion-button  *ngIf="image.length == 0 && !category"  class="imagebutton" size="large" shape="round" color="secondary" (click)="newProject()"><ion-icon name="heart-half" ></ion-icon></ion-button>
-   <ion-button  *ngIf="image.length == 0 && !category" size="large" color="tertiary" shape="round"  (click)="completeProject()" ><ion-icon name="heart-empty" ></ion-icon></ion-button>
-      <ion-button *ngIf ="category" (click)="openImagePicker()"  shape = "round"><ion-icon name="folder-open"></ion-icon></ion-button>
-         <ion-button *ngIf ="category" (click)="takePicture()" shape = "round"><ion-icon name="camera" ></ion-icon></ion-button>
-             <ion-slides [options] = "sliderOpts">
+       <div id="categorybtn" *ngIf="image.length == 0 && !category" >
+  <ion-button   class="imagebutton" size="large" shape="round" color="secondary" (click)="newProject()"><ion-icon name="heart-half" ></ion-icon></ion-button>
+  <h3>New Project</h3>
+   </div>
+      <div id="categorybtn" *ngIf="image.length == 0 && !category" >
+   <ion-button  size="large" color="tertiary" shape="round"  (click)="completeProject()" ><ion-icon name="heart-empty" ></ion-icon></ion-button>
+   <h3>Finished Project</h3>
+  </div>
+       <div id="picturebtn" *ngIf ="category" >
+   <ion-button size="large" (click)="openImagePicker()"  shape = "round"><ion-icon name="folder-open"></ion-icon></ion-button>
+       <h3>Gallery</h3>
+  </div>
+    <div id="picturebtn" *ngIf ="category">
+   <ion-button size="large" (click)="takePicture()" shape = "round"><ion-icon name="camera" ></ion-icon></ion-button>
+         <h3>Take Picture</h3>  
+  </div>  
+   <ion-slides [options] = "sliderOpts">
              <ion-slide *ngFor="let image of image">
            <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
                <img [src]= "image"> 
