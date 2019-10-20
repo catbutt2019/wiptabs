@@ -11,8 +11,9 @@ Post
 <!-- 
   <ion-button  *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" ></ion-icon></ion-button>
   <ion-button  *ngIf="image.length == 0" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="Camera" ></ion-icon></ion-button> -->
-  <ion-button *ngIf ="!category" (click)="newProject()">New Project</ion-button>
-  <ion-button *ngIf ="!category" (click)="completeProject()">Complete Project</ion-button>
+  
+  <ion-button *ngIf ="!category" (click)="newProject()" shape = "round"><ion-icon name="heart-half"></ion-icon></ion-button>
+  <ion-button *ngIf ="!category" (click)="completeProject()" shape = "round"><ion-icon name="heart-empty" ></ion-icon></ion-button>
   <ion-slides [options] = "sliderOpts">
     <ion-slide *ngFor="let image of image">
            <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
