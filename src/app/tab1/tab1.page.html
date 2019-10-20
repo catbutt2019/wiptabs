@@ -8,12 +8,12 @@ photo add
 </ion-header>
 
 <ion-content>
-  <ion-button  *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" style="margin-right: 10px"></ion-icon></ion-button>
-    
-  <ion-button  *ngIf="image.length == 0" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="camera" ></ion-icon></ion-button>
 
-  
-    
+  <ion-button  *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" ></ion-icon></ion-button>
+
+
+  <ion-button  *ngIf="image.length == 0" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="Camera" ></ion-icon></ion-button>
+   
   <ion-slides [options] = "sliderOpts">
     <ion-slide *ngFor="let image of image">
            <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
@@ -31,21 +31,21 @@ photo add
         </ion-row> -->
    <div id="form" *ngIf ="image.length > 0">
    <form  [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
-        <ion-item color="dark">
+   <!--      <ion-item color="dark">
           <ion-label position="floating">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
-        </ion-item>
+        </ion-item> -->
         <ion-item color="dark">
-          <ion-label position="floating">Description</ion-label>
+          <ion-label position="floating">Say Something</ion-label>
           <ion-input type="text" formControlName="description"  color="light"></ion-input>
         </ion-item>
-        <ion-item color="dark">
-          <ion-label color="dark">Category</ion-label>
+           <!--   <ion-item color="dark">
+     <ion-label color="dark">Category</ion-label>
           <ion-select color="dark" placeholder="Category" formControlName="category">
             <ion-select-option color="dark" value="Wipped">Wipped</ion-select-option>
             <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
           </ion-select>
-        </ion-item>
+        </ion-item> -->
         <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
       </form> 
     </div>
