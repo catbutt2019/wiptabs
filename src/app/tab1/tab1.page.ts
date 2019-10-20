@@ -29,7 +29,7 @@ export class Tab1Page implements OnInit {
 
   validations_form: FormGroup;
   image : any =[];
-  
+  category: string;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -59,6 +59,15 @@ export class Tab1Page implements OnInit {
       
     });
   }
+
+  newProject() {
+    this.category = 'Wipping';
+  }
+
+  completeProject() {
+    this.category = 'Wipped';
+  }
+     
 
   onSubmit(value){
 
