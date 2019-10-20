@@ -47,11 +47,14 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    this.category = '';
     this.resetFields();
     
   }
   resetFields() {
-   this.image = [ ];
+   this.image = [];
+   this.category ='';
     this.validations_form = this.formBuilder.group({
       description: new FormControl('', Validators.required)
     });
@@ -84,6 +87,7 @@ export class Tab1Page implements OnInit {
     ).then(
       res => {
         this.image = [];
+        this.category = '';
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),
           

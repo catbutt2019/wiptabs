@@ -10,19 +10,19 @@ Post
 <ion-content>
        <div id="categorybtn" *ngIf="image.length == 0 && !category" >
   <ion-button   class="imagebutton" size="large" shape="round" color="secondary" (click)="newProject()"><ion-icon name="heart-half" ></ion-icon></ion-button>
-  <h3>New Project</h3>
+  <h5 style="color:white; margin-top: 22px; margin-left: 9px;">New Project</h5>
    </div>
       <div id="categorybtn" *ngIf="image.length == 0 && !category" >
    <ion-button  size="large" color="tertiary" shape="round"  (click)="completeProject()" ><ion-icon name="heart-empty" ></ion-icon></ion-button>
-   <h3>Finished Project</h3>
+   <h5 style="color:white;  margin-top: 22px; margin-left: 9px;">Finished Project</h5>
   </div>
-       <div id="picturebtn" *ngIf ="category" >
+       <div id="picturebtn" *ngIf ="!image?.length > 0 && category" >
    <ion-button size="large" (click)="openImagePicker()"  shape = "round"><ion-icon name="folder-open"></ion-icon></ion-button>
-       <h3>Gallery</h3>
+       <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Gallery</h6>
   </div>
-    <div id="picturebtn" *ngIf ="category">
+    <div id="picturebtn" *ngIf ="!image?.length > 0 && category">
    <ion-button size="large" (click)="takePicture()" shape = "round"><ion-icon name="camera" ></ion-icon></ion-button>
-         <h3>Take Picture</h3>  
+         <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Take Picture</h6>  
   </div>  
    <ion-slides [options] = "sliderOpts">
              <ion-slide *ngFor="let image of image">

@@ -40,6 +40,8 @@
       animation-duration: 0.7s;
       animation-fill-mode: forwards;
       z-index: 100;
+      display: flex;
+     // justify-content: center;
     }
 
     #picturebtn {
@@ -50,6 +52,8 @@
       animation-duration: 0.7s;
       animation-fill-mode: forwards;
       z-index: 100;
+      display: flex;
+      
     }
 
     ion-slides  {
