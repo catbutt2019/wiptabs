@@ -95,7 +95,6 @@ export class FirebaseService {
       this.afs.collection('tasks')
       .add({
         category: value.category,
-        title: value.title,
         description: value.description,
         image: value.image,
         uid: currentUser.uid,

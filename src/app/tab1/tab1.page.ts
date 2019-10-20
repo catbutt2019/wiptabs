@@ -51,21 +51,20 @@ export class Tab1Page implements OnInit {
     
   }
   resetFields() {
-   this.image = [  "./assets/imgs/me.jpg","./assets/imgs/default_image.jpg"];
+   this.image = [ ];
     this.validations_form = this.formBuilder.group({
-      title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required)
-      
+      description: new FormControl('', Validators.required)
     });
   }
 
   newProject() {
     this.category = 'Wipping';
+    console.log(this.category)
   }
 
   completeProject() {
     this.category = 'Wipped';
+    console.log(this.category)
   }
      
 
@@ -73,10 +72,9 @@ export class Tab1Page implements OnInit {
 
     //make button dissapear 
     let data = {
-      title: value.title,
       description: value.description,
       image: this.image,
-      category: value.category
+      category: this.category
     }
     this.firebaseService.createTask(data)
     .then(
@@ -87,9 +85,7 @@ export class Tab1Page implements OnInit {
       res => {
         this.image = [];
         this.validations_form = this.formBuilder.group({
-          title: new FormControl('', Validators.required),
           description: new FormControl('', Validators.required),
-          category: new FormControl('', Validators.required)
           
         });
         this.image = [];

@@ -8,19 +8,18 @@ Post
 </ion-header>
 
 <ion-content>
-<!-- 
-  <ion-button  *ngIf="image.length == 0" class="imagebutton" size="large" shape="round" color="secondary" (click)="openImagePicker()" ><ion-icon name="folder-open" ></ion-icon></ion-button>
-  <ion-button  *ngIf="image.length == 0" size="large" color="tertiary" shape="round"  (click)="takePicture()"><ion-icon name="Camera" ></ion-icon></ion-button> -->
   
-  <ion-button *ngIf ="!category" (click)="newProject()" shape = "round"><ion-icon name="heart-half"></ion-icon></ion-button>
-  <ion-button *ngIf ="!category" (click)="completeProject()" shape = "round"><ion-icon name="heart-empty" ></ion-icon></ion-button>
-  <ion-slides [options] = "sliderOpts">
-    <ion-slide *ngFor="let image of image">
+  <ion-button  *ngIf="image.length == 0 && !category"  class="imagebutton" size="large" shape="round" color="secondary" (click)="newProject()"><ion-icon name="heart-half" ></ion-icon></ion-button>
+   <ion-button  *ngIf="image.length == 0 && !category" size="large" color="tertiary" shape="round"  (click)="completeProject()" ><ion-icon name="heart-empty" ></ion-icon></ion-button>
+      <ion-button *ngIf ="category" (click)="openImagePicker()"  shape = "round"><ion-icon name="folder-open"></ion-icon></ion-button>
+         <ion-button *ngIf ="category" (click)="takePicture()" shape = "round"><ion-icon name="camera" ></ion-icon></ion-button>
+             <ion-slides [options] = "sliderOpts">
+             <ion-slide *ngFor="let image of image">
            <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
-      <img [src]= "image" > 
+               <img [src]= "image"> 
          <!-- <img [src]= "assets/{{img}}.png" tappaple (click) ="openPreview(img)"> -->
-       </ion-slide>
-     </ion-slides>
+                 </ion-slide>
+                     </ion-slides>
       <!--   <ion-row no-padding>
           <ion-col size="11" style="text-align: center">
             <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Photo Gallery</ion-button>
@@ -29,16 +28,16 @@ Post
             <ion-button fill="outline" expand="block" size="small" (click)="takePicture()">Camera</ion-button>
           </ion-col>
         </ion-row> -->
-   <div id="form" *ngIf ="image.length > 0">
-   <form  [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
+                            <div id="form" *ngIf ="image.length > 0">
+                         <form  [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
    <!--      <ion-item color="dark">
           <ion-label position="floating">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
         </ion-item> -->
-        <ion-item color="dark">
-          <ion-label position="floating">Say Something</ion-label>
-          <ion-input type="text" formControlName="description"  color="light"></ion-input>
-        </ion-item>
+                      <ion-item color="dark">
+                       <ion-label position="floating">Say Something</ion-label>
+                     <ion-input type="text" formControlName="description"  color="light"></ion-input>
+                    </ion-item>
            <!--   <ion-item color="dark">
      <ion-label color="dark">Category</ion-label>
           <ion-select color="dark" placeholder="Category" formControlName="category">
@@ -46,9 +45,9 @@ Post
             <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
           </ion-select>
         </ion-item> -->
-        <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
-      </form> 
-    </div>
+       <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
+    </form> 
+  </div>
 
    
 </ion-content>
