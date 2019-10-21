@@ -60,7 +60,7 @@
   --ion-color-dark-tint: #383a3e;
 
   /** medium **/
-  --ion-color-medium: #989aa2;
+  --ion-color-medium: #e4e4e4; //background colour ion-content
   --ion-color-medium-rgb: 152, 154, 162;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
@@ -78,5 +78,11 @@
 /** background color **/
   --ion-background-color:#ffffff;
 
+  @font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 10;
+    src: url('../assets/fonts/pacifico/Pacifico.ttf');
+  }
 
 }

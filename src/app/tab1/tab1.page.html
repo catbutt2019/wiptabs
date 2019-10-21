@@ -4,7 +4,9 @@
 Post
     </ion-title>
    <!-- *ngIf="image.length == 0"  -->
-   <ion-button slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm" [disabled]="!validations_form.valid">Create</ion-button>
+   <ion-button [disabled]="!validations_form.valid"  slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint"  onclick="document.getElementById('hiddenSubmitButton').click()">
+    Create
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -61,7 +63,7 @@ Post
             <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
           </ion-select>
         </ion-item> -->
-
+        <ion-button id="hiddenSubmitButton"  class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm" [disabled]="!validations_form.valid" style="display: none;">Create</ion-button>
     </form> 
   </div>
 
