@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{item.payload.doc.data().title}}</ion-title>
+    <ion-title *ngIf="item">{{item.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 

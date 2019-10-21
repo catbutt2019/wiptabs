@@ -51,6 +51,11 @@ export class FirebaseService {
     });
   }
 
+  getObjectById(id) { 
+    return this.afs.collection('tasks/').doc(id).valueChanges()
+}
+
+
   unsubscribeOnLogOut(){
     //remember to unsubscribe from the snapshotChanges
     this.snapshotChangesSubscription.unsubscribe();

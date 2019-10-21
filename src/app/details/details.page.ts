@@ -30,10 +30,17 @@ export class DetailsPage implements OnInit {
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.route.params.subscribe(params=> {
+      this.firebaseService.getObjectById(params['id']).subscribe( i => {
+        this.item = i;
+    })
+   });
+   }
 
   ngOnInit() {
     this.getData();
+    
   }
 
   getData(){
@@ -49,6 +56,8 @@ export class DetailsPage implements OnInit {
       description: new FormControl(this.item.description, Validators.required),
       category: new FormControl(this.item.category, Validators.required)
     });
+
+    
   }
 
   onSubmit(value){
