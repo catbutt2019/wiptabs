@@ -45,11 +45,12 @@
     }
 
     ion-title {
-      font-family: 'Pacifico';
+     // font-family: 'Pacifico';
+
       }
 
       ion-label{
-        font-family: 'Pacifico';
+       font-family: 'Pacifico' !important;
       } 
 
     #nvm {
