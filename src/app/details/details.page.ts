@@ -32,7 +32,7 @@ export class DetailsPage implements OnInit {
     private router: Router
   ) {
     this.route.params.subscribe(params=> {
-      this.firebaseService.getObjectById(params['id']).subscribe( i => {
+      this.firebaseService.getObjectById(params['data']).subscribe( i => {
         this.item = i;
     })
    });
