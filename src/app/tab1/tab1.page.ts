@@ -53,7 +53,7 @@ export class Tab1Page implements OnInit {
     
   }
   resetFields() {
-   this.image = ["./assets/imgs/shane2.jpg"];
+   this.image = [];
    this.category ='';
     this.validations_form = this.formBuilder.group({
       description: new FormControl('', Validators.required)
@@ -92,7 +92,8 @@ export class Tab1Page implements OnInit {
       }
     ).then(
       res => {
-        this.image = ["./assets/imgs/shane2.jpg"];
+       // "./assets/imgs/shane2.jpg"
+        this.image = [];
         this.category = '';
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),

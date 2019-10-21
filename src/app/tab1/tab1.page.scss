@@ -30,8 +30,15 @@
     } */
     
     @keyframes button {
-      0%   {left:0%; top:100% }
-      100% { left:25%; top:60%;}
+      0%   {
+       
+        left:0%;
+        top:95% }
+
+      100% { 
+     
+        left:30%; 
+        top:45%;}
     }
 
     #categorybtn {
@@ -54,7 +61,7 @@
       } 
 
     #nvm {
-      left: 40%;
+      left: 37%;
       top: 65%;
      // text-align: center;
       position: relative;
@@ -66,8 +73,8 @@
     }
 
     #picturebtn {
-      left: 25%;
-      top: 60%;
+      left: 30%;
+      top: 45%;
       position: relative;
       animation-name: picturebutton;
       animation-duration: 0.7s;
