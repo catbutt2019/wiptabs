@@ -31,6 +31,7 @@ export class DetailsPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    //this gets the data of the object id from firestore
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
         this.item = i;
