@@ -44,6 +44,18 @@
      // justify-content: center;
     }
 
+    #nvm {
+      left: 40%;
+      top: 65%;
+     // text-align: center;
+      position: relative;
+      animation-name: picturebutton;
+      animation-duration: 0.7s;
+      animation-fill-mode: forwards;
+      z-index: 100;
+      display: flex;
+    }
+
     #picturebtn {
       left: 25%;
       top: 60%;
@@ -55,6 +67,8 @@
       display: flex;
       
     }
+
+   
 
     ion-slides  {
      position: absolute; 

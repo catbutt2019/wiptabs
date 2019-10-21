@@ -4,6 +4,7 @@
 Post
     </ion-title>
    <!-- *ngIf="image.length == 0"  -->
+   <ion-button slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm" [disabled]="!validations_form.valid">Create</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -17,13 +18,17 @@ Post
    <h5 style="color:white;  margin-top: 22px; margin-left: 9px;">Finished Project</h5>
   </div>
        <div id="picturebtn" *ngIf ="!image?.length > 0 && category" >
-   <ion-button size="large" (click)="openImagePicker()"  shape = "round"><ion-icon name="folder-open"></ion-icon></ion-button>
+   <ion-button size="large" (click)="openImagePicker()"  shape = "round" color="tertiary"><ion-icon name="folder-open"></ion-icon></ion-button>
        <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Gallery</h6>
   </div>
     <div id="picturebtn" *ngIf ="!image?.length > 0 && category">
-   <ion-button size="large" (click)="takePicture()" shape = "round"><ion-icon name="camera" ></ion-icon></ion-button>
+   <ion-button size="large" (click)="takePicture()" shape = "round" color="secondary"><ion-icon name="camera" ></ion-icon></ion-button>
          <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Take Picture</h6>  
   </div>  
+  <div id="nvm" *ngIf ="!image?.length > 0 && category">
+      <ion-button color="danger" size="large" (click)="backtocategory()" shape = "round"> <ion-icon name="arrow-round-back"></ion-icon></ion-button>
+             
+     </div> 
    <ion-slides [options] = "sliderOpts">
              <ion-slide *ngFor="let image of image">
            <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
@@ -40,7 +45,7 @@ Post
           </ion-col>
         </ion-row> -->
                             <div id="form" *ngIf ="image.length > 0">
-                         <form  [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" >
+                         <form  id ="ngForm" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" novalidate>
    <!--      <ion-item color="dark">
           <ion-label position="floating">Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
@@ -56,7 +61,7 @@ Post
             <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
           </ion-select>
         </ion-item> -->
-       <ion-button class="submit-btn" expand="block" type="submit" color="medium-tint" [disabled]="!validations_form.valid">Create</ion-button>
+
     </form> 
   </div>
 
