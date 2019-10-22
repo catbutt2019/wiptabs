@@ -5,7 +5,7 @@ import { AuthService } from './services/auth.service';
 const routes: Routes = [
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' }
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
 ];
 @NgModule({
   imports: [

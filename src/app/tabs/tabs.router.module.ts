@@ -30,7 +30,11 @@ const routes: Routes = [
           {
          path: 'details/:id', 
          loadChildren: '../details/details.module#DetailsPageModule' 
-      }
+      },
+         { path: 'details-feed/:id',
+          loadChildren: '../details-feed/details-feed.module#DetailsFeedPageModule' 
+        }
+
     
     ]
   } 
