@@ -13,7 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailsFeedPage implements OnInit {
 
-  validations_form: FormGroup;
   image: any;
   public imageLists: any[] = [];
   item: any;
@@ -49,14 +48,7 @@ export class DetailsFeedPage implements OnInit {
        this.item = data;
        this.image = this.item.image;   
      }
-    })
-    this.validations_form = this.formBuilder.group({
-      title: new FormControl(this.item.title, Validators.required),
-      description: new FormControl(this.item.description, Validators.required),
-      category: new FormControl(this.item.category, Validators.required)
-    });
-
-    
+    })   
   }
 
 }
