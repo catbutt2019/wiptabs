@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { DetailsFeedPage } from './details-feed.page';
+import { DetailsFeedResolver } from './details-feed.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: DetailsFeedPage
+    component: DetailsFeedPage,
+    resolve: {
+      data: DetailsFeedResolver
+    }
   }
 ];
 
@@ -19,8 +23,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetailsFeedPage]
+  declarations: [DetailsFeedPage],
+  providers:[DetailsFeedResolver]
 })
 export class DetailsFeedPageModule {}

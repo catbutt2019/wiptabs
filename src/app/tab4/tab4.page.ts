@@ -67,6 +67,7 @@ export class Tab4Page implements OnInit {
          description: snap.data().description,
          image: snap.data().image
         });
+      
         return false;
       });
     });
@@ -98,6 +99,7 @@ export class Tab4Page implements OnInit {
 
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
+        console.log(data)
         loading.dismiss();
         this.items = data;
       })
@@ -111,6 +113,7 @@ export class Tab4Page implements OnInit {
       .firestore()
       .collection(`people/${user.uid}/tasks`);
     return this.eventListRef.where('category', '==', 'Wipping').get();
+   
     } 
 
 

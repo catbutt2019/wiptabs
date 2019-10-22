@@ -9,7 +9,7 @@ import { AngularFireFunctions } from '@angular/fire/functions'
 })
 export class Tab2Page implements OnInit{
 
-  posts =[];
+  posts:  Array<any>;
   sub
   postsWipping
   ajax
@@ -25,7 +25,7 @@ export class Tab2Page implements OnInit{
       const getFeed = this.aff.httpsCallable('getFeed')
       this.ajax = getFeed({}).subscribe(data=> {
         console.log(data)
-        this.posts =  data
+        this.posts =  data 
           })  
       }
   

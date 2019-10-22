@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-details-feed',
@@ -7,9 +13,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsFeedPage implements OnInit {
 
-  constructor() { }
+  validations_form: FormGroup;
+  image: any;
+  public imageLists: any[] = [];
+  item: any;
+  load: boolean = false;
+  category: string;
+
+  constructor(
+    private imagePicker: ImagePicker,
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
+    private formBuilder: FormBuilder,
+    private firebaseService: FirebaseService,
+    private webview: WebView,
+    private alertCtrl: AlertController,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { 
+    this.route.params.subscribe(params=> {
+      this.firebaseService.getObjectById(params['data']).subscribe( i => {
+        this.item = i;
+                   })
+             });
+  }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
+    this.route.data.subscribe(routeData => {
+     let data = routeData['data'];
+     if (data) {
+       this.item = data;
+       this.image = this.item.image;   
+     }
+    })
+    this.validations_form = this.formBuilder.group({
+      title: new FormControl(this.item.title, Validators.required),
+      description: new FormControl(this.item.description, Validators.required),
+      category: new FormControl(this.item.category, Validators.required)
+    });
+
+    
   }
 
 }

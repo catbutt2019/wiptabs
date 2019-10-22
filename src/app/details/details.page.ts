@@ -35,9 +35,9 @@ export class DetailsPage implements OnInit {
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
         this.item = i;
-    })
-   });
-   }
+                   })
+             });
+       }
 
   ngOnInit() {
     this.getData();
