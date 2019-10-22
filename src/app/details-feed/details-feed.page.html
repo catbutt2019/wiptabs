@@ -3,16 +3,11 @@
       <ion-buttons slot="start">
           <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
         </ion-buttons>
-    <ion-title>detailsFeed</ion-title>
+    <ion-title>{{item.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="medium">
-    <ion-row>
-        <ion-col size="6" offset="3">
-          <ion-button color="light"  size="small" (click)="openImagePicker()">Add Picture</ion-button>
-        </ion-col>
-      </ion-row>
   <div  *ngFor ="let image of image">
     <ion-row>
       <ion-col size="12" offset="0">
@@ -21,25 +16,5 @@
     </ion-row>
   
   </div>
-  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
-    <ion-item>
-      <ion-label position="floating" >Title</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-input type="text" formControlName="description"></ion-input>
-    </ion-item>
-    <ion-item color="dark">
-        <ion-label color="dark">Category</ion-label>
-        <ion-select color="dark" placeholder="Category" formControlName="category">
-          <ion-select-option color="dark" value="Wipped">Wipped</ion-select-option>
-          <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
-        </ion-select>
-      </ion-item>
-    <ion-button class="submit-button" expand="full" fill="outline" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
-  </form>
-  <ion-button class="delete-button" expand="full"  fill="outline"color="light" (click)="delete()">Delete</ion-button>
-
 </ion-content>
 
