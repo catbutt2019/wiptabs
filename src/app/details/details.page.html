@@ -9,18 +9,24 @@
 
 <ion-content padding color="medium">
     <ion-row>
-        <ion-col size="6" offset="3">
-          <ion-button color="light"  size="small" (click)="openImagePicker()">Add Picture</ion-button>
+        <ion-col size="6" offset="8">
+          <ion-button color="tertiary"  size="small" (click)="openImagePicker()">Add Picture</ion-button>
         </ion-col>
       </ion-row>
-  <div  *ngFor ="let image of image">
+  <div  *ngFor ="let image of image" >
     <ion-row>
       <ion-col size="12" offset="0">
         <img id ="image" [src]="image" alt="this is the image"/>
-      </ion-col>
+      </ion-col>  
     </ion-row>
-  
   </div>
+ <ion-grid>
+   <ion-row>
+     <ion-col>
+      <h5 id="description"> {{item.description}} </h5>
+     </ion-col>
+     </ion-row>
+   </ion-grid>
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
       <ion-label position="floating" >Title</ion-label>
@@ -37,8 +43,8 @@
           <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
         </ion-select>
       </ion-item>
-    <ion-button class="submit-button" expand="full" fill="outline" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
+    <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
   </form>
-  <ion-button class="delete-button" expand="full"  fill="outline"color="light" (click)="delete()">Delete</ion-button>
+  <ion-button class="delete-button" expand="full" color="light" (click)="delete()">Delete</ion-button>
 
 </ion-content>
