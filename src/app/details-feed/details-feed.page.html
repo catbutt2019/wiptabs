@@ -1,20 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
-        </ion-buttons>
-    <ion-title>{{item.title}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding color="medium">
-  <div  *ngFor ="let image of image">
-    <ion-row>
-      <ion-col size="12" offset="0">
-        <img id ="image" [src]="image" alt="this is the image"/>
-      </ion-col>
-    </ion-row>
+<ion-content >
+    <ion-title *ngIf="item">{{item.title}}</ion-title>
+  <div class="container">
+  <div class="content">
+    <div *ngFor ="let image of image" >
+        <ion-row>
+          <ion-col size="12" offset="0">
+            <img  id ="image" [src]="image" alt="this is the image"/>
+          </ion-col>  
+        </ion-row>
+      </div>
+    </div>
+    <div class="overlay">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+          </ion-buttons>
+          <h2>{{item.title}}</h2>
+          <p>{{item.description}}</p></div>
   </div>
-  
 </ion-content>
 
