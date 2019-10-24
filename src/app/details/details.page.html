@@ -18,7 +18,7 @@
                     <ion-button shape ="round" (click)="navigateBack()"><ion-icon name="arrow-back"></ion-icon></ion-button>
                   </ion-col>
                   <ion-col style ="text-align: end">
-                      <ion-button shape ="round" (click)="editPage()"><ion-icon name="more"></ion-icon></ion-button>
+                      <ion-button shape ="round" (click)="makeOpaque()"><ion-icon name="more"></ion-icon></ion-button>
                     </ion-col>
                   </ion-row>
                   </ion-grid>
@@ -32,6 +32,7 @@
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
       <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
     </form>
+    <div [@elementState]="state"></div>
 </ion-content>
 
 

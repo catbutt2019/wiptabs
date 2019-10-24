@@ -24,7 +24,7 @@ import { AuthenticateService } from './services/authentication.service';
 
 import { Camera} from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions'
 
 
@@ -37,7 +37,7 @@ import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-   
+    BrowserAnimationsModule, //animations
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app
     AngularFirestoreModule, // imports firebase/firestore

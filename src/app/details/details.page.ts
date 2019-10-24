@@ -5,10 +5,29 @@ import { LoadingController, ToastController, AlertController, NavController } fr
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from "@angular/animations";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
+  animations: [
+    trigger('elementState', [
+      state('opaque', style({
+        opacity: 1
+      })),
+      state('transparent', style({
+        opacity: 0
+      })),
+      transition('opaque => transparent', animate('4000ms ease-in')),
+      transition('transparent => opaque', animate('4000ms ease-out'))
+    ])
+  ],
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
@@ -19,6 +38,7 @@ export class DetailsPage implements OnInit {
   item: any;
   load: boolean = false;
   category: string;
+  state = "transparent";
 
   constructor(
     private imagePicker: ImagePicker,
@@ -44,6 +64,15 @@ export class DetailsPage implements OnInit {
     this.getData();
     
   }
+
+  makeOpaque() {
+    this.state = "opaque";
+  }
+
+  makeTransparent() {
+    this.state = "transparent";
+  }
+
   navigateBack() {
     this.navCtrl.back();
   }
