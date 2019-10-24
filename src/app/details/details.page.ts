@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { LoadingController, ToastController, AlertController, NavController } from '@ionic/angular';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,7 +29,8 @@ export class DetailsPage implements OnInit {
     private webview: WebView,
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private navCtrl: NavController
   ) {
     //this gets the data of the object id from firestore
     this.route.params.subscribe(params=> {
@@ -42,6 +43,9 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.getData();
     
+  }
+  navigateBack() {
+    this.navCtrl.back();
   }
 
   getData(){

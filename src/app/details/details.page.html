@@ -12,7 +12,16 @@
     </div>
     <div class="overlay">
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-button shape ="round" (click)="navigateBack()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+                  </ion-col>
+                  <ion-col style ="text-align: end">
+                      <ion-button shape ="round" (click)="editPage()"><ion-icon name="more"></ion-icon></ion-button>
+                    </ion-col>
+                  </ion-row>
+                  </ion-grid>
           </ion-buttons>
           <h2>{{item.title}}</h2>
           <p>{{item.description}}</p>
