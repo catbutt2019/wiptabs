@@ -15,8 +15,14 @@
             <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
           </ion-buttons>
           <h2>{{item.title}}</h2>
-          <p>{{item.description}}</p></div>
+          <p>{{item.description}}</p>
+        </div>
   </div>
+
+  <ion-button shape="circle"  color="tertiary"  (click)="openImagePicker()">  <ion-icon name="images"></ion-icon><h6> Add Picture</h6></ion-button>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+      <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
+    </form>
 </ion-content>
 
 
@@ -28,7 +34,7 @@
       <ion-row>
         <ion-col size="12" offset="0">
           <img  id ="image" [src]="image" alt="this is the image"/>
-        </ion-col>  
+         </ion-col>  
       </ion-row>
     </div>
     <div class="overlay">

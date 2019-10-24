@@ -5,6 +5,7 @@ import { LoadingController, ToastController, AlertController } from '@ionic/angu
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-details-feed',
@@ -28,7 +29,8 @@ export class DetailsFeedPage implements OnInit {
     private webview: WebView,
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private navCtrl: NavController
   ) { 
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
@@ -49,6 +51,10 @@ export class DetailsFeedPage implements OnInit {
        this.image = this.item.image;   
      }
     })   
+  }
+
+  navigateBack() {
+    this.navCtrl.back();
   }
 
 }

@@ -1,5 +1,4 @@
 <ion-content >
-    <ion-title *ngIf="item">{{item.title}}</ion-title>
   <div class="container">
   <div class="content">
     <div *ngFor ="let image of image" >
@@ -11,9 +10,9 @@
       </div>
     </div>
     <div class="overlay">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
-          </ion-buttons>
+        <div>
+            <ion-button shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
+        </div>
           <h2>{{item.title}}</h2>
           <p>{{item.description}}</p></div>
   </div>
