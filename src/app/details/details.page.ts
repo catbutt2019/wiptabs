@@ -13,20 +13,40 @@ import {
   transition
 } from "@angular/animations";
 
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
   animations: [
     trigger('elementState', [
-      state('opaque', style({
-        opacity: 1
+      state('open', style({
+        zIndex: 4 ,
+        width: '100%',
+        backgroundColor: '#ffffff',
+        marginTop: '0px',
+        position: 'fixed',
+        borderRadius: ' 0px 0px 25px 25px', 
+        
       })),
-      state('transparent', style({
+      state('closed', style({
+        display: 'none',
+        zIndex: 4,
+        height: '0px',
+        backgroundColor: '#ffffff',
         opacity: 0
       })),
-      transition('opaque => transparent', animate('4000ms ease-in')),
-      transition('transparent => opaque', animate('4000ms ease-out'))
-    ])
+      transition('open => closed', animate('10ms ease-in')),
+      transition('closed => open', animate('10ms ease-out'))
+    ]),
+    trigger('editText', [
+      state('textEditOpen', style({
+      })),
+      state('textEditClosed', style({
+        display: 'none',
+      })),
+      transition('textEditClosed => textEditOpen', animate('10ms ease-in')),
+      transition('textEditOpen => textEditClosed', animate('10ms ease-out'))
+    ]),
   ],
   styleUrls: ['./details.page.scss'],
 })
@@ -38,7 +58,7 @@ export class DetailsPage implements OnInit {
   item: any;
   load: boolean = false;
   category: string;
-  state = "transparent";
+  state = ["textEditOpen", "open"];
 
   constructor(
     private imagePicker: ImagePicker,
@@ -65,13 +85,24 @@ export class DetailsPage implements OnInit {
     
   }
 
-  makeOpaque() {
-    this.state = "opaque";
+  editOpen() {
+    this.state = ["open"];
   }
 
-  makeTransparent() {
-    this.state = "transparent";
+  editClosed() {
+    this.state = ["closed"];
   }
+
+  editText() {
+    this.state = ["textEditOpen"];
+    //this.state = "textEditOpen";
+  }
+
+  editTextClosed() {
+    this.state = ["textEditClosed"];
+  }
+
+
 
   navigateBack() {
     this.navCtrl.back();
@@ -138,6 +169,7 @@ export class DetailsPage implements OnInit {
   }
 
   openImagePicker(){
+    this.state = ["closed"];
     this.imagePicker.hasReadPermission()
     .then((result) => {
       if(result == false){
