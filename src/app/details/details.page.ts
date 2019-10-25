@@ -5,13 +5,8 @@ import { LoadingController, ToastController, AlertController, NavController } fr
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from "@angular/animations";
+import { trigger, state, transition, animate, style } from '@angular/animations';
+
 
 
 @Component({
