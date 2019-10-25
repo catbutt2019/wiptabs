@@ -20,6 +20,7 @@ import {
   animations: [
     trigger('elementState', [
       state('open', style({
+        height: '100%',
         zIndex: 4 ,
         width: '100%',
         backgroundColor: '#ffffff',
@@ -38,15 +39,6 @@ import {
       transition('open => closed', animate('10ms ease-in')),
       transition('closed => open', animate('10ms ease-out'))
     ]),
-    trigger('editText', [
-      state('textEditOpen', style({
-      })),
-      state('textEditClosed', style({
-        display: 'none',
-      })),
-      transition('textEditClosed => textEditOpen', animate('10ms ease-in')),
-      transition('textEditOpen => textEditClosed', animate('10ms ease-out'))
-    ]),
   ],
   styleUrls: ['./details.page.scss'],
 })
@@ -58,7 +50,7 @@ export class DetailsPage implements OnInit {
   item: any;
   load: boolean = false;
   category: string;
-  state = ["textEditOpen", "open"];
+  state = "closed";
 
   constructor(
     private imagePicker: ImagePicker,
@@ -86,20 +78,19 @@ export class DetailsPage implements OnInit {
   }
 
   editOpen() {
-    this.state = ["open"];
+    this.state = "open";
   }
 
   editClosed() {
-    this.state = ["closed"];
+    this.state = "closed";
   }
 
   editText() {
-    this.state = ["textEditOpen"];
-    //this.state = "textEditOpen";
+    this.state = "closed";
   }
 
   editTextClosed() {
-    this.state = ["textEditClosed"];
+    this.state = "textEditClosed";
   }
 
 
@@ -169,7 +160,7 @@ export class DetailsPage implements OnInit {
   }
 
   openImagePicker(){
-    this.state = ["closed"];
+    this.state = "closed";
     this.imagePicker.hasReadPermission()
     .then((result) => {
       if(result == false){
