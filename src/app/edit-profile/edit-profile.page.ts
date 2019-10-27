@@ -20,7 +20,7 @@ export class EditProfilePage implements OnInit {
 
   profileImage : string;
   userName: string;
-  Bio: string;
+  userBio: string;
   userDetails: any;
   students: any;
   studentName: string;
@@ -46,7 +46,7 @@ export class EditProfilePage implements OnInit {
   }
   //"./assets/imgs/default_image.jpg"
   ngOnInit() {
-    this.profileImage =  ""
+    this.profileImage =  "./assets/imgs/default_image.jpg"
     this.profileService.read_Students().subscribe(data => {
  
       this.students = data.map(e => {
@@ -54,8 +54,7 @@ export class EditProfilePage implements OnInit {
           id: e.payload.doc.id,
           isEdit: false,
           userName: e.payload.doc.data()['userName'],
-          Age: e.payload.doc.data()['Age'],
-          Address: e.payload.doc.data()['Address'],
+          userBio: e.payload.doc.data()['userBio'],
           profileImage: e.payload.doc.data()['profileImage'],
         };
       })
@@ -68,8 +67,7 @@ export class EditProfilePage implements OnInit {
     let record = {};
     record['profileImage'] = this.profileImage;
     record['userName'] = this.userName;
-    record['Age'] = this.studentAge;
-    record['Address'] = this.studentAddress;
+    record['userBio'] = this.userBio;
     this.profileService.create_NewStudent(record).then(resp => {
       this.studentName = "";
       this.studentAge = undefined;

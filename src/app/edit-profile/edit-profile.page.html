@@ -19,13 +19,10 @@
           <input type="text" class="form-control" [(ngModel)]="userName" placeholder="user name">
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="studentAge" placeholder="Age">
+          <input type="text" class="form-control" [(ngModel)]="userBio" placeholder="user bio">
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="studentAddress" placeholder="Address">
-        </div>
-        <div class="col-md-3">
-          <button type="button" (click)="CreateRecord()" [disabled]="!userName || !studentAge || !studentAddress" class="btn btn-primary">+
+          <button type="button" (click)="CreateRecord()" [disabled]="!userName || !userBio " class="btn btn-primary">+
             Create Student</button>
         </div>
       </div>
@@ -36,7 +33,7 @@
                 <img [src]="item.profileImage">
               <h5 class="card-title">{{item.userName}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Age: {{item.Age}} Years</h6>
-              <p class="card-text">Address: {{item.Address}}</p>
+              <p class="card-text">Address: {{item.userBio}}</p>
               <a href="#" class="card-link" (click)="EditRecord(item)">Edit</a>
               <a href="#" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
             </div>
