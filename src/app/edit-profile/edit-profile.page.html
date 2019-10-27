@@ -7,6 +7,10 @@
 
 <ion-content>
 <ion-button (click)="chooseProfilePic()" >Choose Profile Pic</ion-button>
+
+<img style="border-radius: 50%; height: 80px; width: 80px;" [src]= "profileImage"> 
+
+<ion-button (click)="saveChanges()">Save Changes</ion-button>
 </ion-content>
 
 

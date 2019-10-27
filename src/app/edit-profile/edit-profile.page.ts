@@ -17,8 +17,8 @@ import { NavController, ModalController } from '@ionic/angular';
 })
 export class EditProfilePage implements OnInit {
 
-  image : any =[];
-  username: string;
+  profileImage : string;
+  userName: string;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -38,6 +38,7 @@ export class EditProfilePage implements OnInit {
   }
        
   ngOnInit() {
+    this.profileImage ="./assets/imgs/default_image.jpg";
   }
 
   gobacktoProfile() {
@@ -54,7 +55,7 @@ export class EditProfilePage implements OnInit {
       }
       else if(result == true){
         this.imagePicker.getPictures({
-          maximumImagesCount: 10
+          maximumImagesCount: 1
         }).then(
           (results) => {
             for (var i = 0; i < results.length; i++) {
@@ -85,14 +86,15 @@ export class EditProfilePage implements OnInit {
     //uploads img to firebase storage
     this.firebaseService.uploadImage(image_src, randomId)
     .then(photoURL => {
-     
-      this.image.push(photoURL);
+      this.profileImage = photoURL;
       loading.dismiss();
       toast.present();
     }, err =>{
       console.log(err);
     })
   }
+
+  saveChanges() {}
 
   async presentLoading(loading) {
     return await loading.present();
