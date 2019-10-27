@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +15,13 @@ export class ProfileService {
   ) { }
 
   create_NewStudent(record) {
-    return this.firestore.collection('Students').add(record);
+    let currentUser = firebase.auth().currentUser;
+    return this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').add(record);
   }
  
   read_Students() {
-    return this.firestore.collection('Students').snapshotChanges();
+    let currentUser = firebase.auth().currentUser;
+    return this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').snapshotChanges();
   }
  
 }
