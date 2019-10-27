@@ -32,8 +32,7 @@
             <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
                 <img [src]="item.profileImage">
               <h5 class="card-title">{{item.userName}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Age: {{item.Age}} Years</h6>
-              <p class="card-text">Address: {{item.userBio}}</p>
+              <p class="card-text">Bio: {{item.userBio}}</p>
               <a href="#" class="card-link" (click)="EditRecord(item)">Edit</a>
               <a href="#" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
             </div>
