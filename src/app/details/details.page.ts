@@ -46,6 +46,7 @@ export class DetailsPage implements OnInit {
   load: boolean = false;
   category: string;
   state = "closed";
+  
 
   constructor(
     private imagePicker: ImagePicker,
@@ -88,7 +89,9 @@ export class DetailsPage implements OnInit {
     this.state = "textEditClosed";
   }
 
-
+  makeWipped() {
+    this.category ="wipped"
+  }
 
   navigateBack() {
     this.navCtrl.back();

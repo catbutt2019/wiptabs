@@ -8,6 +8,7 @@ import { FirebaseService } from '../services/firebase.service';
 import 'firebase/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile',
@@ -30,7 +31,8 @@ export class EditProfilePage implements OnInit {
     public camera: Camera,
     public platform: Platform,
     public actionSheetController: ActionSheetController,
-    private file: File
+    private file: File,
+    private navCtrl: NavController,
   ) { 
     
   }
@@ -38,6 +40,9 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {
   }
 
+  gobacktoProfile() {
+      this.navCtrl.back()
+  }
 
   }
 

@@ -122,6 +122,10 @@ export class Tab4Page implements OnInit {
     return await loading.present();
   }
  
+  gotoeditPage() {
+    this.navCtrl.navigateForward('tabs/edit-profile')
+  }
+
   logout(){
     this.authService.logoutUser()
     .then(res => {

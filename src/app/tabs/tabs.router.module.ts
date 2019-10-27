@@ -33,9 +33,11 @@ const routes: Routes = [
       },
          { path: 'details-feed/:id',
           loadChildren: '../details-feed/details-feed.module#DetailsFeedPageModule' 
-        }
-
-    
+      },
+      { path: 'edit-profile', 
+         loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule'
+      },
+        
     ]
   } 
 ];
