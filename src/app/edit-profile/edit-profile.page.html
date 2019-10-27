@@ -22,7 +22,7 @@
           <input type="text" class="form-control" [(ngModel)]="userBio" placeholder="user bio">
         </div>
         <div class="col-md-3">
-          <button type="button" (click)="CreateRecord()" [disabled]="!userName || !userBio " class="btn btn-primary">+
+          <button type="button"(click)="UpdateRecord(item)"[disabled]="!userName || !userBio " class="btn btn-primary">+
             Create Student</button>
         </div>
       </div>

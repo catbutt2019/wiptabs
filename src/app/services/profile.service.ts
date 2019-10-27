@@ -23,5 +23,11 @@ export class ProfileService {
     let currentUser = firebase.auth().currentUser;
     return this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').snapshotChanges();
   }
+
+
+  update_Student(recordID,record){
+    let currentUser = firebase.auth().currentUser;
+    this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').doc(recordID).update(record)
+  }
  
 }
