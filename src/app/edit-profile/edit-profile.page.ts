@@ -9,6 +9,7 @@ import 'firebase/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { NavController, ModalController } from '@ionic/angular';
+import { ProfileService } from '../services/profile.service'
 
 @Component({
   selector: 'app-edit-profile',
@@ -19,6 +20,12 @@ export class EditProfilePage implements OnInit {
 
   profileImage : string;
   userName: string;
+  Bio: string;
+  userDetails: any;
+  students: any;
+  studentName: string;
+  studentAge: number;
+  studentAddress: string;
 
   constructor(
     private imagePicker: ImagePicker,
@@ -33,12 +40,45 @@ export class EditProfilePage implements OnInit {
     public actionSheetController: ActionSheetController,
     private file: File,
     private navCtrl: NavController,
+    private profileService: ProfileService
   ) { 
     
   }
-       
+  //"./assets/imgs/default_image.jpg"
   ngOnInit() {
-    this.profileImage ="./assets/imgs/default_image.jpg";
+    this.profileImage =  ""
+    this.profileService.read_Students().subscribe(data => {
+ 
+      this.students = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          isEdit: false,
+          userName: e.payload.doc.data()['userName'],
+          Age: e.payload.doc.data()['Age'],
+          Address: e.payload.doc.data()['Address'],
+          profileImage: e.payload.doc.data()['profileImage'],
+        };
+      })
+      console.log(this.students);
+ 
+    });
+  }
+
+  CreateRecord() {
+    let record = {};
+    record['profileImage'] = this.profileImage;
+    record['userName'] = this.userName;
+    record['Age'] = this.studentAge;
+    record['Address'] = this.studentAddress;
+    this.profileService.create_NewStudent(record).then(resp => {
+      this.studentName = "";
+      this.studentAge = undefined;
+      this.studentAddress = "";
+      console.log(resp);
+    })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   gobacktoProfile() {
