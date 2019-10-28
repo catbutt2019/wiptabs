@@ -79,14 +79,24 @@ export class EditProfilePage implements OnInit {
       });
   }
 
+  EditRecord(record) {
+    record.isEdit = true;
+    record.EdituserName = record.userName;
+    record.EdituserBio = record.userBio;
+   
+  }
+
   UpdateRecord(recordRow) {
     let record = {};
-    record['Name'] = recordRow.this.profileImage;
-    record['Age'] = recordRow.this.userName;
-    record['Address'] = recordRow.this.userBio;
+    record['userName'] = recordRow.EdituserName;
+    record['profileImage'] = this.profileImage; 
+    record['userBio'] = recordRow.EdituserBio;
     this.profileService.update_Student(recordRow.id, record);
     recordRow.isEdit = false;
   }
+
+
+
 
   gobacktoProfile() {
       this.navCtrl.back()
