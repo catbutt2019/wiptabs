@@ -95,6 +95,10 @@ export class EditProfilePage implements OnInit {
     recordRow.isEdit = false;
   }
 
+  RemoveRecord(rowID) {
+    this.profileService.delete_Student(rowID);
+  }
+
 
 
 

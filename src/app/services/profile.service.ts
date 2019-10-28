@@ -29,5 +29,10 @@ export class ProfileService {
     let currentUser = firebase.auth().currentUser;
     this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').doc(recordID).update(record)
   }
+
+  delete_Student(record_id) {
+    let currentUser = firebase.auth().currentUser;
+    this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').doc(record_id).delete();
+  }
  
 }

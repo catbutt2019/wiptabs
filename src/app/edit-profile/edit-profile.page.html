@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-<ion-button (click)="chooseProfilePic()" >Choose Profile Pic</ion-button>
+<ion-button (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
 
  <img style="border-radius: 50%; height: 80px; width: 80px;" [src]= "profileImage"> 
 
@@ -64,7 +64,7 @@
   //
 
 
-  <ion-grid fixed>
+  <ion-grid *ngIf ="profileImage"fixed>
       <ion-row>
         <ion-col>
           <ion-item>
