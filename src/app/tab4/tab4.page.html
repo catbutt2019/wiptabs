@@ -12,15 +12,21 @@
 <ion-grid>
   <ion-row align-items-center>
     <ion-col ></ion-col>
-    <ion-col size="4" offset="1">
- <img src = "./assets/imgs/generic_woman_circle.png" height="70px">
+    <ion-col *ngFor="let item of students"  size="4" offset="1">
+        <img [src]="item.profileImage" style="height: 70px;">
  </ion-col>
  <ion-col ></ion-col>
 </ion-row>
 <ion-row align-items-center>
     <ion-col ></ion-col>
     <ion-col size="4" offset="1">
- <p style="color: black !important">Username</p>
+      <div *ngFor="let item of students" >
+         
+ <p style="color: black !important">{{item.userName}}</p>
+ <div style ="color: black !important">
+    {{item.userBio}}
+ </div>
+</div>
  </ion-col>
  <ion-col ></ion-col>
 </ion-row>
@@ -79,6 +85,7 @@
   </ion-col>
 </ion-row>
 </ion-grid>
+
 </ion-slide>
 
 

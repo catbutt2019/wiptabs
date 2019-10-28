@@ -8,6 +8,10 @@ import { EventService } from '../services/event.service';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import { ProfileService } from '../services/profile.service';
+import { FirebaseService } from '../services/firebase.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 
 
@@ -26,19 +30,47 @@ export class Tab4Page implements OnInit {
   items: Array<any>;
   public eventList: Array<any>;
   public eventListRef: firebase.firestore.CollectionReference;
+  profileImage : string;
+  userName: string;
+  userBio: string;
+  userDetails: any;
+  students: any;
+  studentName: string;
+  studentAge: number;
+  studentAddress: string;
+  data
 
   constructor(
+    private firestore: AngularFirestore,
     private navCtrl: NavController,
     private authService: AuthenticateService,
     public loadingCtrl: LoadingController,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private profileService: ProfileService,
+    private firebaseService: FirebaseService,
   ) {}
  
   ngOnInit(){
 
-   
+
+    
+    this.read_Students().subscribe(data => {
+ 
+      this.students = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          isEdit: false,
+          userName: e.payload.doc.data()['userName'],
+          userBio: e.payload.doc.data()['userBio'],
+          profileImage: e.payload.doc.data()['profileImage'],
+        };
+      })
+      console.log(this.students);
+ 
+    });
+
 
 
 
@@ -53,6 +85,11 @@ export class Tab4Page implements OnInit {
       this.getData();
       
     }
+  }
+
+  read_Students() {
+    let currentUser = firebase.auth().currentUser;
+    return this.firestore.collection('Users').doc(currentUser.uid).collection('userDetails').snapshotChanges();
   }
 
   //this is for the segments to slide 
