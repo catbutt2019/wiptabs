@@ -64,5 +64,8 @@ export class RegisterPage implements OnInit {
      })
   }
   
+  goLoginPage(){
+    this.router.navigate(["/login"]);
+  }
 
 }

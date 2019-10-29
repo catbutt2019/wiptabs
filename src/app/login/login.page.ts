@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,9 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    public navCtrl: NavController
+
   ) { }
 
   ngOnInit() {
@@ -54,6 +57,6 @@ export class LoginPage implements OnInit {
   }
 
   goRegisterPage(){
-    this.router.navigate(["/register"]);
+    this.navCtrl.navigateBack('')
   }
 }
