@@ -26,6 +26,8 @@ export class EditProfilePage implements OnInit {
   studentName: string;
   studentAge: number;
   studentAddress: string;
+  isVisible = true;
+ 
 
   constructor(
     private imagePicker: ImagePicker,
@@ -69,9 +71,11 @@ export class EditProfilePage implements OnInit {
     record['userName'] = this.userName;
     record['userBio'] = this.userBio;
     this.profileService.create_NewStudent(record).then(resp => {
+      this.isVisible = false;
       this.studentName = "";
       this.studentAge = undefined;
       this.studentAddress = "";
+     
       console.log(resp);
     })
       .catch(error => {
@@ -80,7 +84,6 @@ export class EditProfilePage implements OnInit {
   }
 
   EditRecord(record) {
-    record.isEdit = true;
     record.EdituserName = record.userName;
     record.EdituserBio = record.userBio;
    
