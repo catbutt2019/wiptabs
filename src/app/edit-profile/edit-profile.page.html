@@ -66,7 +66,7 @@
 
 
 
-  <ion-grid fixed [style.display]="isVisible ? 'block' : 'none'">
+  <ion-grid fixed  *ngIf="!students.length > 0">
           <ion-item>
             <ion-input placeholder="User Name" [(ngModel)]="userName"></ion-input>
           </ion-item>
@@ -90,9 +90,9 @@
           <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
             Edit Record
         </ion-button>
-          <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
+      <!--     <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
            Remove Record
-          </ion-button>
+          </ion-button> -->
       
      
           
@@ -112,7 +112,7 @@
 
           <ion-item>
             <ion-label><strong>UserBio</strong></ion-label>
-            <ion-input type="text" [(ngModel)]="item.EdituserBio"></ion-input>
+            <ion-input type="text" [(ngModel)]="item.EdituserBio" clearInput="false">{{item.userBio}}</ion-input>
           </ion-item>
  
    

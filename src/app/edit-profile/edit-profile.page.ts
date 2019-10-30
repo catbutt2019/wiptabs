@@ -18,15 +18,18 @@ import { ProfileService } from '../services/profile.service'
 })
 export class EditProfilePage implements OnInit {
 
+
+
   profileImage : string;
   userName: string;
   userBio: string;
   userDetails: any;
-  students: any;
+  students: any = [];
   studentName: string;
   studentAge: number;
   studentAddress: string;
   isVisible = true;
+  record : string;
  
 
   constructor(
@@ -48,6 +51,7 @@ export class EditProfilePage implements OnInit {
   }
   //"./assets/imgs/default_image.jpg"
   ngOnInit() {
+
     this.profileImage =  "./assets/imgs/default_image.jpg"
     this.profileService.read_Students().subscribe(data => {
  
@@ -100,6 +104,7 @@ export class EditProfilePage implements OnInit {
 
   RemoveRecord(rowID) {
     this.profileService.delete_Student(rowID);
+    this.isVisible = true;
   }
 
 
