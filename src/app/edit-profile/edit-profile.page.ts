@@ -30,6 +30,7 @@ export class EditProfilePage implements OnInit {
   studentAddress: string;
   isVisible = true;
   record : string;
+  
  
 
   constructor(
@@ -52,6 +53,8 @@ export class EditProfilePage implements OnInit {
   //"./assets/imgs/default_image.jpg"
   ngOnInit() {
 
+  
+
     this.profileImage =  "./assets/imgs/default_image.jpg"
     this.profileService.read_Students().subscribe(data => {
  
@@ -71,9 +74,9 @@ export class EditProfilePage implements OnInit {
 
   CreateRecord() {
     let record = {};
-    record['profileImage'] = this.profileImage;
-    record['userName'] = this.userName;
-    record['userBio'] = this.userBio;
+    record['profileImage'] = this.profileImage ;
+    record['userName'] = this.userName || "";
+    record['userBio'] = this.userBio || "";
     this.profileService.create_NewStudent(record).then(resp => {
       this.isVisible = false;
       this.studentName = "";
