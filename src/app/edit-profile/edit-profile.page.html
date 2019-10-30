@@ -1,14 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Settings</ion-title>
-    <ion-button type ="round" slot="end"  (click)="gobacktoProfile()" color="light">Back</ion-button>
+    <ion-title>Profile</ion-title>
+    <ion-button  *ngIf="!students.length > 0" type ="round" slot="end"  (click)="gobacktoProfile()" color="light">Back</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-button (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
-
- <img style="border-radius: 50%; height: 80px; width: 80px;" [src]= "profileImage"> 
+ <ion-grid>
+  <ion-row style ="text-align: center">
+ <img   *ngIf="!students.length > 0" style="border-radius: 50%; height: 120px; " [src]= "profileImage"> 
+</ion-row>
+<ion-row  style ="text-align: center">
+ <ion-button (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
+</ion-row>
+</ion-grid>
 
 <!-- <ion-button (click)="saveChanges()">Save Changes</ion-button>
 
@@ -61,23 +66,22 @@
       </div>
   </div> -->
   
-  //
 
 
 
 
   <ion-grid fixed  *ngIf="!students.length > 0">
           <ion-item>
-            <ion-input placeholder="User Name" [(ngModel)]="userName"></ion-input>
+            <ion-input placeholder="Username" [(ngModel)]="userName"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input placeholder="UserBio" [(ngModel)]="userBio"></ion-input>
+            <ion-input placeholder="About Me " [(ngModel)]="userBio"></ion-input>
           </ion-item>
+           <ion-button *ngIf="!students.length > 1"  (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
       <ion-row>
         <ion-col text-center>
           <ion-button (click)="CreateRecord()">
-            <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
-            &nbsp;Create Record
+             Save Changes
           </ion-button>
         </ion-col>
       </ion-row>
@@ -85,7 +89,6 @@
    
    
     <div *ngFor="let item of students">
-          <p>{{item.userName}} of {{item.userBio}} </p>
           <img [src]="item.profileImage">
       <!--     <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
            Remove Record
@@ -101,7 +104,7 @@
                     Save Changes 
                   </ion-button>
      
- 
+      
           <ion-item>
             <ion-label><strong>Name</strong></ion-label>
             <ion-input type="text" [(ngModel)]="item.userName"></ion-input>
@@ -109,11 +112,15 @@
 
           <ion-item>
             <!-- this updates the user name  -->
-            <ion-label><strong>UserBio</strong></ion-label>
+            <ion-label><strong>About me</strong></ion-label>
             <ion-input type="text" [(ngModel)]="item.userBio" clearInput="false" value="custome"></ion-input>
           </ion-item>
+
+       
  
-   
+   </div>
+  <ion-button (click) = "logout()">Logout</ion-button>
+   </ion-content>
 
 
 

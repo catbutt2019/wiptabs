@@ -10,6 +10,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { NavController, ModalController } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service'
+import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -46,7 +47,8 @@ export class EditProfilePage implements OnInit {
     public actionSheetController: ActionSheetController,
     private file: File,
     private navCtrl: NavController,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private authService: AuthenticateService,
   ) { 
     
   }
@@ -55,7 +57,7 @@ export class EditProfilePage implements OnInit {
 
   
 
-    this.profileImage =  "./assets/imgs/default_image.jpg"
+    this.profileImage =  "./assets/imgs/user.png"
     this.profileService.read_Students().subscribe(data => {
  
       this.students = data.map(e => {
@@ -115,6 +117,17 @@ export class EditProfilePage implements OnInit {
 
   gobacktoProfile() {
       this.navCtrl.back()
+  }
+
+  logout(){
+    this.authService.logoutUser()
+    .then(res => {
+      console.log(res);
+      this.navCtrl.navigateBack('');
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
 
