@@ -100,9 +100,9 @@ export class EditProfilePage implements OnInit {
 
   UpdateRecord(recordRow) {
     let record = {};
-    record['userName'] = recordRow.EdituserName;
+    record['userName'] = recordRow.EdituserName  ;
     record['profileImage'] = this.profileImage; 
-    record['userBio'] = recordRow.EdituserBio;
+    record['userBio'] = recordRow.EdituserBio ;
     this.profileService.update_Student(recordRow.id, record);
     recordRow.isEdit = false;
   }

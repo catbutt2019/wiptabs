@@ -9,7 +9,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page" color="medium">
-<ion-grid>
+
+<!-- <ion-grid>
   <ion-row align-items-center>
     <ion-col ></ion-col>
     <ion-col *ngFor="let item of students"  size="4" offset="1">
@@ -20,8 +21,7 @@
 <ion-row align-items-center>
     <ion-col ></ion-col>
     <ion-col size="4" offset="1">
-      <div *ngFor="let item of students" >
-         
+      <div id="profileInfo" *ngFor="let item of students" >      
  <p style="color: black !important">{{item.userName}}</p>
  <div style ="color: black !important">
     {{item.userBio}}
@@ -31,11 +31,24 @@
  <ion-col ></ion-col>
 </ion-row>
 
-</ion-grid>
+</ion-grid> -->
+<div *ngFor="let item of students" style="text-align: center;">
+<img [src]="item.profileImage" style="height: 90px;  margin-top: 10px;">
+</div>
+<ion-card *ngFor="let item of students" >
+    
+    <ion-card-header>
+      <ion-card-title>{{item.userName}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+        {{item.userBio}}
+    </ion-card-content>
+  </ion-card>
 
 
   <ion-toolbar color="medium">
-<ion-segment style="width: 100%"(ionChange)="segmentChanged()" [(ngModel)]="segment" color="dark">
+<ion-segment style="width: 100%"(ionChange)= "segmentChanged()" [(ngModel)]="segment" color="dark">
   <ion-segment-button value = "0">
     <ion-icon name="heart"></ion-icon>Wipped
   </ion-segment-button>
