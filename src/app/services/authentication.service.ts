@@ -42,6 +42,7 @@ export class AuthenticateService {
    })
   }
 
+
   logoutUser(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){

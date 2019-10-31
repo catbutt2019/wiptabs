@@ -100,6 +100,7 @@
           </ion-button>
         </ion-col>
       </ion-row>
+      <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)"></ion-button>
     </ion-grid>
    
    
@@ -113,23 +114,27 @@
            
                  
      
-      
+          <!-- this updates the user name -->
           <ion-item>
-            <ion-label><strong>Name</strong></ion-label>
-            <ion-input type="text" [(ngModel)]="item.EdituserName"></ion-input>
+             <ion-label><strong>Name</strong></ion-label>
+             <ion-input type="text" [(ngModel)]="item.userName"></ion-input>
           </ion-item>
-
-          <ion-item>
-            <!-- this updates the user name  -->
+            <!-- this updates the user Bio -->
+           <ion-item>
             <ion-label><strong>About me</strong></ion-label>
-            <ion-input type="text" [(ngModel)]="item.EdituserBio" clearInput="false" value="custome"></ion-input>
+            <ion-input type="text" [(ngModel)]="item.userBio"></ion-input>
           </ion-item>
-<div style ="text-align: center">
+      <div style ="text-align: center">
           <ion-button (click)="UpdateRecord(item)">
               Save Changes 
             </ion-button>
           </div>
+
+
+
    </div>
+
+   
    <div style="text-align: center">
   <ion-button size="small" fill="outline"(click) = "logout()">Logout</ion-button>
 </div>

@@ -20,6 +20,9 @@ import { AuthenticateService } from '../services/authentication.service';
 export class EditProfilePage implements OnInit {
 
 
+  
+ 
+   
 
   profileImage : string;
   userName: string;
@@ -30,8 +33,10 @@ export class EditProfilePage implements OnInit {
   studentAge: number;
   studentAddress: string;
   isVisible = true;
-  record : string;
-  
+  item: any
+  recordRow: any;
+  record: any;
+
  
 
   constructor(
@@ -49,13 +54,18 @@ export class EditProfilePage implements OnInit {
     private navCtrl: NavController,
     private profileService: ProfileService,
     private authService: AuthenticateService,
-  ) { 
-    
+  ) {
+     
+   
   }
   //"./assets/imgs/default_image.jpg"
   ngOnInit() {
 
-  
+
+   
+
+
+
 
     this.profileImage =  "./assets/imgs/user.png"
     this.profileService.read_Students().subscribe(data => {
@@ -72,6 +82,7 @@ export class EditProfilePage implements OnInit {
       console.log(this.students);
  
     });
+  
   }
 
   CreateRecord() {
@@ -89,20 +100,22 @@ export class EditProfilePage implements OnInit {
     })
       .catch(error => {
         console.log(error);
-      });
+      })
+     
   }
 
-  EditRecord(record) {
-    record.EdituserName = record.userName;
-    record.EdituserBio = record.userBio;
+
+   EditRecord(record) {
+    record.EdituserName = this.userName;
+    record.EdituserBio = this.userBio;
    
-  }
+  } 
 
   UpdateRecord(recordRow) {
     let record = {};
-    record['userName'] = recordRow.EdituserName  ;
-    record['profileImage'] = this.profileImage; 
-    record['userBio'] = recordRow.EdituserBio ;
+    record['userName'] = recordRow.userName || "" ;
+    record['profileImage'] = this.profileImage || ""; 
+    record['userBio'] = recordRow.userBio || "" ;
     this.profileService.update_Student(recordRow.id, record);
     recordRow.isEdit = false;
   }
