@@ -8,6 +8,7 @@ import { FirebaseService } from '../services/firebase.service';
 import 'firebase/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { ProfileService } from '../services/profile.service';
 
 
 
@@ -30,6 +31,7 @@ export class Tab1Page implements OnInit {
   validations_form: FormGroup;
   image : any =[];
   category: string;
+  students: { id: string; isEdit: boolean; userName: any; userBio: any; profileImage: any; }[];
 
   constructor(
     private imagePicker: ImagePicker,
@@ -42,7 +44,8 @@ export class Tab1Page implements OnInit {
     public camera: Camera,
     public platform: Platform,
     public actionSheetController: ActionSheetController,
-    private file: File
+    private file: File,
+    private profileService: ProfileService
 
   ) { }
 
@@ -50,10 +53,24 @@ export class Tab1Page implements OnInit {
     
     this.category = '';
     this.resetFields();
+    this.profileService.read_Students().subscribe(data => {
+ 
+      this.students = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          isEdit: false,
+          userName: e.payload.doc.data()['userName'],
+          userBio: e.payload.doc.data()['userBio'],
+          profileImage: e.payload.doc.data()['profileImage'],
+        };
+      })
+      console.log(this.students);
+ 
+    });
     
   }
   resetFields() {
-   this.image = [];
+   this.image = ["./assets/imgs/shane2.jpg"];
    this.category ='';
     this.validations_form = this.formBuilder.group({
       description: new FormControl('', Validators.required)
@@ -93,13 +110,13 @@ export class Tab1Page implements OnInit {
     ).then(
       res => {
        // "./assets/imgs/shane2.jpg"
-        this.image = [];
+        this.image = ["./assets/imgs/shane2.jpg"];
         this.category = '';
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),
           
         });
-        this.image = [];
+        this.image =  ["./assets/imgs/shane2.jpg"];
         //make button repear 
       }
     )
