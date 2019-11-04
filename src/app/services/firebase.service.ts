@@ -85,7 +85,7 @@ export class FirebaseService {
     })
   }
 
-  createTask(value){
+  createTask(value) {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
 
@@ -99,6 +99,7 @@ export class FirebaseService {
         
       this.afs.collection('tasks')
       .add({
+        username: value.userName,
         category: value.category,
         description: value.description,
         image: value.image,

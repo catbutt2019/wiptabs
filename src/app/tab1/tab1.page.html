@@ -33,39 +33,39 @@ Post
      </div> 
    <ion-slides [options] = "sliderOpts">
              <ion-slide *ngFor="let image of image">
-           <!-- <ion-slide *ngFor="let img of [1,2,3]">  -->
                <img [src]= "image"> 
-         <!-- <img [src]= "assets/{{img}}.png" tappaple (click) ="openPreview(img)"> -->
                  </ion-slide>
                      </ion-slides>
-      <!--   <ion-row no-padding>
-          <ion-col size="11" style="text-align: center">
-            <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Photo Gallery</ion-button>
-          </ion-col>
-          <ion-col size="11" >
-            <ion-button fill="outline" expand="block" size="small" (click)="takePicture()">Camera</ion-button>
-          </ion-col>
-        </ion-row> -->
-                            <div id="form" *ngIf ="image.length > 0">
+                    
+                     <div id="form" *ngIf ="image.length > 0">
                          <form  id ="ngForm" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" novalidate>
-   <!--      <ion-item color="dark">
-          <ion-label position="floating">Title</ion-label>
-          <ion-input type="text" formControlName="title"></ion-input>
-        </ion-item> -->
-                      <ion-item color="dark">
-                       <ion-label position="floating">Say Something</ion-label>
-                     <ion-input type="text" formControlName="description"  color="light"></ion-input>
-                    </ion-item>
-           <!--   <ion-item color="dark">
-     <ion-label color="dark">Category</ion-label>
-          <ion-select color="dark" placeholder="Category" formControlName="category">
-            <ion-select-option color="dark" value="Wipped">Wipped</ion-select-option>
-            <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
-          </ion-select>
-        </ion-item> -->
-        <ion-button id="hiddenSubmitButton"  class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm" [disabled]="!validations_form.valid" style="display: none;">Create</ion-button>
+                           <ion-item color="dark">
+                              <ion-label position="floating">Say Something</ion-label>
+                              <ion-input type="text" formControlName="description"  color="light"></ion-input>
+                              </ion-item>
+                               <ion-item color="dark" *ngFor="let value of students">
+                            <ion-label position="floating"></ion-label>
+                         <ion-input type="text" formControlName="userName" [(ngModel)]="value.userName" color="light"></ion-input>
+                               </ion-item>
+        <ion-button id="hiddenSubmitButton"  class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm"  style="display: none;">Create</ion-button>
     </form> 
   </div>
 
-   
 </ion-content>
+
+
+
+
+
+
+
+
+<!-- 
+  
+<div *ngFor="let item of students">
+  <ion-item>
+    <ion-label><strong>Name</strong></ion-label>
+    <ion-input type="text" [(ngModel)]="item.userName"></ion-input>
+ </ion-item>
+ </div>
+    -->

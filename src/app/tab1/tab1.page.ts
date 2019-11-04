@@ -28,10 +28,24 @@ export class Tab1Page implements OnInit {
     spaceBetween: 20
   };
 
+  profileImage : string;
+  userName: string;
+  userBio: string;
+  userDetails: any;
+  isVisible = true;
+  item: any
+  recordRow: any;
+  record: any;
+
   validations_form: FormGroup;
   image : any =[];
   category: string;
-  students: { id: string; isEdit: boolean; userName: any; userBio: any; profileImage: any; }[];
+  students: {
+     id: string; 
+     isEdit: boolean; 
+     userName: any; 
+     userBio: any; 
+     profileImage: any; }[];
 
   constructor(
     private imagePicker: ImagePicker,
@@ -73,7 +87,8 @@ export class Tab1Page implements OnInit {
    this.image = ["./assets/imgs/shane2.jpg"];
    this.category ='';
     this.validations_form = this.formBuilder.group({
-      description: new FormControl('', Validators.required)
+      description: new FormControl('', Validators.required),   
+      userName: new FormControl(this.userName, Validators.required)
     });
   }
 
@@ -94,10 +109,19 @@ export class Tab1Page implements OnInit {
   }
      
 
-  onSubmit(value){
+  UpdateRecord(recordRow) {
+    let record = {};
+    record['userName'] = recordRow.userName || "" ;
+    record['profileImage'] = this.profileImage || ""; 
+    record['userBio'] = recordRow.userBio || "" ;
+    this.profileService.update_Student(recordRow.id, record);
+    recordRow.isEdit = false;
+  }
 
+  onSubmit(value){
     //make button dissapear 
     let data = {
+      userName : value.userName || "",
       description: value.description,
       image: this.image,
       category: this.category
@@ -114,6 +138,7 @@ export class Tab1Page implements OnInit {
         this.category = '';
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),
+          userName: new FormControl(this.userName, Validators.required)
           
         });
         this.image =  ["./assets/imgs/shane2.jpg"];
