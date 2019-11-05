@@ -27,7 +27,6 @@ import { File } from '@ionic-native/file/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions'
 
-
 @NgModule({
   declarations: [AppComponent],
   // declarations: [AppComponent, NewTaskModalPage],
@@ -43,7 +42,7 @@ import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/
     AngularFirestoreModule, // imports firebase/firestore
     AngularFireAuthModule, // imports firebase/auth
     AngularFireStorageModule, // imports firebase/storage
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
   ],
   providers: [
     Camera,
