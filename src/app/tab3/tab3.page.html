@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content class="card-background-page" color="medium">
+
+
+
   <div style="text-align: center;">
     <ion-spinner style="text-align: center; margin: auto;"  *ngIf="!posts"></ion-spinner>  
   </div> 
@@ -17,11 +20,14 @@
       </ion-refresher-content>
       </ion-refresher>
     </div>  
-    <div id ="post" *ngIf="posts" style="padding-top: 40px!important;">
-      <ion-card  style="margin-top: 40px " *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
-      <div id ="profileImage" > <img [src]="post.profileImage"></div> <div  id ="userName" >{{post.username}}</div>
+    <div id ="post" *ngIf="posts" >
+      <ion-card  *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
+      <div id ="profileImage" >
+         <img id ="profileImageIn" [src]="post.profileImage">
+        </div> 
+        <div  id ="userName" ><h6>{{post.username}}</h6></div>
         <img [src]="post.image">
-          <div class="card-title">{{post.title}}</div>
+      <!-- <div class="card-title">{{post.title}}</div> -->
       </ion-card>
        </div>  
 </ion-content> 

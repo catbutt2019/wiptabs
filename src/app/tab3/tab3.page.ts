@@ -8,6 +8,7 @@ import { AngularFireFunctions } from '@angular/fire/functions'
 })
 export class Tab3Page {
 
+  testImage = "./assets/imgs/shane2.jpg"
   posts
   sub
   ajax
