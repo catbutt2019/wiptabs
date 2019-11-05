@@ -29,13 +29,11 @@ export class Tab1Page implements OnInit {
   };
 
   profileImage : string;
-  userName: string;
+  userName: any;
   userBio: string;
   userDetails: any;
   isVisible = true;
   item: any
-  recordRow: any;
-  record: any;
 
   validations_form: FormGroup;
   image : any =[];
@@ -88,7 +86,9 @@ export class Tab1Page implements OnInit {
    this.category ='';
     this.validations_form = this.formBuilder.group({
       description: new FormControl('', Validators.required),   
-      userName: new FormControl(this.userName, Validators.required)
+      userName: new FormControl(this.userName, Validators.required),
+      profileImage: new FormControl(this.profileImage)
+      // profileImage: new FormControl(this.profileImage)
     });
   }
 
@@ -121,8 +121,9 @@ export class Tab1Page implements OnInit {
   onSubmit(value){
     //make button dissapear 
     let data = {
-      userName : value.userName || "",
+      userName : value.userName || "", 
       description: value.description,
+      profileImage: value.profileImage,
       image: this.image,
       category: this.category
     }

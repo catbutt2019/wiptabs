@@ -87,18 +87,10 @@ export class FirebaseService {
 
   createTask(value) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-
-     /* this.afs.collection('people').doc(peopleId).collection('tasks')
-      .add({ category: value.category,
-        title: value.title,
-        description: value.description,
-        image: value.image,
-        uid: currentUser.uid }) */
-
-        
+      let currentUser = firebase.auth().currentUser;  
       this.afs.collection('tasks')
       .add({
+        profileImage: value.profileImage,
         username: value.userName,
         category: value.category,
         description: value.description,
@@ -144,4 +136,12 @@ export class FirebaseService {
     })
   }
 }
+
+
+ /* this.afs.collection('people').doc(peopleId).collection('tasks')
+      .add({ category: value.category,
+        title: value.title,
+        description: value.description,
+        image: value.image,
+        uid: currentUser.uid }) */
 

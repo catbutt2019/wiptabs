@@ -47,9 +47,13 @@ Post
                             <ion-label position="floating"></ion-label>
                          <ion-input type="text" formControlName="userName" [(ngModel)]="value.userName" color="light"></ion-input>
                                </ion-item>
+                               <ion-item color="dark" *ngFor="let value of students">
+                                <ion-input type="url" formControlName="profileImage" [(ngModel)]="value.profileImage"></ion-input>
+                                   </ion-item>
         <ion-button id="hiddenSubmitButton"  class="submit-btn" expand="block" type="submit" color="medium-tint" form="ngForm"  style="display: none;">Create</ion-button>
     </form> 
   </div>
+
 
 </ion-content>
 

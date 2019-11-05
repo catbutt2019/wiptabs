@@ -19,8 +19,9 @@
     </div>  
     <div *ngIf="posts" style="padding-top: 40px!important;">
         <ion-card  style="margin-top: 40px " *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
+         <img [src]="post.profileImage">
           <img [src]="post.image">
-            <div class="card-title">{{ post.title}}</div>
+            <div class="card-title">{{post.title}}</div>
         </ion-card>
          </div>  
 </ion-content> 
