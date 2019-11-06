@@ -50,10 +50,10 @@
   <ion-toolbar color="medium">
 <ion-segment style="width: 100%"(ionChange)= "segmentChanged()" [(ngModel)]="segment" color="dark">
   <ion-segment-button value = "0">
-    <ion-icon name="heart"></ion-icon>Wipped
+    <ion-icon id ="heart" name="heart"></ion-icon><p id="Wipped">Wipped</p>
   </ion-segment-button>
   <ion-segment-button value="1">
-    <ion-icon name="heart-half"></ion-icon>Wipping
+    <ion-icon name="heart-half"></ion-icon><p id="Wipping">Wipping</p>
   </ion-segment-button>
 </ion-segment>
 </ion-toolbar>
@@ -75,6 +75,11 @@
 <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
   <ion-slide>
   <ion-grid>
+    <ion-row *ngIf="items">
+      <ion-col>
+        <p style="color: #383a3e">You haven't posted any finished work yet </p>
+      </ion-col>
+    </ion-row>
   <ion-row>
   <ion-col size="12" *ngIf="items">
   <!-- <div *ngIf="items.length > 0" class="list-mini">
@@ -104,8 +109,13 @@
 
 <ion-slide>
     <ion-grid>
+        <ion-row *ngIf="eventList">
+            <ion-col>
+             <p style="color: #383a3e"> You haven't posted any work in progress yet </p>
+            </ion-col>
+          </ion-row>
         <ion-row>
-        <ion-col size="12" *ngIf="eventList">
+        <ion-col size="12" *ngIf="!eventList">
         <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details/', event?.id]">
           <img [src]="event?.image">
           <div class="card-title">{{event?.title}}</div>

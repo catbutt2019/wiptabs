@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.router.navigate(["/tabs/tab1"]);
+      this.router.navigate(["/tabs/tab4"]);
     }, err => {
       this.errorMessage = err.message;
       console.log(err)

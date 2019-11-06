@@ -28,4 +28,26 @@
     margin: auto;
 }
 
+ion-segment  {
+  width: 500px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+#Wipped {
+  width: 300px;
+  float:left; /* add this */
+  border: 1px solid red;
+}
+
+#heart {
+  border: 1px solid green;
+  overflow: hidden;
+}
+
+#Wipped , #Wipping {
+  font-family: "Pacifico" !important;
+} 
+
+
  
