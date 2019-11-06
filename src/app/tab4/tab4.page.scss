@@ -28,15 +28,26 @@
     margin: auto;
 }
 
-ion-segment  {
-  width: 500px;
+/* <ion-segment-button value = "0">
+<ion-icon id ="heart" name="heart"></ion-icon><p id="Wipped">Wipped</p>
+</ion-segment-button> */
+
+
+
+
+
+
+ ion-segment-button {
+  width: 500px !important;
     border: 1px solid black;
-    overflow: hidden;
+    overflow: hidden !important;
 }
+
+/* 
 
 #Wipped {
   width: 300px;
-  float:left; /* add this */
+  float:left;
   border: 1px solid red;
 }
 
@@ -47,7 +58,7 @@ ion-segment  {
 
 #Wipped , #Wipping {
   font-family: "Pacifico" !important;
-} 
+}  */
 
 
  
