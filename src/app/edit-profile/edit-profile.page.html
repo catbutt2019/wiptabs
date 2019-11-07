@@ -20,7 +20,9 @@
  -->
 
  <ion-col>
-    <img   style="border-radius: 50%; height: 120px;" [src]= "profileImage"> 
+   <div  class= "imageHold" >
+    <img class= "profileImg"[src]= "profileImage"> 
+  </div>
  </ion-col>
 </ion-row>
 <ion-row  style ="text-align: center">  
@@ -103,7 +105,7 @@
     </ion-grid>
    
    
-    <div *ngFor="let item of students">
+    <div *ngFor="let item of students | slice:1:2" >
       <!--     <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
            Remove Record
           </ion-button> -->

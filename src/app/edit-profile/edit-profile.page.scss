@@ -1,0 +1,12 @@
+/* <div  class= "imageHold" >
+<img class= "profileImg"[src]= "profileImage">  */
+
+
+.imageHold .profileImg {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}

@@ -11,6 +11,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
+
 export class RegisterPage implements OnInit {
 
   validations_form: FormGroup;
@@ -56,7 +57,7 @@ export class RegisterPage implements OnInit {
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Your account has been created!";
-       this.navCtrl.navigateForward('tabs/tab4')
+       this.navCtrl.navigateForward('tabs/edit-profile')
      }, err => {
        console.log(err);
        this.errorMessage = err.message;

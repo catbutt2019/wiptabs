@@ -3,21 +3,24 @@
   } */
   
   ion-content.form-content{
-   // --background: url(../../assets/imgs/WIPPYCOVER.png) no-repeat  center / cover;
-   background-color: blue;
+ --background: url(../../assets/imgs/WIPPYCOVER.png) no-repeat  center / cover;
+   //background-color: blue;
 }  
 
 /*  ion-label {
     background-color: yellow !important;
 } */
-.title {
-    text-align: center; 
+.form {
+    margin-top: 95%;
 }
 
-ion-item .item-trns {
-    color: orange;
-    }
-    
+.title {
+   font-family: "Pacifico" !important;
+   color: white;
+   text-align: center;
+}
+
+
 #formtest {
   color: blue !important;
 }

@@ -1,3 +1,14 @@
+
+.imageHold .profileImg {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-position: center;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
 .card-background-page {
 
     ion-card {
