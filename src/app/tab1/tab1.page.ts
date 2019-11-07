@@ -27,7 +27,8 @@ export class Tab1Page implements OnInit {
     centeredSlides: true,
     spaceBetween: 20
   };
-
+  
+  title: string;
   profileImage : string;
   userName: any;
   userBio: string;
@@ -86,7 +87,7 @@ export class Tab1Page implements OnInit {
    this.category ='';
     this.validations_form = this.formBuilder.group({
       description: new FormControl('', Validators.required),   
-      userName: new FormControl(this.userName, Validators.required),
+      userName: new FormControl(this.userName),
       profileImage: new FormControl(this.profileImage)
       // profileImage: new FormControl(this.profileImage)
     });
@@ -124,6 +125,7 @@ export class Tab1Page implements OnInit {
       userName : value.userName || "", 
       description: value.description,
       profileImage: value.profileImage,
+      title: this.title,
       image: this.image,
       category: this.category
     }
@@ -135,14 +137,34 @@ export class Tab1Page implements OnInit {
     ).then(
       res => {
        // "./assets/imgs/shane2.jpg"
+      
+        this.title =''
         this.image = ["./assets/imgs/shane2.jpg"];
         this.category = '';
+       
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),
-          userName: new FormControl(this.userName, Validators.required)
-          
+          profileImage: new FormControl(this.profileImage),
+          userName: new FormControl(this.userName),
+      
         });
+
         this.image =  ["./assets/imgs/shane2.jpg"];
+        this.profileService.read_Students().subscribe(data => {
+ 
+          this.students = data.map(e => {
+            return {
+              id: e.payload.doc.id,
+              isEdit: false,
+              userName: e.payload.doc.data()['userName'],
+              userBio: e.payload.doc.data()['userBio'],
+              profileImage: e.payload.doc.data()['profileImage'],
+            };
+          })
+          console.log(this.students);
+     
+        });
+        this.resetFields();
         //make button repear 
       }
     )

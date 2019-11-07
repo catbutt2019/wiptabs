@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
-Post
+      <ion-item color="transparent">
+<ion-input *ngIf ="image.length > 0" placeholder="Title" [(ngModel)]="title"></ion-input>
+</ion-item>
     </ion-title>
    <!-- *ngIf="image.length == 0"  -->
    <ion-button [disabled]="!validations_form.valid"  slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint"  onclick="document.getElementById('hiddenSubmitButton').click()">
@@ -11,23 +13,28 @@ Post
 </ion-header>
 
 <ion-content>
-       <div id="categorybtn" *ngIf="image.length == 0 && !category" >
+  <!--   *ngIf="image.length == 0 && !category" -->
+       <div id="categorybtn"  *ngIf="image.length == 0 && !category" >
   <ion-button   class="imagebutton" size="large" shape="round" color="secondary" (click)="newProject()"><ion-icon name="heart-half" ></ion-icon></ion-button>
   <h5 style="color:white; margin-top: 22px; margin-left: 9px;">New Project</h5>
    </div>
-      <div id="categorybtn" *ngIf="image.length == 0 && !category" >
+   <!-- *ngIf="image.length == 0 && !category"  -->
+      <div id="categorybtn"  *ngIf="image.length == 0 && !category" >
    <ion-button  size="large" color="tertiary" shape="round"  (click)="completeProject()" ><ion-icon name="heart-empty" ></ion-icon></ion-button>
    <h5 style="color:white;  margin-top: 22px; margin-left: 9px;">Finished Project</h5>
   </div>
+  <!-- *ngIf ="!image?.length > 0 && category" -->
        <div id="picturebtn" *ngIf ="!image?.length > 0 && category" >
    <ion-button size="large" (click)="openImagePicker()"  shape = "round" color="tertiary"><ion-icon name="folder-open"></ion-icon></ion-button>
        <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Gallery</h6>
   </div>
-    <div id="picturebtn" *ngIf ="!image?.length > 0 && category">
+  <!-- *ngIf ="!image?.length > 0 && category" -->
+    <div id="picturebtn" *ngIf ="!image?.length > 0 && category"  >
    <ion-button size="large" (click)="takePicture()" shape = "round" color="secondary"><ion-icon name="camera" ></ion-icon></ion-button>
          <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Take Picture</h6>  
   </div>  
-  <div id="nvm" *ngIf ="!image?.length > 0 && category">
+  <!-- *ngIf ="!image?.length > 0 && category" -->
+  <div id="nvm" *ngIf ="!image?.length > 0 && category" >
       <ion-button color="danger" size="large" (click)="backtocategory()" shape = "round"> <ion-icon name="arrow-round-back"></ion-icon></ion-button>
              
      </div> 

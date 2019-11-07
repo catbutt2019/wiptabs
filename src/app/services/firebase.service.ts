@@ -90,6 +90,7 @@ export class FirebaseService {
       let currentUser = firebase.auth().currentUser;  
       this.afs.collection('tasks')
       .add({
+        title: value.title,
         profileImage: value.profileImage,
         username: value.userName,
         category: value.category,
