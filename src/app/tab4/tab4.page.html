@@ -47,21 +47,22 @@
   </ion-card>
 
 
+
   <ion-toolbar style="width: 100% !important" color="medium">
-<ion-segment (ionChange)= "segmentChanged()" [(ngModel)]="segment" color="dark">
-  <ion-segment-button value = "0">
-    <ion-icon id ="heart" name="heart"></ion-icon><p id="Wipped">Wipped</p>
-  </ion-segment-button>
-  <ion-segment-button value="1">
-    <ion-icon name="heart-half"></ion-icon><p id="Wipping">Wipping</p>
-  </ion-segment-button>
-</ion-segment>
-</ion-toolbar>
+      <ion-segment (ionChange)= "segmentChanged()" [(ngModel)]="segment" color="dark">
+        <ion-segment-button value = "0" layout="icon-start">
+          <ion-icon id ="heart" name="heart"></ion-icon><p id="Wipped">Wipped</p>
+        </ion-segment-button>
+        <ion-segment-button value="1" layout="icon-start">
+          <ion-icon name="heart-half"></ion-icon><p id="Wipping">Wipping</p>
+        </ion-segment-button>
+      </ion-segment>
+      </ion-toolbar>
 
 
  
 <!-- <ion-content padding>
- 
+  
  <ion-grid>
     <ion-row>
       <ion-col text-center>

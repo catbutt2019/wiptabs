@@ -1,11 +1,43 @@
 
-.card-background-page {
+
+#post {
+  width: 100%;
+  overflow: hidden; 
+}
+
+#profileImage {
+  
+  width: 30px !important;
+  height: 30px !important;
+  margin-top: 8px;
+  margin-left: 4px;
+  float:left;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+
+#profileImageIn {
+  width: 100% !important; 
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+#userName {
+  overflow: hidden;
+  padding-left: 4px;
+}
+
+ion-card {
+  border-radius: 0px !important;
+}
+
+/* .card-background-page {
 
     ion-card {
       position: relative;
       text-align: center;
     }
-
   
     .card-title {
       position: absolute;
@@ -26,6 +58,11 @@
   
   }
 
+ */
+
    ion-title {
     font-family: "Pacifico" !important;
-  }
+  } 
+
+
+ 

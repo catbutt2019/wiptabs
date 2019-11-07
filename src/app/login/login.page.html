@@ -1,14 +1,10 @@
 
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content padding class="form-content">
-    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
-      <ion-item>
-        <ion-label position="floating" color="primary">Email</ion-label>
+
+<ion-content  padding class="form-content">
+    <form [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+      
+      <ion-item id =""class="item item-trns text-center">
+        <ion-label position="floating" >Email</ion-label>
         <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -19,7 +15,7 @@
         </ng-container>
       </div>
       <ion-item>
-        <ion-label position="floating" color="primary">Password</ion-label>
+        <ion-label position="floating" >Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -36,4 +32,17 @@
     <p class="go-to-register">
       No account yet? <ion-button (click)="goRegisterPage()">Register</ion-button>
     </p>
+  </ion-content>
+  <ion-content>
+      <form [formGroup]="todo" (ngSubmit)="logForm()">
+          <ion-item>
+            <ion-label>Todo</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+          <ion-button ion-button type="submit" [disabled]="!todo.valid">Submit</ion-button>
+        </form>
   </ion-content>

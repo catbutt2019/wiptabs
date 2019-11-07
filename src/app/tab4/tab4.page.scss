@@ -35,30 +35,33 @@
 
 
 
-
-
- ion-segment-button {
-  width: 500px !important;
-    border: 1px solid black;
-    overflow: hidden !important;
+/* ion-segment {
+  //height: 30px;
 }
 
-/* 
+ion-segment-button {
+  
+    display: flex;
+    //min-height:30px;
+    min-width: 170px;
+}
+
 
 #Wipped {
-  width: 300px;
-  float:left;
-  border: 1px solid red;
+  width: 200px;
+  vertical-align:middle;
+
 }
 
 #heart {
-  border: 1px solid green;
-  overflow: hidden;
-}
+  flex: 1;
+
+}  */
+
 
 #Wipped , #Wipping {
   font-family: "Pacifico" !important;
-}  */
+} 
 
 
  
