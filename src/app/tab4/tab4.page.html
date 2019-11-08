@@ -79,7 +79,7 @@ right: 0;">
 <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
   <ion-slide>
   <ion-grid>
-    <ion-row *ngIf="!items">
+    <ion-row  *ngIf="items >= 0">
       <ion-col>
         <p style="color: #383a3e">You haven't posted any finished work yet </p>
       </ion-col>
@@ -113,14 +113,14 @@ right: 0;">
 
 <ion-slide>
     <ion-grid>
-        <ion-row *ngIf="!eventList">
+        <ion-row *ngIf="eventList >= 0">
             <ion-col>
              <p style="color: #383a3e"> You haven't posted any work in progress yet </p>
             </ion-col>
           </ion-row>
         <ion-row>
         <ion-col size="12" >
-        <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details-wipping/', event?.id]">
+        <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details-wipped/', event?.id]">
           <img [src]="event?.image">
           <div class="card-title">{{event?.title}}</div>
         </ion-card>

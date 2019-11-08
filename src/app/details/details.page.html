@@ -1,28 +1,70 @@
 <ion-content >
-    <div class="container">
-    <div class="content">
-      <div *ngFor ="let image of image" >
-          <ion-row>
-            <ion-col size="12" offset="0">
-              <img  id ="image" [src]="image" alt="this is the image"/>
-            </ion-col>  
-          </ion-row>
-        </div>
-      </div>
-      <div class="overlay">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-button  color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
-            </ion-col>
-            </ion-row>
-            </ion-grid>
-            <h2>{{item.title}}</h2>
-            <p>{{item.description}}</p></div>
+  <ion-title *ngIf="item">{{item.title}}</ion-title>
+  <div [@elementState]="state">
+    <div style ="text-align: end">
+    <ion-button (click)= "editClosed()"><ion-icon name="close"></ion-icon></ion-button>
+  </div>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+      <ion-item>
+        <ion-label position="floating" >Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item >
+          <ion-label position="stacked"></ion-label>
+          <ion-textarea  inputmode="text" auto-grow="true" formControlName="description"></ion-textarea>
+        </ion-item>
+      <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
+    </form>
+</div>
+<div class="container">
+<div class="content">
+  <div *ngFor ="let image of image">
+      <ion-row>
+        <ion-col size="12" offset="0">
+          <img  id ="image" [src]="image" alt="this is the image"/>
+        </ion-col>  
+      </ion-row>
     </div>
-  </ion-content>
+  </div>
+  <div class="overlay">
+      <ion-buttons slot="start">
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-button shape ="round" (click)="navigateBack()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+                </ion-col>
+                </ion-row>
+                </ion-grid>
+        </ion-buttons>
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+      </div>
+</div>
+<ion-grid>
+    </ion-row>
+       <ion-col>
+         <ion-button shape="circle"  color="tertiary"  (click)="openImagePicker()">  <ion-icon name="images"></ion-icon><h6> Add Picture</h6></ion-button>
+             </ion-col>
+             <ion-col>
+          <ion-button shape="circle"  color="tertiary"  (click)="openImagePicker()">  <ion-icon name="images"></ion-icon><h6> Add Picture</h6></ion-button>
+        </ion-col>
   
-  
+
+
+<form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+  <ion-item>
+    <ion-label position="floating" >Title</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item >
+      <ion-label position="stacked"></ion-label>
+      <ion-textarea  inputmode="text" auto-grow="true" formControlName="description"></ion-textarea>
+    </ion-item>
+  <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
+</form>
+<ion-button class="delete-button" expand="full" color="light" (click)="delete()">Delete</ion-button>
+</ion-content>
+
 
 
 <!-- 
