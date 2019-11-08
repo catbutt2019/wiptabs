@@ -11,7 +11,7 @@
       <ion-spinner style="text-align: center; margin: auto;"  *ngIf="!posts"></ion-spinner>  
     </div> 
       <div>
-      <ion-refresher  (ionRefresh)="tabThreeFeed($event)">
+      <ion-refresher  (ionRefresh)="tabTwoFeed($event)">
         <ion-refresher-content pullingIcon="arrow-dropdown" 
          refreshingSpinner="circles" refreshingText="refreshing..">
         </ion-refresher-content>

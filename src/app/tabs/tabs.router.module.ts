@@ -38,6 +38,10 @@ const routes: Routes = [
          loadChildren: '../edit-profile/edit-profile.module#EditProfilePageModule'
       },
 
+         { path: 'details-wipped/:id', 
+         loadChildren: '../details-wipped/details-wipped.module#DetailsWippedPageModule' 
+        },
+
     ]
   } 
 ];

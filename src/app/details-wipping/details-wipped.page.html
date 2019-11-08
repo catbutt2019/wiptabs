@@ -1,33 +1,4 @@
 <ion-content >
-    <div class="container">
-    <div class="content">
-      <div *ngFor ="let image of image" >
-          <ion-row>
-            <ion-col size="12" offset="0">
-              <img  id ="image" [src]="image" alt="this is the image"/>
-            </ion-col>  
-          </ion-row>
-        </div>
-      </div>
-      <div class="overlay">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-button  color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
-            </ion-col>
-            </ion-row>
-            </ion-grid>
-            <h2>{{item.title}}</h2>
-            <p>{{item.description}}</p></div>
-    </div>
-  </ion-content>
-  
-  
-
-
-<!-- 
-
-<ion-content >
     <ion-title *ngIf="item">{{item.title}}</ion-title>
     <div [@elementState]="state">
       <div style ="text-align: end">
@@ -87,42 +58,3 @@
   <ion-button class="delete-button" expand="full" color="light" (click)="delete()">Delete</ion-button>
 </ion-content>
 
-
-
- -->
-
-<!-- <div class="container">
-    <div class="content"  *ngFor ="let image of image" >
-      <ion-row>
-        <ion-col size="12" offset="0">
-          <img  id ="image" [src]="image" alt="this is the image"/>
-         </ion-col>  
-      </ion-row>
-    </div>
-    <div class="overlay">
-    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
-      <ion-item>
-        <ion-label position="floating" >Title</ion-label>
-        <ion-input type="text" formControlName="title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Description</ion-label>
-        <ion-input type="text" formControlName="description"></ion-input>
-      </ion-item>
-      <ion-item color="dark">
-          <ion-label color="dark">Category</ion-label>
-          <ion-select color="dark" placeholder="Category" formControlName="category">
-            <ion-select-option color="dark" value="Wipped">Wipped</ion-select-option>
-            <ion-select-option  color="dark"value="Wipping">Wipping</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-row>
-          <ion-col size="6" offset="8">
-            <ion-button color="tertiary"  size="small" (click)="openImagePicker()">Add Picture</ion-button>
-          </ion-col>
-        </ion-row>
-      <ion-button class="submit-button" expand="full" color="light" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
-    </form>
-    <ion-button class="delete-button" expand="full" color="light" (click)="delete()">Delete</ion-button>
-  </div>
-  </div> -->
