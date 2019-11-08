@@ -2,7 +2,7 @@
 
 <ion-content  padding class="form-content">
     <div class="title"><h1>Wippy</h1></div>
-    <form class="form"[formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+    <form class="form"[formGroup] = "validations_form" (ngSubmit)="tryLogin(validations_form.value)">
       
       <ion-item color="transparent" class="item item-trns text-center">
         <ion-label style="color:white !important"position="floating" >Email</ion-label>
