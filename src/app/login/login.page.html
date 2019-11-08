@@ -6,7 +6,7 @@
       
       <ion-item color="transparent" class="item item-trns text-center">
         <ion-label style="color:white !important"position="floating" >Email</ion-label>
-        <ion-input style="color:white !important"type="text" formControlName="email"></ion-input>
+        <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.email">
@@ -17,7 +17,7 @@
       </div>
       <ion-item  color="transparent">
         <ion-label style="color:white !important" position="floating" >Password</ion-label>
-        <ion-input style="color:white !important" type="password" formControlName="password"></ion-input>
+        <ion-input  type="password" formControlName="password"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.password">
