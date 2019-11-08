@@ -24,7 +24,7 @@ export class FirebaseService {
       let currentUser = firebase.auth().currentUser;
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipped') 
+          this.snapshotChangesSubscription = this.afs.collection('tasks', ref=> ref.where('category', '==', 'Wipping') 
           .where('uid','==', currentUser.uid
           ).orderBy("date", "desc")).snapshotChanges();
           resolve(this.snapshotChangesSubscription);

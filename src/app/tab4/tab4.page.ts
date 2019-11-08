@@ -149,7 +149,7 @@ export class Tab4Page implements OnInit {
     this.eventListRef = firebase
       .firestore()
       .collection(`people/${user.uid}/tasks`);
-    return this.eventListRef.where('category', '==', 'Wipping').get();
+    return this.eventListRef.where('category', '==', 'Wipped').get();
    
     } 
 

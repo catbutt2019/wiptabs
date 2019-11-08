@@ -18,7 +18,7 @@ export class EventService {
     this.eventListRef = firebase
       .firestore()
       .collection(`tasks`);
-    return this.eventListRef.where('category', '==', 'Wipping').where('uid', '==', user.uid).get();
+    return this.eventListRef.where('category', '==', 'Wipped').where('uid', '==', user.uid).get();
     }
     } 
 

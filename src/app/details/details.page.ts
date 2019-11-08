@@ -46,6 +46,7 @@ export class DetailsPage implements OnInit {
   load: boolean = false;
   category: string;
   state = "closed";
+
   
 
   constructor(
@@ -71,6 +72,7 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.getData();
     
+    
   }
 
   editOpen() {
@@ -90,7 +92,9 @@ export class DetailsPage implements OnInit {
   }
 
   makeWipped() {
-    this.category ="wipped"
+    
+    this.category ="Wipped"
+    console.log(this.category)
   }
 
   navigateBack() {
@@ -119,7 +123,7 @@ export class DetailsPage implements OnInit {
       title: value.title,
       description: value.description,
       image: this.image,
-      category: value.category
+      category: this.category
     }
     this.firebaseService.updateTask(this.item.id,data)
     .then(
