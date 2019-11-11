@@ -60,9 +60,11 @@ export class DetailsWippedPage implements OnInit {
     private router: Router,
     private navCtrl: NavController
   ) {
+
+    //
     //this gets the data of the object id from firestore
     this.route.params.subscribe(params=> {
-      this.firebaseService.getObjectById(params['data']).subscribe( i => {
+      this.firebaseService.getObjectById(params['id']).subscribe( i => {
         this.item = i;
                    })
              });

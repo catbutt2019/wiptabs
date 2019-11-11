@@ -40,7 +40,11 @@ const routes: Routes = [
 
          { path: 'details-wipped/:id', 
          loadChildren: '../details-wipped/details-wipped.module#DetailsWippedPageModule' 
-        },
+         },
+
+         { path: 'users-profile', 
+         loadChildren: '../users-profile/users-profile.module#UsersProfilePageModule' }
+         ,
 
     ]
   } 
