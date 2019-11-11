@@ -14,7 +14,7 @@ export class HomeResolver implements Resolve<any> {
     ) {}
 
   resolve() {
-    return this.firebaseService.getTasks() ;
+    return this.firebaseService.getPosts() ;
   }
 
 }

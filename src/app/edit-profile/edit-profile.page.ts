@@ -24,7 +24,7 @@ export class EditProfilePage implements OnInit {
  
    
 
-  profileImage : string;
+  profileImage : any;
   userName: string;
   userBio: string;
   userDetails: any;
@@ -67,7 +67,7 @@ export class EditProfilePage implements OnInit {
 
 
 
-    this.profileImage =  "./assets/imgs/user.png"
+    this.profileImage =  ["./assets/imgs/user.png"]
     this.profileService.read_Students().subscribe(data => {
  
       this.students = data.map(e => {

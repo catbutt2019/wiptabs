@@ -11,7 +11,7 @@ export class DetailsWippedResolver implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       let itemId = route.paramMap.get('id');
-      this.firebaseService.getTask(itemId)
+      this.firebaseService.getPost(itemId)
       .then(data => {
         data.id = itemId;
         resolve(data);

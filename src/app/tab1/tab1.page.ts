@@ -129,7 +129,7 @@ export class Tab1Page implements OnInit {
       image: this.image,
       category: this.category
     }
-    this.firebaseService.createTask(data)
+    this.firebaseService.createPost(data)
     .then(
       res => {
         this.router.navigate(["/tabs/tab4"]);

@@ -123,7 +123,7 @@ export class DetailsWippedPage implements OnInit {
       image: this.image,
       category: value.category
     }
-    this.firebaseService.updateTask(this.item.id,data)
+    this.firebaseService.updatePost(this.item.id,data)
     .then(
       res => {
         this.router.navigate(["/tabs/tab4"]);
@@ -145,7 +145,7 @@ export class DetailsWippedPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.firebaseService.deleteTask(this.item.id)
+            this.firebaseService.deletePost(this.item.id)
             .then(
               res => {
                 this.router.navigate(["/tabs/tab4"]);

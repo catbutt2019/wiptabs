@@ -125,7 +125,7 @@ export class DetailsPage implements OnInit {
       image: this.image,
       category: this.category
     }
-    this.firebaseService.updateTask(this.item.id,data)
+    this.firebaseService.updatePost(this.item.id,data)
     .then(
       res => {
         this.router.navigate(["/tabs/tab4"]);
@@ -147,7 +147,7 @@ export class DetailsPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.firebaseService.deleteTask(this.item.id)
+            this.firebaseService.deletePost(this.item.id)
             .then(
               res => {
                 this.router.navigate(["/tabs/tab4"]);

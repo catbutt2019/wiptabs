@@ -22,8 +22,8 @@ export class Tab3Page {
     this.ajax = getFeed({}).subscribe(data=> {
     console.log(data)
     this.posts = data
-      })
-    }
+        })
+      }
 
 
     tabThreeFeed(event){    
