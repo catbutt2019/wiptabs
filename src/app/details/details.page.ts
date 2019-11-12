@@ -115,11 +115,10 @@ export class DetailsPage implements OnInit {
       title: new FormControl(this.item.title),
       description: new FormControl(this.item.description, Validators.required),
       category: new FormControl(this.item.category),
-    });
-    
-    
+    });  
   }
 
+  
   onSubmit(value){
     let data = {
       title: value.title,

@@ -64,7 +64,7 @@ export class DetailsWippedPage implements OnInit {
     //
     //this gets the data of the object id from firestore
     this.route.params.subscribe(params=> {
-      this.firebaseService.getObjectById(params['id']).subscribe( i => {
+      this.firebaseService.getObjectById(params['data']).subscribe( i => {
         this.item = i;
                    })
              });
@@ -108,9 +108,9 @@ export class DetailsWippedPage implements OnInit {
      }
     })
     this.validations_form = this.formBuilder.group({
-      title: new FormControl(this.item.title, Validators.required),
+      title: new FormControl(this.item.title),
       description: new FormControl(this.item.description, Validators.required),
-      category: new FormControl(this.item.category, Validators.required)
+      category: new FormControl(this.item.category)
     });
 
     
@@ -121,7 +121,7 @@ export class DetailsWippedPage implements OnInit {
       title: value.title,
       description: value.description,
       image: this.image,
-      category: value.category
+      category: this.category
     }
     this.firebaseService.updatePost(this.item.id,data)
     .then(
@@ -130,11 +130,10 @@ export class DetailsWippedPage implements OnInit {
       }
     )
   }
-
   async delete() {
     const alert = await this.alertCtrl.create({
       header: 'Confirm',
-      message: 'Do you want to delete ' + this.item.title + '?',
+      message: 'Do you want to delete ' + this.item.title+ '?',
       buttons: [
         {
           text: 'No',
