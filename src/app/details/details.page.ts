@@ -40,7 +40,7 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
 export class DetailsPage implements OnInit {
 
   validations_form: FormGroup;
-  image: any;
+  image: any =[];
   public imageLists: any[] = [];
   item: any;
   load: boolean = false;
@@ -71,6 +71,8 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.category ="Wipping"
+    console.log(this.category)
     
     
   }
@@ -110,11 +112,11 @@ export class DetailsPage implements OnInit {
      }
     })
     this.validations_form = this.formBuilder.group({
-      title: new FormControl(this.item.title, Validators.required),
+      title: new FormControl(this.item.title),
       description: new FormControl(this.item.description, Validators.required),
-      category: new FormControl(this.item.category, Validators.required)
+      category: new FormControl(this.item.category),
     });
-
+    
     
   }
 
