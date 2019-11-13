@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/firestore';
+import { AuthenticateService } from './authentication.service';
 
 
 @Injectable({
@@ -15,6 +16,9 @@ import 'firebase/firestore';
 })
 
 export class FavoriteService {
+  public FavoriteListRef: firebase.firestore.CollectionReference;
+
+  private snapshotChangesSubscription: any;
 
   favorites: Array<any>;
 
@@ -23,9 +27,12 @@ export class FavoriteService {
     public toastCtrl: ToastController,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
+    private authService: AuthenticateService
   ) 
+
+
   { 
-    console.log('Hello FavoriteProvider Provider');
+    console.log('Hello Favorite Servcice');
     this.favorites = [];
   }
 /* 
@@ -47,11 +54,11 @@ export class FavoriteService {
   )
 }) */
 
-  async addFavorite(id: number): Promise<boolean> {
-    if (!this.isFavorite(id)){
-      this.favorites.push(id);
+  async addFavorite(item: any): Promise<boolean> {
+    if (!this.isFavorite(item)){
+      this.favorites.push(item);
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('userFavourites')
+      this.afs.collection('userFavorites')
       .add({
         favourite: this.favorites,
         uid: currentUser.uid,
@@ -61,11 +68,11 @@ export class FavoriteService {
         id: id,
         text: 'Dish ' + id + ' added as a favorite successfully'
       }); */
-      const toast = await this.toastCtrl.create({
-        message: 'Added To Favourites',
+     /*  const toast = await this.toastCtrl.create({
+        message: 'Added To Favorites',
         duration: 3000
       });
-      toast.present();
+      toast.present(); */
     }
 
     console.log('favorites', this.favorites);
@@ -75,6 +82,53 @@ export class FavoriteService {
   isFavorite(id: number): boolean {
     return this.favorites.some(el => el === id);
 }
+
+
+
+   async getfavoriteList(): Promise<firebase.firestore.QuerySnapshot> {
+    const user: firebase.User = await this.authService.getUser();
+    if (user) 
+          {
+    this.FavoriteListRef = firebase
+      .firestore()
+      .collection(`userFavorites`);
+    return this.FavoriteListRef.where('uid', '==', user.uid).get();
+              }
+           } 
+       }
+
+
+/* getFavorites(){
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afAuth.user.subscribe(currentUser => {
+      if(currentUser){
+        this.snapshotChangesSubscription = this.afs.collection('userFavorites', ref=> ref.where('uid','==', currentUser.uid) 
+        .where('uid','==', currentUser.uid
+        ).orderBy("date", "desc")).snapshotChanges();
+        resolve(this.snapshotChangesSubscription);
+      }
+    })
+  })
+}
+
+
+
+
+getFavortes(userFavoritesId){
+  return new Promise<any>((resolve, reject) => {
+    this.afAuth.user.subscribe(currentUser => {
+      if(currentUser){
+        this.snapshotChangesSubscription = this.afs.doc<any>('userFavorites/' + userFavoritesId).valueChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        }, err => {
+          reject(err)
+        })
+      }
+    })
+  });
+} */
 
 /* getFavorites(): Observable<Dish[]> {
   return this.dishservice.getDishes()
@@ -95,4 +149,4 @@ deleteFavorite(id: number): Observable<Dish[]> {
               }
         } */
  
-}
+

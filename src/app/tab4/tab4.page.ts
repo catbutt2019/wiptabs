@@ -11,6 +11,7 @@ import 'firebase/storage';
 import { ProfileService } from '../services/profile.service';
 import { FirebaseService } from '../services/firebase.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FavoriteService } from '../services/favorite.service';
 
 
 
@@ -28,8 +29,10 @@ export class Tab4Page implements OnInit {
 
   userEmail: string;
   items: Array<any>;
+  public favoriteList: Array<any>;
   public eventList: Array<any>;
   public eventListRef: firebase.firestore.CollectionReference;
+  public favoriteListRef: firebase.firestore.CollectionReference;
   profileImage : string;
   userName: string;
   userBio: string;
@@ -48,6 +51,7 @@ export class Tab4Page implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private eventService: EventService,
+    private favoriteService: FavoriteService,
     private profileService: ProfileService,
     private firebaseService: FirebaseService,
   ) {}
@@ -95,6 +99,7 @@ export class Tab4Page implements OnInit {
   //this is for the segments to slide 
   async segmentChanged() {
     await this.slider.slideTo(this.segment);
+
     this.eventService.getEventList().then(eventListSnapshot => {
       this.eventList = [];
       eventListSnapshot.forEach(snap => {
@@ -105,6 +110,20 @@ export class Tab4Page implements OnInit {
          image: snap.data().image
         });
       
+        return false;
+      });
+    });
+
+    this.favoriteService.getfavoriteList().then(favoriteListSnapshot => {
+      this.favoriteList = [];
+      favoriteListSnapshot.forEach(snap => {
+        this.favoriteList.push({
+          id: snap.id,
+         title: snap.data().favourite,
+         description: snap.data().description,
+         image: snap.data().image
+        });
+        console.log(snap.data().favourite)
         return false;
       });
     });
