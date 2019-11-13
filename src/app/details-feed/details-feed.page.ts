@@ -66,7 +66,7 @@ export class DetailsFeedPage implements OnInit {
     console.log('Adding to Favorites', this.item);
     this.favorite = this.favoriteservice.addFavorite(this.item);
     const toastCtrl =  await  this.toastCtrl.create({
-      message: 'Dish ' + this.item.title + ' added as favorite successfully',
+      message:  this.item.title + ' added as favorite successfully',
       position: 'middle',
       duration: 3000})
     await toastCtrl.present();

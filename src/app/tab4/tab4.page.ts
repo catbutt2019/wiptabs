@@ -29,7 +29,9 @@ export class Tab4Page implements OnInit {
 
   userEmail: string;
   items: Array<any>;
-  public favoriteList: Array<any>;
+
+ favoriteList: any; 
+
   public eventList: Array<any>;
   public eventListRef: firebase.firestore.CollectionReference;
   public favoriteListRef: firebase.firestore.CollectionReference;
@@ -42,6 +44,7 @@ export class Tab4Page implements OnInit {
   studentAge: number;
   studentAddress: string;
   data
+
 
   constructor(
     private firestore: AngularFirestore,
@@ -119,9 +122,8 @@ export class Tab4Page implements OnInit {
       favoriteListSnapshot.forEach(snap => {
         this.favoriteList.push({
           id: snap.id,
-         title: snap.data().favourite,
-         description: snap.data().description,
-         image: snap.data().image
+          image: snap.data().image,
+          favorite: snap.data().favourite
         });
         console.log(snap.data().favourite)
         return false;
