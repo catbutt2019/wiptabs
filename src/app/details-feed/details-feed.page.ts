@@ -6,6 +6,8 @@ import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx'
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { FavoriteService } from '../services/favorite.service';
+import { present } from '@ionic/core/dist/types/utils/overlays';
 
 @Component({
   selector: 'app-details-feed',
@@ -13,6 +15,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./details-feed.page.scss'],
 })
 export class DetailsFeedPage implements OnInit {
+
+  favorite: any;
 
   image: any;
   public imageLists: any[] = [];
@@ -30,7 +34,8 @@ export class DetailsFeedPage implements OnInit {
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
     private router: Router,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private favoriteservice: FavoriteService
   ) { 
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
@@ -56,5 +61,16 @@ export class DetailsFeedPage implements OnInit {
   navigateBack() {
     this.navCtrl.back();
   }
+
+ async addToFavorites() {
+    console.log('Adding to Favorites', this.item.id);
+    this.favorite = this.favoriteservice.addFavorite(this.item.id);
+    const toastCtrl =  await  this.toastCtrl.create({
+      message: 'Dish ' + this.item.title + ' added as favorite successfully',
+      position: 'middle',
+      duration: 3000})
+    await toastCtrl.present();
+  }
+
 
 }

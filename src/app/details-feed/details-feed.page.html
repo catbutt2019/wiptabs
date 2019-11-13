@@ -1,6 +1,9 @@
 <ion-content >
   <div class="container">
   <div class="content">
+
+       
+  
     <div *ngFor ="let image of image" >
         <ion-row>
           <ion-col size="12" offset="0">
@@ -15,6 +18,9 @@
           <ion-col>
             <ion-button  color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
           </ion-col>
+          <ion-col>
+              <ion-button  color="dark"shape ="round" (click)="addToFavorites()"> <ion-icon name="heart"></ion-icon></ion-button>
+            </ion-col>
           </ion-row>
           </ion-grid>
           <h2>{{item.title}}</h2>
