@@ -116,24 +116,23 @@ right: 0;">
 
   
 <!-- 
+  //favorite html 
  <ion-grid>
-        <ion-row *ngIf="favoriteList >= 0">
-            <ion-col>
-             <p style="color: #383a3e"> You haven't posted any work in progress yet </p>
-            </ion-col>
-          </ion-row>
         <ion-row>
         <ion-col size="12" >
-        <ion-card *ngFor ="let favorite of favoriteList">
-          <img [src]="favorite?.image">
-          <div class="card-title">{{favorite?.favorite.title}}</div>
-        </ion-card>
+            <ion-card *ngFor ="let favorite of favoriteList">   
+                <ng-container *ngFor="let item of favorite?.favoriteList">
+                    <img [src]="item.image[0]">
+                    <div class="card-title">{{ item | json }}</div>
+                    <div>{{item?.description}}</div>
+                </ng-container>
+            </ion-card>
         </ion-col>
       </ion-row>
-      </ion-grid>  -->
+      </ion-grid>  
+ -->
 
-
-  <ion-grid>
+ <ion-grid>
         <ion-row *ngIf="eventList >= 0">
             <ion-col>
              <p style="color: #383a3e"> You haven't posted any work in progress yet </p>
@@ -147,7 +146,7 @@ right: 0;">
         </ion-card>
         </ion-col>
       </ion-row>
-      </ion-grid> 
+      </ion-grid>  
 
 </ion-slide>
 </ion-slides>

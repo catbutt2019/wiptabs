@@ -30,7 +30,20 @@ export class Tab4Page implements OnInit {
   userEmail: string;
   items: Array<any>;
 
- favoriteList: any; 
+favoriteList = []; 
+
+
+/* 
+ favoriteList: 
+ {
+  category: string,
+  date: any;
+  description: string,
+  id: string; 
+  image: any;
+  isEdit: boolean; 
+  userName: any; 
+  profileImage: any; }[]; */
 
   public eventList: Array<any>;
   public eventListRef: firebase.firestore.CollectionReference;
@@ -117,18 +130,18 @@ export class Tab4Page implements OnInit {
       });
     });
 
-    this.favoriteService.getfavoriteList().then(favoriteListSnapshot => {
+
+ /*    this.favoriteService.getfavoriteList().then(favoriteListSnapshot => {
       this.favoriteList = [];
       favoriteListSnapshot.forEach(snap => {
         this.favoriteList.push({
           id: snap.id,
-          image: snap.data().image,
-          favorite: snap.data().favourite
+          favoriteList: snap.data().favourite
         });
         console.log(snap.data().favourite)
         return false;
       });
-    });
+    }); */
   }
 
   async slideChanged() {
