@@ -45,6 +45,8 @@ const routes: Routes = [
          { path: 'users-profile', 
          loadChildren: '../users-profile/users-profile.module#UsersProfilePageModule' }
          ,
+         { path: 'favorites',
+          loadChildren: '../favorites/favorites.module#FavoritesPageModule' },
 
     ]
   } 

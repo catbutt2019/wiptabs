@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
 
 
+
   
 ];
 @NgModule({
