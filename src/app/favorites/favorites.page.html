@@ -11,7 +11,7 @@
         <ion-card *ngFor ="let favorite of favoriteList">   
             <ng-container *ngFor="let item of favorite?.favoriteList">
                 <img [src]="item.image[0]">
-                <div class="card-title">{{ item | json }}</div>
+                <div class="card-title">{{ item?.title}}</div>
                 <div>{{item?.description}}</div>
             </ng-container>
         </ion-card>
