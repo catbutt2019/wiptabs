@@ -4,8 +4,8 @@
     <div class="title"><h1>Wippy</h1></div>
     <form class="form"[formGroup] = "validations_form" (ngSubmit)="tryLogin(validations_form.value)">
       
-      <ion-item color="transparent" class="item item-trns text-center">
-        <ion-label style="color:white !important"position="floating" >Email</ion-label>
+      <ion-item lines="none" class="item item-trns text-center">
+        <ion-label position="floating" >Email</ion-label>
         <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -15,8 +15,8 @@
           </div>
         </ng-container>
       </div>
-      <ion-item  color="transparent">
-        <ion-label style="color:white !important" position="floating" >Password</ion-label>
+      <ion-item lines="none">
+        <ion-label style="color:black !important" position="floating" >Password</ion-label>
         <ion-input  type="password" formControlName="password"></ion-input>
       </ion-item>
       <div class="validation-errors">

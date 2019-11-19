@@ -80,11 +80,17 @@
 
   --ion-color-transparent: #000000; 
 
+  --ion-color-test: #1d8f9e !important;
+
   @font-face {
     font-family: 'Pacifico';
     font-style: normal;
     font-weight: 10;
     src: url('../assets/fonts/pacifico/Pacifico.ttf');
+  }
+
+  .ion-color-mycolorLabel {
+    --ion-color-base:green;
   }
 
 }
