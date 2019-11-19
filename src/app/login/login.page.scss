@@ -18,7 +18,7 @@ and (max-device-width : 812px)
 and (-webkit-device-pixel-ratio : 3) { 
 ion-input {
      font-size: 20px !important ;
-   //   background-color: white;
+     background-color: rgba(255, 255, 255, 0.5) !important;
      border-radius: 10px ;
      border-width: 0px !important ; 
      padding: 10px !important;
@@ -26,15 +26,19 @@ ion-input {
 
    ion-item {
        border-radius: 16px;
+       margin-top: 15px;
+       background-color: rgba(255, 255, 255, 0.5) !important;
+    
    }
 
 
 
 .form {
    border-radius: 10px ;
-   margin-top: 400px;
+   margin-top: 350px;
   // background-color: rgba(255, 255, 255, 0.5);
    padding: 10px !important;
+  
  }
 
 
