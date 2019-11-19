@@ -26,10 +26,18 @@ import { AuthenticateService } from './services/authentication.service';
 import { Camera} from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions'
+import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions';
+import { DoubleTapDirective } from './directives/double-tap.directive'
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    'press': {time: 500},  // default: 251 ms
+    'pinch': {enable: false},
+    'rotate': {enable: false},
+  };
+} 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DoubleTapDirective],
   // declarations: [AppComponent, NewTaskModalPage],
   // entryComponents: [NewTaskModalPage],
   imports: [
@@ -57,17 +65,11 @@ import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/
     WebView,
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig},
+ {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig},
  
   ],
   bootstrap: [AppComponent]
 })
-export class CustomHammerConfig extends HammerGestureConfig {
-  overrides = {
-    'press': {time: 500},  // default: 251 ms
-    'pinch': {enable: false},
-    'rotate': {enable: false},
-  };
-}
+
 export class AppModule {}
 

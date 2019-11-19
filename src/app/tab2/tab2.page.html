@@ -19,7 +19,7 @@
       </div>  
       <div id ="post" *ngIf="posts" >
           <!-- [routerLink]="['/tabs/details-feed/', post.postID]"> -->
-        <ion-card  *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
+        <ion-card (doubleTap)="doSomething()"  *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
         <div id ="profileImage" >
            <img id ="profileImageIn" [src]="post.profileImage">
           </div> 

@@ -49,6 +49,10 @@ export class Tab2Page implements OnInit{
     ngOnDestroy() {
       this.sub.unsubscribe()
     }
+
+    doSomething() {
+      console.log('doubletapped!')
+    }
   
 
 }
