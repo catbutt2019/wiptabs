@@ -36,8 +36,8 @@
   }
 
   ion-segment {
-    --border-color: red !important;
-    --background-activated: red !important;
+  //  --border-color: red !important;
+  //  --background-activated: red !important;
     --border-radius: 20px !important;
     --indicator-color-checked: orange !important;
 
@@ -46,7 +46,7 @@
 
   ion-segment-button {
     --border-color:rgb(204, 204, 204) ;
-    --background-activated: red !important;
+   // --background-activated: red !important;
     --border-radius: 20px !important;
     --color-checked: rgb(58, 58, 58) !important;
     --indicator-color: purple !important;

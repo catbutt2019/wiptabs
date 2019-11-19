@@ -54,7 +54,7 @@ right: 0;">
 
 
 
-  <ion-toolbar style="width: 100% !important" >
+  <ion-toolbar style="width: 100% !important" color="medium" >
       <ion-segment (ionChange)= "segmentChanged()" [(ngModel)]="segment" >
         <ion-segment-button  value = "0" layout="icon-start">
           <ion-icon id ="heart" name="heart-half"></ion-icon><p id="Wipping">Wipping</p>
@@ -84,7 +84,7 @@ right: 0;">
   <ion-grid>
     <ion-row  *ngIf="items >= 0">
       <ion-col>
-        <p style="color: #383a3e">You haven't posted any finished work yet </p>
+        <p style="color: #383a3e">You haven't posted any work in progress yet </p>
       </ion-col>
     </ion-row>
   <ion-row>
@@ -138,7 +138,7 @@ right: 0;">
  <ion-grid>
         <ion-row *ngIf="eventList >= 0">
             <ion-col>
-             <p style="color: #383a3e"> You haven't posted any work in progress yet </p>
+             <p style="color: #383a3e"> You haven't posted any finished work yet </p>
             </ion-col>
           </ion-row>
         <ion-row>
