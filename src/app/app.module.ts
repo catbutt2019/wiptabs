@@ -1,5 +1,5 @@
 import { NgModule, OnInit } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -57,8 +57,17 @@ import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/
     WebView,
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig},
  
   ],
   bootstrap: [AppComponent]
 })
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    'press': {time: 500},  // default: 251 ms
+    'pinch': {enable: false},
+    'rotate': {enable: false},
+  };
+}
 export class AppModule {}
+

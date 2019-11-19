@@ -10,8 +10,12 @@ import 'firebase/firestore';
 import 'firebase/storage';
 import { ProfileService } from '../services/profile.service';
 import { FirebaseService } from '../services/firebase.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { FavoriteService } from '../services/favorite.service';
+import { Observable } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-favorites',
@@ -19,11 +23,14 @@ import { FavoriteService } from '../services/favorite.service';
   styleUrls: ['./favorites.page.scss'],
 })
 export class FavoritesPage implements OnInit {
-
+ 
   favoriteList = []; 
   public favoriteListRef: firebase.firestore.CollectionReference;
 
+
   constructor(
+   
+   
     private firestore: AngularFirestore,
     private navCtrl: NavController,
     private authService: AuthenticateService,
@@ -34,7 +41,8 @@ export class FavoritesPage implements OnInit {
     private favoriteService: FavoriteService,
     private profileService: ProfileService,
     private firebaseService: FirebaseService,
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
 
