@@ -4,6 +4,8 @@ import { Plugins } from '@capacitor/core';
 import * as firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import {Router} from '@angular/router'
+import { AuthenticateService } from './services/authentication.service';
+import { NavController } from '@ionic/angular';
 
 const { SplashScreen, StatusBar } = Plugins;
 
@@ -15,6 +17,8 @@ const { SplashScreen, StatusBar } = Plugins;
 export class AppComponent {
   pages: any[] =[];
   constructor(
+    private navCtrl: NavController,
+    private authService: AuthenticateService,
     private router: Router
   ) {
     this.initializeApp();
@@ -30,13 +34,8 @@ export class AppComponent {
       url: "/tabs/edit-profile"
     }, {
       pagename: "Favorites",
-      icon: "home",
+      icon: "heart",
       url: "/tabs/favorites"
-    },
-    {
-      pagename: "logout",
-      icon: "home",
-      url: "/pagethree"
     }
   ]
 
@@ -49,4 +48,16 @@ export class AppComponent {
   Goto(page) {
     this.router.navigate([page.url]);
   }
+
+  logout(){
+    this.authService.logoutUser()
+    .then(res => {
+      console.log(res);
+      this.navCtrl.navigateBack('');
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
 }

@@ -4,7 +4,7 @@
       <ion-toolbar>
         <ion-item>
           <ion-label>
-            <b>Welcome: User</b>
+            <b></b>
           </ion-label>
         </ion-item>
       </ion-toolbar>
@@ -21,6 +21,13 @@
           </ion-item>
          </ion-menu-toggle>
       </ion-list>
+      <ion-item (click)="logout()">
+        <ion-icon name="exit" 
+        slot="start"> </ion-icon>
+          <ion-label>
+           logout
+          </ion-label>
+      </ion-item>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>
