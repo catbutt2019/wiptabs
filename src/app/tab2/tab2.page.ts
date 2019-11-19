@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/functions'
-
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -14,11 +14,22 @@ export class Tab2Page implements OnInit{
   postsWipping
   ajax
 
-  constructor(private aff: AngularFireFunctions) {
+  constructor(
+    private aff: AngularFireFunctions,
+    public toastController: ToastController
+    ) {
    
   }
   ngOnInit() {
     this.tabTwoFeedInit();
+    }
+
+    async  doSomething() {
+      const toast = await this.toastController.create({
+        message: 'Added to favorites.',
+        duration: 2000
+      });
+      toast.present();
     }
 
     tabTwoFeedInit (){    
@@ -50,9 +61,7 @@ export class Tab2Page implements OnInit{
       this.sub.unsubscribe()
     }
 
-    doSomething() {
-      console.log('doubletapped!')
-    }
+   
   
 
 }

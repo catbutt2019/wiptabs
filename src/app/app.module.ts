@@ -28,6 +28,7 @@ import { File } from '@ionic-native/file/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions';
 import { DoubleTapDirective } from './directives/double-tap.directive'
+
 export class CustomHammerConfig extends HammerGestureConfig {
   overrides = {
     'press': {time: 500},  // default: 251 ms
@@ -35,7 +36,6 @@ export class CustomHammerConfig extends HammerGestureConfig {
     'rotate': {enable: false},
   };
 } 
-
 @NgModule({
   declarations: [AppComponent, DoubleTapDirective],
   // declarations: [AppComponent, NewTaskModalPage],
@@ -70,6 +70,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
   ],
   bootstrap: [AppComponent]
 })
+
+
 
 export class AppModule {}
 

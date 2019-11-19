@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
-     <h4> Wipped </h4>
+     <h4> Wipped double tap</h4>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,9 +17,9 @@
         </ion-refresher-content>
         </ion-refresher>
       </div>  
-      <div id ="post" *ngIf="posts" >
+      <div  (doubleTap)="doSomething()"  id ="post" *ngIf="posts" >
           <!-- [routerLink]="['/tabs/details-feed/', post.postID]"> -->
-        <ion-card (doubleTap)="doSomething()"  *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
+        <ion-card *ngFor ="let post of posts" [routerLink]="['/tabs/details-feed/', post.postID]">
         <div id ="profileImage" >
            <img id ="profileImageIn" [src]="post.profileImage">
           </div> 
