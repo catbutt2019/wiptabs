@@ -18,7 +18,7 @@ import { ProfileService } from '../services/profile.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit {
+ export class Tab1Page implements OnInit {
 
 
   sliderOpts= {
@@ -27,6 +27,8 @@ export class Tab1Page implements OnInit {
     centeredSlides: true,
     spaceBetween: 20
   };
+
+  nextOptions: string;
   
   title: string;
   profileImage : string;
@@ -82,6 +84,7 @@ export class Tab1Page implements OnInit {
     });
     
   }
+
   resetFields() {
    this.image = [];
    this.category ='';
@@ -181,6 +184,9 @@ export class Tab1Page implements OnInit {
     });
   } */
 
+nextOption() {
+  this.nextOptions = "next"
+}
   
 
 
