@@ -29,11 +29,11 @@
       z-index: 100;
     } */
     
-    @keyframes button {
+   @keyframes button {
       0%   {
        
-        left:0%;
-        top:95% }
+        left:30%; 
+        top:45%; }
 
       100% { 
      
@@ -43,7 +43,7 @@
 
     //#categorybtn 
     #picturebtn 
-    
+
     {
       position: relative;
       animation-name: button;

@@ -21,6 +21,8 @@ import { ProfileService } from '../services/profile.service';
  export class Tab1Page implements OnInit {
 
 
+  
+
   sliderOpts= {
     zoom: false,
     slidesPerView: 1.2,
@@ -66,6 +68,7 @@ import { ProfileService } from '../services/profile.service';
 
   ngOnInit() {
     
+    this.nextOptions = 'previous';
     this.category = '';
     this.resetFields();
     this.profileService.read_Students().subscribe(data => {
@@ -95,6 +98,15 @@ import { ProfileService } from '../services/profile.service';
       // profileImage: new FormControl(this.profileImage)
     });
   }
+
+  nextOption() {
+    this.nextOptions = 'next';
+  }
+  
+  backtoTitle() { 
+    this.nextOptions = 'previous';
+  }
+  
 
   newProject() {
     this.category = 'Wipping';
@@ -183,10 +195,6 @@ import { ProfileService } from '../services/profile.service';
       
     });
   } */
-
-nextOption() {
-  this.nextOptions = "next"
-}
   
 
 
