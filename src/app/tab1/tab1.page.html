@@ -25,15 +25,15 @@
    <h5 style="color:white;  margin-top: 22px; margin-left: 9px;">Finished Project</h5>
   </div> -->
   <!-- *ngIf ="!image?.length > 0 && category" -->
-  <div>
-      <ion-item  no-padding style ="text-align: center;" id="projectTitle" color="transparent">
+ 
+      <ion-item *ngIf = "nextOptions == next" no-padding style ="text-align: center;" id="projectTitle" color="transparent">
           <ion-input [(ngModel)]="title" class="text-input" placeholder="Project Title"></ion-input>
           </ion-item>
             <div style="text-align: center !important;" >
             <ion-button   *ngIf ="!title"  style="margin-top: 40%" color ="transparent">maybe later</ion-button>
             <ion-button  (click)="nextOption()" *ngIf = "title && !nextOptions"   style="margin-top: 40%"color ="transparent">next</ion-button>
           </div>
-        </div>
+        
 
    
 
