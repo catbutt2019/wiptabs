@@ -145,7 +145,6 @@ right: 0;">
         <ion-col size="12" >
         <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details-wipped/', event?.id]">
           <img [src]="event?.image">
-          <div class="card-title">{{event?.title}}</div>
         </ion-card>
         </ion-col>
       </ion-row>

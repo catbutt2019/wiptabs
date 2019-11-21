@@ -69,7 +69,7 @@ import { ProfileService } from '../services/profile.service';
   ngOnInit() {
     
     this.nextOptions = 'previous';
-    this.category = '';
+    this.category = 'Wipping';
     this.resetFields();
     this.profileService.read_Students().subscribe(data => {
  
@@ -140,9 +140,10 @@ import { ProfileService } from '../services/profile.service';
       userName : value.userName || "", 
       description: value.description,
       profileImage: value.profileImage,
-      title: this.title,
+      title: this.title || "",
       image: this.image,
-      category: this.category
+     // category: this.category,
+     category: "Wipping"
     }
     this.firebaseService.createPost(data)
     .then(
@@ -156,6 +157,7 @@ import { ProfileService } from '../services/profile.service';
         this.title =''
         this.image = [];
         this.category = '';
+        this.nextOptions = 'previous';
        
         this.validations_form = this.formBuilder.group({
           description: new FormControl('', Validators.required),

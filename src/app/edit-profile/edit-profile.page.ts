@@ -19,11 +19,8 @@ import { AuthenticateService } from '../services/authentication.service';
 })
 export class EditProfilePage implements OnInit {
 
-
-  
- 
    
-
+   
   profileImage : any;
   userName: string;
   userBio: string;
@@ -36,6 +33,7 @@ export class EditProfilePage implements OnInit {
   item: any
   recordRow: any;
   record: any;
+
 
  
 
@@ -62,12 +60,7 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {
 
 
-   
-
-
-
-
-    this.profileImage =  ["./assets/imgs/user.png"]
+    this.students.profileImage =  ["./assets/imgs/user.png"];
     this.profileService.read_Students().subscribe(data => {
  
       this.students = data.map(e => {
@@ -86,8 +79,8 @@ export class EditProfilePage implements OnInit {
   }
 
   CreateRecord() {
-    let record = {};
-    record['profileImage'] = this.profileImage ;
+    let record = {}
+    record['profileImage'] = this.profileImage || this.item.profileImage ;
     record['userName'] = this.userName || "";
     record['userBio'] = this.userBio || "";
     this.profileService.create_NewStudent(record).then(resp => {

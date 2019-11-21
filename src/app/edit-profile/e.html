@@ -1,25 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Edit Profile </ion-title>
+    <ion-title> profile changed</ion-title>
     <ion-button type ="round" slot="end"  (click)="gobacktoProfile()" color="light">Back</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-        <ion-grid style ="text-align: center">
-         <ion-row class="ion-align-items-center" >
+        <ion-grid >
+         <ion-row >
    
-        <ion-col class="ion-align-items-center" *ngFor="let item of students" >
+        <ion-col *ngFor="let item of students" >
           <!--   <div  class= "imageHold" >
                 <ion-img [src]= "profileImage || item.profileImage"></ion-img>
             </div> -->
-            <ion-avatar class="ion-align-items-center">
+            <ion-avatar >
                 <ion-img [src]= "profileImage || item.profileImage"></ion-img>
               </ion-avatar>
         </ion-col>  
        </ion-row >
-       <ion-row  style ="text-align: center">  
+       <ion-row  >  
            <ion-col>
         <ion-button  size="small" fill="outline" (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
        </ion-col>
@@ -86,7 +86,7 @@
             <ion-input placeholder="Username" [(ngModel)]="userName"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-textarea placeholder="About Me " [(ngModel)]="userBio"></ion-textarea>
+            <ion-textarea placeholder="About Me" [(ngModel)]="userBio"></ion-textarea>
           </ion-item>
            <ion-button *ngIf="!students.length > 1"  size="small"  (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
       <ion-row>
@@ -111,13 +111,11 @@
      
           <!-- this updates the user name -->
           <ion-item>
-           
-             <ion-input  placeholder ="user name " [(ngModel)]="item.userName"></ion-input>
+             <ion-input  [(ngModel)]="item.userName"></ion-input>
           </ion-item>
             <!-- this updates the user Bio -->
-           <ion-item>
-     
-            <ion-textarea placeholder ="About me"  [(ngModel)]="item.userBio"></ion-textarea>
+           <ion-item>   
+            <ion-textarea [(ngModel)]="item.userBio"></ion-textarea>
           </ion-item>
       <div style ="text-align: center">
           <ion-button (click)="UpdateRecord(item)">

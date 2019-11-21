@@ -31,27 +31,27 @@
             <ion-input [(ngModel)]="title" class="text-input" placeholder="Project Title"></ion-input>
                </ion-item>
                  <div style="text-align: center !important;" >
-                 <ion-button   *ngIf ="!title"  style="margin-top: 40%" color ="transparent">maybe later</ion-button>
-                 <ion-button  (click)="nextOption()" *ngIf = "title "   style="margin-top: 40%"color ="transparent">next</ion-button>
+                 <ion-button  (click)="nextOption()" *ngIf ="!title"  style="margin-top: 20%" color ="transparent">maybe later</ion-button>
+                 <ion-button  (click)="nextOption()" *ngIf = "title "   color ="transparent">next</ion-button>
                </div> 
      </ng-container>
         
 
    
 
-       <div id="picturebtn" *ngIf ="!image?.length > 0 && nextOptions">
+       <div id="picturebtn" *ngIf ="!image?.length > 0 && nextOptions == 'next'">
    <ion-button size="large" (click)="openImagePicker()"  shape = "round" color="tertiary">
      <ion-icon name="folder-open"></ion-icon></ion-button>
        <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Gallery</h6>
   </div>
   <!-- *ngIf ="!image?.length > 0 && category" -->
-    <div id="picturebtn" *ngIf ="!image?.length > 0 && nextOptions"  >
+    <div id="picturebtn" *ngIf ="!image?.length > 0&& nextOptions == 'next'"  >
    <ion-button size="large" (click)="takePicture()" shape = "round" color="secondary"><ion-icon name="camera" ></ion-icon></ion-button>
          <h6 style="color:white; margin-top: 22px; margin-left: 9px;">Take Picture</h6>  
   </div>  
 
   <!-- *ngIf ="!image?.length > 0 && category" -->
-  <div id="nvm" *ngIf ="!image?.length > 0 && nextOptions" >
+  <div id="nvm" *ngIf ="!image?.length > 0 && nextOptions =='next'" >
       <ion-button color="danger" size="large" (click)="backtoTitle()" shape = "round"> <ion-icon name="arrow-round-back"></ion-icon></ion-button>            
      </div> 
 
