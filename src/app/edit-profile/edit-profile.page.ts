@@ -19,9 +19,13 @@ import { AuthenticateService } from '../services/authentication.service';
 })
 export class EditProfilePage implements OnInit {
 
+
+  
+
    
    
   profileImage : any;
+
   userName: string;
   userBio: string;
   userDetails: any;
@@ -33,6 +37,9 @@ export class EditProfilePage implements OnInit {
   item: any
   recordRow: any;
   record: any;
+  test: { profileImage: any; }[];
+  hideDefaultImage: string
+
 
 
  
@@ -59,10 +66,7 @@ export class EditProfilePage implements OnInit {
   //"./assets/imgs/default_image.jpg"
   ngOnInit() {
 
-
-    this.students.profileImage =  ["./assets/imgs/user.png"];
     this.profileService.read_Students().subscribe(data => {
- 
       this.students = data.map(e => {
         return {
           id: e.payload.doc.id,
@@ -73,14 +77,25 @@ export class EditProfilePage implements OnInit {
         };
       })
       console.log(this.students);
- 
     });
+
+
+    this.profileImage = this.students[0].profileImage ;
+
+    if(this.profileImage) {
+      this.hideDefaultImage ="hide"
+    }
+
+     
+  
+
+
   
   }
 
   CreateRecord() {
     let record = {}
-    record['profileImage'] = this.profileImage || this.item.profileImage ;
+    record['profileImage'] = this.profileImage || "./assets/imgs/user.png" ;
     record['userName'] = this.userName || "";
     record['userBio'] = this.userBio || "";
     this.profileService.create_NewStudent(record).then(resp => {
@@ -88,12 +103,26 @@ export class EditProfilePage implements OnInit {
       this.studentName = "";
       this.studentAge = undefined;
       this.studentAddress = "";
+
      
       console.log(resp);
     })
       .catch(error => {
         console.log(error);
-      })
+      }).then(i =>   this.router.navigate(["/tabs/tab4"]))
+
+      this.profileService.read_Students().subscribe(data => {
+        this.students = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            isEdit: false,
+            userName: e.payload.doc.data()['userName'],
+            userBio: e.payload.doc.data()['userBio'],
+            profileImage: e.payload.doc.data()['profileImage'],
+          };
+        })
+        console.log(this.students);
+      });
      
   }
 
@@ -106,12 +135,13 @@ export class EditProfilePage implements OnInit {
 
   UpdateRecord(recordRow) {
     let record = {};
+    record['profileImage'] = this.profileImage || "./assets/imgs/user.png" ;
     record['userName'] = recordRow.userName || "" ;
-    record['profileImage'] = this.profileImage || ""; 
     record['userBio'] = recordRow.userBio || "" ;
     this.profileService.update_Student(recordRow.id, record);
     recordRow.isEdit = false;
-  }
+    console.log('updated')
+     }
 
   RemoveRecord(rowID) {
     this.profileService.delete_Student(rowID);
@@ -135,9 +165,13 @@ export class EditProfilePage implements OnInit {
       console.log(error);
     })
   }
+ 
+ 
+    chooseProfilePic() {  
+    
+      
+   
 
-
-  chooseProfilePic(){
     this.imagePicker.hasReadPermission()
     .then((result) => {
       if(result == false){
@@ -155,6 +189,7 @@ export class EditProfilePage implements OnInit {
           }, (err) => console.log(err)
         );
       }
+      this.hideDefaultImage ="hide"
     }, (err) => {
       console.log(err);
     });
@@ -185,7 +220,7 @@ export class EditProfilePage implements OnInit {
     })
   }
 
-  saveChanges() {}
+
 
   async presentLoading(loading) {
     return await loading.present();

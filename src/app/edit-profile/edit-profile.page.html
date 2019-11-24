@@ -6,24 +6,30 @@
 </ion-header>
 
 <ion-content>
-  
+
+<!--     <ion-img   src= "./assets/imgs/shane2.jpg"></ion-img> -->
         <ion-grid style ="text-align: center">
          <ion-row class="ion-align-items-center" >
-   
-        <ion-col class="ion-align-items-center" *ngFor="let item of students" >
+        <ion-col class="ion-align-items-center" >
           <!--   <div  class= "imageHold" >
                 <ion-img [src]= "profileImage || item.profileImage"></ion-img>
             </div> -->
-            <ion-avatar class="ion-align-items-center">
-                <ion-img [src]= "profileImage || item.profileImage"></ion-img>
+            <ion-avatar *ngIf="!profileImage" class= "ion-align-items-center">   
+                <ion-img src= "./assets/imgs/shane2.jpg"></ion-img>
               </ion-avatar>
+             <!--  <ion-avatar *ngFor="let item of students"  class="ion-align-items-center">   
+                  <ion-img [src] = "item.profileImage"></ion-img>
+                </ion-avatar> -->
+                <ion-avatar *ngIf="profileImage" class="ion-align-items-center">   
+                    <ion-img [src] = "profileImage"></ion-img>
+                  </ion-avatar>
         </ion-col>  
-       </ion-row >
-       <ion-row  style ="text-align: center">  
-           <ion-col>
-        <ion-button  size="small" fill="outline" (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
-       </ion-col>
        </ion-row>
+         <ion-row  style ="text-align: center">  
+           <ion-col>
+             <ion-button  size="small" fill="outline" (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
+           </ion-col>
+        </ion-row>
        </ion-grid>
 
 <!-- <ion-button (click)="saveChanges()">Save Changes</ion-button>
@@ -91,9 +97,9 @@
            <ion-button *ngIf="!students.length > 1"  size="small"  (click)="chooseProfilePic()" >Choose Profile Photo</ion-button>
       <ion-row>
            <ion-col text-center>
-               <ion-button (click)="CreateRecord()">
+            <ion-button (click)="CreateRecord()">
                 Save Changes
-             </ion-button>
+             </ion-button> 
            </ion-col>
        </ion-row>
     </ion-grid>
@@ -103,24 +109,16 @@
       <!--     <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
            Remove Record
           </ion-button> -->
-      
-     
-          
-           
-                 
-     
           <!-- this updates the user name -->
-          <ion-item>
-           
+          <ion-item>   
              <ion-input  placeholder ="user name " [(ngModel)]="item.userName"></ion-input>
           </ion-item>
             <!-- this updates the user Bio -->
            <ion-item>
-     
             <ion-textarea placeholder ="About me"  [(ngModel)]="item.userBio"></ion-textarea>
           </ion-item>
       <div style ="text-align: center">
-          <ion-button (click)="UpdateRecord(item)">
+          <ion-button color="dark"(click)="UpdateRecord(item)">
               Save Changes 
             </ion-button>
           </div>

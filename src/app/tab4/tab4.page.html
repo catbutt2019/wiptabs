@@ -39,7 +39,7 @@
 margin-right: auto;
 left: 0;
 right: 0;">
-<img  class="profileImg" [src]="item.profileImage" style="margin-top: 10px;">
+<img  class="profileImg" [src]="profileImage || item.profileImage" style="margin-top: 10px;">
 </div>
 <ion-card style="text-align: center; z-index: 1; margin-top: 70px" *ngFor="let item of students" >
     
