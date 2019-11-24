@@ -60,6 +60,10 @@ export class FavoritesPage implements OnInit {
     
   }
 
+  navigateBack() {
+    this.router.navigate(['/tabs/tab4'])
+  }
+
  
 
 }

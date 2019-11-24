@@ -105,7 +105,7 @@ right: 0;">
   </div> -->
   <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
     <img [src]="item.payload.doc.data().image">
-    <div class="card-title">{{item.payload.doc.data().title}}</div>
+ 
   </ion-card>
   </ion-col>
 </ion-row>

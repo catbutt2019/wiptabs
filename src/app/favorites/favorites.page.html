@@ -1,21 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>favorites</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title><h4>favorites</h4></ion-title>
+    <ion-button slot= "end" color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-forward"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row>
-    <ion-col size="12" >
-        <ion-card *ngFor ="let favorite of favoriteList">   
-            <ng-container *ngFor="let item of favorite?.favoriteList">
-                <img [src]="item.image[0]">
-                <div class="card-title">{{ item?.title}}</div>
-                <div>{{item?.description}}</div>
-            </ng-container>
-        </ion-card>
-    </ion-col>
-  </ion-row>
+     <ion-row>
+        <ion-col size="12" >
+           <ion-card style="margin-top: 10px !important;" *ngFor ="let favorite of favoriteList">   
+              <ng-container *ngFor="let item of favorite?.favoriteList">
+                 <div style="color: black"><h6>{{item?.username}}</h6></div>
+                  <img [src]="item.image[0]">
+                  <!-- <div class="card-title">{{ item?.title}}</div> -->
+                 
+               </ng-container>
+           </ion-card>
+        </ion-col>
+     </ion-row>
   </ion-grid>  
 </ion-content>

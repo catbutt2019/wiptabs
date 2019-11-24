@@ -1,12 +1,13 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title> Edit Profile </ion-title>
-    <ion-button type ="round" slot="end"  (click)="gobacktoProfile()" color="light">Back</ion-button>
+    <ion-button type ="round" slot="end"  (click)="gobacktoProfile()" color="dark"><ion-icon name="arrow-forward"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+  
 
+<ion-content>
 <!--     <ion-img   src= "./assets/imgs/shane2.jpg"></ion-img> -->
         <ion-grid style ="text-align: center">
          <ion-row class="ion-align-items-center" >
@@ -15,7 +16,7 @@
                 <ion-img [src]= "profileImage || item.profileImage"></ion-img>
             </div> -->
             <ion-avatar *ngIf="!profileImage" class= "ion-align-items-center">   
-                <ion-img src= "./assets/imgs/shane2.jpg"></ion-img>
+                <ion-img src= "./assets/imgs/user.png"></ion-img>
               </ion-avatar>
              <!--  <ion-avatar *ngFor="let item of students"  class="ion-align-items-center">   
                   <ion-img [src] = "item.profileImage"></ion-img>
