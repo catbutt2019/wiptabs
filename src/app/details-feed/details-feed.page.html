@@ -19,7 +19,8 @@
             <ion-button  color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
           </ion-col>
           <ion-col>
-              <ion-button  color="dark"shape ="round" (click)="addToFavorites()"> <ion-icon name="heart"></ion-icon></ion-button>
+              <ion-button *ngIf ="!favoriteButton == true"color= "dark" shape ="round"  (click)="addToFavorites()"> <ion-icon name="heart"></ion-icon>Add to favorites</ion-button>
+              <ion-button *ngIf ="favoriteButton == true" color= "light" shape ="round" > <ion-icon name="heart"></ion-icon>Added to favorites</ion-button>
             </ion-col>
           </ion-row>
           </ion-grid>

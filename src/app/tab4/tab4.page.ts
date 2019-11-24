@@ -59,6 +59,7 @@ favoriteList = [];
   data
 
 
+
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController,
@@ -170,9 +171,10 @@ favoriteList = [];
 
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
-        console.log(data)
+        console.log(data.length)
         loading.dismiss();
         this.items = data;
+     
       })
     })
   }

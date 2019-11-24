@@ -82,6 +82,9 @@ right: 0;">
 <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
   <ion-slide>
   <ion-grid>
+      <div  *ngFor ="let item of items  | slice:0:1" >
+          <h3 style="color: black !important">{{items.length}} projects in progress</h3>
+         </div>
     <ion-row  *ngIf="items >= 0">
       <ion-col>
         <p style="color: #383a3e">You haven't posted any work in progress yet </p>
@@ -89,23 +92,9 @@ right: 0;">
     </ion-row>
   <ion-row>
   <ion-col size="12" *ngIf="items">
-  <!-- <div *ngIf="items.length > 0" class="list-mini">
-    <ion-list>
-      <ion-item *ngFor="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
-        <ion-thumbnail slot="start">
-          <img [src]="item.payload.doc.data().image">
-        </ion-thumbnail>
-        <ion-label>{{item.payload.doc.data().title}}</ion-label>
-        <ion-button fill="clear" slot="end">Details</ion-button>
-      </ion-item>
-    </ion-list>
-  </div>
-  <div *ngIf="items.length == 0" class="empty-list">
-    Show your work in progress :) 
-  </div> -->
   <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
     <img [src]="item.payload.doc.data().image">
- 
+  
   </ion-card>
   </ion-col>
 </ion-row>
@@ -136,9 +125,12 @@ right: 0;">
  -->
 
  <ion-grid>
+    <div  *ngFor ="let event of eventList | slice:0:1" >
+        <h3 style="color: black !important">{{eventList.length}} projects completed</h3>
+       </div>
         <ion-row *ngIf="eventList >= 0">
             <ion-col>
-             <p style="color: #383a3e"> You haven't posted any finished work yet </p>
+             <p style="color: #383a3e"> You haven't posted any finished projects yet </p>
             </ion-col>
           </ion-row>
         <ion-row>

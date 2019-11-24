@@ -23,8 +23,13 @@ export class DetailsFeedPage implements OnInit {
   item: any;
   load: boolean = false;
   category: string;
+  favoriteButton: boolean;
+  
+
+
 
   constructor(
+  
     private imagePicker: ImagePicker,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
@@ -46,6 +51,7 @@ export class DetailsFeedPage implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.favoriteButton = false;
   }
 
   getData(){
@@ -65,12 +71,11 @@ export class DetailsFeedPage implements OnInit {
  async addToFavorites() {
     console.log('Adding to Favorites', this.item);
     this.favorite = this.favoriteservice.addFavorite(this.item);
-    const toastCtrl =  await  this.toastCtrl.create({
-      message:  this.item.title + ' added as favorite successfully',
-      position: 'middle',
-      duration: 3000})
-    await toastCtrl.present();
+    this.favoriteButton = true;
+    this.favoriteservice.getfavoriteList();
   }
+
+ 
 
 
 }
