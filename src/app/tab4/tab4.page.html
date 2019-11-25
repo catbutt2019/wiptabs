@@ -80,11 +80,8 @@ right: 0;">
   
 </ion-content>  -->
 <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
-  <ion-slide>
-  <ion-grid>
-      <div  *ngFor ="let item of items  | slice:0:1" >
-          <h3 style="color: black !important">{{items.length}} projects in progress</h3>
-         </div>
+  <ion-slide>    
+  <ion-grid>   
     <ion-row  *ngIf="items >= 0">
       <ion-col>
         <p style="color: #383a3e">You haven't posted any work in progress yet </p>
@@ -92,6 +89,8 @@ right: 0;">
     </ion-row>
   <ion-row>
   <ion-col size="12" *ngIf="items">
+          <h6 *ngIf="items.length == 1" style="color: rgb(75, 75, 75) !important">{{items.length}} project in progress  </h6> 
+          <h6 *ngIf="items.length > 1"style="color: rgb(75, 75, 75) !important">{{items.length}} projects in progress  </h6>       
   <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/details/', item.payload.doc.id]">
     <img [src]="item.payload.doc.data().image">
   
@@ -125,17 +124,20 @@ right: 0;">
  -->
 
  <ion-grid>
-    <div  *ngFor ="let event of eventList | slice:0:1" >
-        <h3 style="color: black !important">{{eventList.length}} projects completed</h3>
-       </div>
+
+        <div  *ngFor ="let event of eventList | slice: 0:1">
+    <h6 *ngIf="eventList.length == 1" style="color: rgb(75, 75, 75) !important">{{eventList.length}} project completed</h6>
+    <h6 *ngIf="eventList.length > 1" style="color: rgb(75, 75, 75) !important">{{eventList.length}} projects completed</h6>
+  </div>
         <ion-row *ngIf="eventList >= 0">
             <ion-col>
              <p style="color: #383a3e"> You haven't posted any finished projects yet </p>
             </ion-col>
           </ion-row>
-        <ion-row>
-        <ion-col size="12" >
-        <ion-card *ngFor ="let event of eventList" [routerLink]="['/tabs/details-wipped/', event?.id]">
+        <ion-row *ngFor ="let event of eventList">
+        <ion-col size="12">
+
+        <ion-card  [routerLink]="['/tabs/details-wipped/', event?.id]">
           <img [src]="event?.image">
         </ion-card>
         </ion-col>

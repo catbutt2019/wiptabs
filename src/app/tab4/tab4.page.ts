@@ -57,6 +57,7 @@ favoriteList = [];
   studentAge: number;
   studentAddress: string;
   data
+  itemslength: any = [];
 
 
 
@@ -171,9 +172,10 @@ favoriteList = [];
 
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
-        console.log(data.length)
+        console.log(data)
         loading.dismiss();
         this.items = data;
+        this.itemslength.push(data.length); 
      
       })
     })

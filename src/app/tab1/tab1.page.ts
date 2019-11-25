@@ -88,6 +88,7 @@ import { ProfileService } from '../services/profile.service';
     
   }
 
+
   resetFields() {
    this.image = [];
    this.category ='';
@@ -97,6 +98,14 @@ import { ProfileService } from '../services/profile.service';
       profileImage: new FormControl(this.profileImage)
       // profileImage: new FormControl(this.profileImage)
     });
+  }
+
+
+  cancelThis() {
+    this.image = [];
+    this.category = 'Wipping';
+    this.title = '';
+    this.nextOptions = 'previous';
   }
 
   nextOption() {

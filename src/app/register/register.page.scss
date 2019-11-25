@@ -12,3 +12,217 @@ ion-content.form-content{
     color: white;
     text-align: center;
  }
+
+ /* ion-title {
+    font-family: "Pacifico" !important;
+  } */
+  
+  ion-content.form-content{
+    --background: url(../../assets/imgs/WIPPYCOVER.png) no-repeat  center / cover;
+      //background-color: blue;
+   }  
+   
+   /*  ion-label {
+       background-color: yellow !important;
+   } */
+   
+ 
+   
+   @media only screen 
+   and (min-device-width : 375px) 
+   and (max-device-width : 812px)
+   and (-webkit-device-pixel-ratio : 3) { 
+   ion-input {
+        font-size: 20px !important ;
+        border-radius: 10px ;
+        border-width: 0px !important ; 
+        padding: 10px !important;
+      }
+   
+      ion-item {
+          border-radius: 16px;
+          margin-top: 15px;
+          background-color: rgba(255, 255, 255, 0.849) !important;
+       
+      }
+   
+   
+   
+   .form {
+      border-radius: 10px ;
+      margin-top: 350px;
+     // background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px !important;
+     
+    }
+   
+   
+   
+   .title {
+      font-family: "Pacifico" !important;
+      color: white;
+      text-align: center;
+   
+   }
+   
+   .submit-btn {
+       margin-top: 20px !important;
+   }
+   
+   
+   
+   #formtest {
+     color: blue !important;
+   }
+   
+   ion-label { 
+       color: black !important; 
+   }
+   }
+
+   //iphone 6 media 
+   @media only screen 
+    and (min-device-width : 375px) // or 213.4375em
+    and (max-device-width : 667px) // or 41.6875em
+    and (width : 375px) // or 23.4375em
+    and (height : 667px) // or 34.9375em
+    and (orientation : portrait) 
+    and (color : 8)
+    and (device-aspect-ratio : 375/667)
+    and (aspect-ratio : 375/559)
+    and (device-pixel-ratio : 2)
+    and (-webkit-min-device-pixel-ratio : 2)
+{
+    ion-input {
+        font-size: 20px !important ;
+        border-radius: 10px ;
+        border-width: 0px !important ; 
+        padding: 10px !important;
+      }
+   
+      ion-item {
+          border-radius: 16px;
+          margin-top: 15px;
+          background-color: rgba(255, 255, 255, 0.849) !important;
+       
+      }
+   
+   
+   
+   .form {
+      border-radius: 10px ;
+      // margin-top: 200px !important;
+     // background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px !important;    
+    }
+   
+   
+   
+   .title {
+      font-family: "Pacifico" !important;
+      color: white;
+      text-align: center;
+   
+    }
+   
+   .submit-btn {
+       margin-top: 20px !important;
+   }
+   
+   
+   
+   #formtest {
+     color: blue !important;
+   }
+   
+   ion-label { 
+       color: black !important; 
+   }
+
+
+
+ }
+   
+   /* ion-item {
+       background-color: yellow !important;
+   }
+   
+   ng-container, ion-input, ion-item, .form, .validation-errors{
+       background-color: yellow !important;  
+   }
+   
+   input:-internal-autofill-selected  {
+       background-color: yellow !important;  
+   }
+   
+   ng-touched  {
+       background-color: yellow !important;
+   }
+   
+   form ng-untouched ng-pristine ng-invalid {
+       background-color: yellow !important;
+   
+   }
+   
+   ng-touched ng-dirty ng-invalid {
+       background-color: yellow !important;
+   }
+   
+   ion-untouched ion-pristine ion-invalid item-interactive item-input item-label item-label-floating item ios ion-focusable hydrated {
+       background-color: yellow !important;
+   } 
+   
+   .sc-ion-input-ios-h {
+       background-color: yellow !important;
+   }
+   
+   native-input sc-ion-input-ios {
+       background-color: yellow !important;
+   } */
+
+   ion-input {
+    font-size: 20px !important ;
+    border-radius: 10px ;
+    border-width: 0px !important ; 
+    padding: 10px !important;
+  }
+
+  ion-item {
+      border-radius: 16px;
+      margin-top: 15px;
+      background-color: rgba(255, 255, 255, 0.849) !important;
+   
+  }
+
+
+
+.form {
+  border-radius: 10px ;
+  margin-top: 350px;
+ // background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px !important;
+ 
+}
+
+
+
+.title {
+  font-family: "Pacifico" !important;
+  color: white;
+  text-align: center;
+
+}
+
+.submit-btn {
+   margin-top: 20px !important;
+}
+
+
+
+#formtest {
+ color: blue !important;
+}
+
+ion-label { 
+   color: black !important; 
+}
