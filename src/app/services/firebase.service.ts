@@ -24,7 +24,9 @@ export class FirebaseService {
       let currentUser = firebase.auth().currentUser;
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('posts', ref=> ref.where('category', '==', 'Wipping') 
+          this.snapshotChangesSubscription = 
+          this.afs.collection('posts', ref=> ref
+          .where('category', '==', 'Wipping') 
           .where('uid','==', currentUser.uid
           ).orderBy("date", "desc")).snapshotChanges();
           resolve(this.snapshotChangesSubscription);
@@ -90,6 +92,7 @@ export class FirebaseService {
       let currentUser = firebase.auth().currentUser;  
       this.afs.collection('posts')
       .add({
+        comments: value.comments,
         title: value.title,
         profileImage: value.profileImage,
         username: value.userName,

@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { FavoriteService } from '../services/favorite.service';
 import { present } from '@ionic/core/dist/types/utils/overlays';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'app-details-feed',
@@ -24,7 +25,10 @@ export class DetailsFeedPage implements OnInit {
   load: boolean = false;
   category: string;
   favoriteButton: boolean;
-  
+
+ 
+ comments: Array<{comment: string}> = [];
+ comment: string;
 
 
 
@@ -40,7 +44,8 @@ export class DetailsFeedPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private navCtrl: NavController,
-    private favoriteservice: FavoriteService
+    private favoriteservice: FavoriteService,
+    private CommentService: CommentService
   ) { 
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
@@ -70,12 +75,26 @@ export class DetailsFeedPage implements OnInit {
 
  async addToFavorites() {
     console.log('Adding to Favorites', this.item);
-    this.favorite = this.favoriteservice.addFavorite(this.item);
+    this.favorite = this.favoriteservice
+    .addFavorite(this.item);
     this.favoriteButton = true;
     this.favoriteservice.getfavoriteList();
   }
 
  
+
+  addToComments(this){
+    this.comments.push({ comment: this.comment });
+    let data = {
+      comments: this.comments,
+    }
+    this.firebaseService.updatePost(this.item.id,data)
+    .then(
+      res => {
+       //do something else
+      }
+    )
+  }
 
 
 }

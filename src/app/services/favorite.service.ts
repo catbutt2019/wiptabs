@@ -63,18 +63,7 @@ export class FavoriteService {
         favourite: this.favorites,
         uid: currentUser.uid,
       })
-      // Schedule a single notification
-   /*    this.localNotifications.schedule({
-        id: id,
-        text: 'Dish ' + id + ' added as a favorite successfully'
-      }); */
-     /*  const toast = await this.toastCtrl.create({
-        message: 'Added To Favorites',
-        duration: 3000
-      });
-      toast.present(); */
     }
-
     console.log('favorites', this.favorites);
     return true;
   }

@@ -39,7 +39,7 @@ import { ProfileService } from '../services/profile.service';
   userDetails: any;
   isVisible = true;
   item: any
-
+  comments: any =[];
   validations_form: FormGroup;
   image : any =[];
   category: string;
@@ -144,15 +144,14 @@ import { ProfileService } from '../services/profile.service';
   }
 
   onSubmit(value){
-    //make button dissapear 
     let data = {
+      comments: [""],
       userName : value.userName || "", 
       description: value.description,
       profileImage: value.profileImage,
       title: this.title || "",
       image: this.image,
-     // category: this.category,
-     category: "Wipping"
+      category: "Wipping"
     }
     this.firebaseService.createPost(data)
     .then(
@@ -280,7 +279,7 @@ import { ProfileService } from '../services/profile.service';
     .then((result) => {
       if(result == false){
         // no callbacks required as this opens a popup which returns async
-        this.imagePicker.requestReadPermission();
+        this.imagePicker.requestReadPermission()
       }
       else if(result == true){
         this.imagePicker.getPictures({
