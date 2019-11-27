@@ -93,7 +93,7 @@ import { ProfileService } from '../services/profile.service';
    this.image = [];
    this.category ='';
     this.validations_form = this.formBuilder.group({
-      description: new FormControl('', Validators.required),   
+      description: new FormControl(''),   
       userName: new FormControl(this.userName),
       profileImage: new FormControl(this.profileImage)
       // profileImage: new FormControl(this.profileImage)
@@ -168,7 +168,7 @@ import { ProfileService } from '../services/profile.service';
         this.nextOptions = 'previous';
        
         this.validations_form = this.formBuilder.group({
-          description: new FormControl('', Validators.required),
+          description: new FormControl(''),
           profileImage: new FormControl(this.profileImage),
           userName: new FormControl(this.userName),
       

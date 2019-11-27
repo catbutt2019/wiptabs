@@ -7,7 +7,7 @@
     </ion-title>
    <!-- *ngIf="image.length == 0"  -->
    <ion-button *ngIf ="image.length > 0"  color="medium-tint" slot="start" (click)="cancelThis()">cancel</ion-button>
-   <ion-button [disabled]="!validations_form.valid"  slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint"  onclick="document.getElementById('hiddenSubmitButton').click()">
+   <ion-button *ngIf ="image.length > 0" [disabled]="!validations_form.valid"  slot="end" class="submit-btn" expand="block" type="submit" color="medium-tint"  onclick="document.getElementById('hiddenSubmitButton').click()">
     Create
   </ion-button>
   </ion-toolbar>

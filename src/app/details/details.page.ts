@@ -113,7 +113,7 @@ export class DetailsPage implements OnInit {
     })
     this.validations_form = this.formBuilder.group({
       title: new FormControl(this.item.title),
-      description: new FormControl(this.item.description, Validators.required),
+      description: new FormControl(this.item.description),
       category: new FormControl(this.item.category),
     });  
   }
