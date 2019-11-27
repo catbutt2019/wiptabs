@@ -78,7 +78,6 @@ export class DetailsFeedPage implements OnInit {
     this.favorite = this.favoriteservice
     .addFavorite(this.item);
     this.favoriteButton = true;
-    this.favoriteservice.getfavoriteList();
   }
 
  

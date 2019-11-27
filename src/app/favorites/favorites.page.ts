@@ -42,6 +42,17 @@ export class FavoritesPage implements OnInit {
     private profileService: ProfileService,
     private firebaseService: FirebaseService,
   ) {
+    this.favoriteService.getfavoriteList().then(favoriteListSnapshot => {
+      this.favoriteList = [];
+      favoriteListSnapshot.forEach(snap => {
+        this.favoriteList.push({
+          id: snap.id,
+          favoriteList: snap.data().favourite
+        });
+        console.log(snap.data().favourite)
+        return false;
+      });
+    }); 
    }
 
   ngOnInit() {
