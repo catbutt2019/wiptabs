@@ -28,7 +28,7 @@
   --ion-color-tertiary-tint: #7e57ff;
 
   /** success **/
-  --ion-color-success: #10dc60;
+  --ion-color-success: #ed3a58;
   --ion-color-success-rgb: 16, 220, 96;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
@@ -92,6 +92,8 @@
   .ion-color-mycolorLabel {
     --ion-color-base:green;
   }
+
+  --ion-color-onboarding: #ed3a58;
 
     /* ion-segment-button {
       --indicator-color: transparent !important;

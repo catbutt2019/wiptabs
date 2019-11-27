@@ -1,0 +1,25 @@
+
+
+<ion-content color= "success">
+ <!--  <ion-slides [options] = "sliderOpts">
+    <ion-slide *ngFor ="let img of [1,2,3]">
+  <img src ="assets/imgs/{{img}}.png">
+        </ion-slide>
+            </ion-slides>
+            <ion-button (click) ="start()"></ion-button> -->
+            <ion-slides [options] = "sliderOpts">
+              <ion-slide>
+                <img src="assets/imgs/1.png"/>
+                <h2>Welcome to the <b id="pacificofont">Wippy</b></h2>
+                <p>Show others what your <b id="pacificofont" >Wipping</b> up, and post your works in progress</p>
+              </ion-slide>
+      
+              <ion-slide>
+                <img src="assets/imgs/2.png"/>
+                <h2><b id="pacificofont">Wipped</b> up?</h2>
+                <p><b>Show others what you've finished</b> while also gaining inspiration from other creatives.</p>
+                <ion-button (click) = "start()"color="transparent"><b>Let's get Wipping!</b></ion-button>
+              </ion-slide>
+      
+            </ion-slides>
+</ion-content>
