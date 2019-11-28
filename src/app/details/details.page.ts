@@ -124,7 +124,8 @@ export class DetailsPage implements OnInit {
       title: value.title,
       description: value.description,
       image: this.image,
-      category: this.category
+      category: this.category,
+      date: new Date()
     }
     this.firebaseService.updatePost(this.item.id,data)
     .then(
