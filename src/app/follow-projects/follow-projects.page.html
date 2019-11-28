@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>followProjects</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>Followed Projects</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+  <ion-row>
+    <ion-col style="text-align: center"size="12" *ngIf="items">
+            <h6 *ngIf="items.length == 1" style="color: rgb(75, 75, 75) !important">{{items.length}} followed project </h6> 
+            <h6 *ngIf="items.length > 1"style="color: rgb(75, 75, 75) !important">{{items.length}}  followed projects  </h6>       
+    <ion-card *ngFor ="let item of items" [routerLink]="['/tabs/follow-project-details/', item.payload.doc.id]">
+      <img [src]="item.payload.doc.data().image">
+    
+    </ion-card>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
 </ion-content>

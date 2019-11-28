@@ -34,6 +34,23 @@ export class FirebaseService {
       })
     })
   }
+
+  getfollowedPosts(){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = 
+          this.afs.collection('posts', ref=> ref
+          .where("userFollowing", "array-contains", currentUser.uid)
+          .where('uid','==', currentUser.uid
+          ).orderBy("date", "desc")).snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
+ 
  
  
 

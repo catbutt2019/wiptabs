@@ -17,13 +17,12 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 
 
-
 @Component({
-  selector: 'app-details-feed',
-  templateUrl: './details-feed.page.html',
-  styleUrls: ['./details-feed.page.scss'],
+  selector: 'app-follow-project-details',
+  templateUrl: './follow-project-details.page.html',
+  styleUrls: ['./follow-project-details.page.scss'],
 })
-export class DetailsFeedPage implements OnInit {
+export class FollowProjectDetailsPage implements OnInit {
 
   favorite: any;
 
@@ -41,9 +40,7 @@ export class DetailsFeedPage implements OnInit {
  comment: string;
 
 
-
   constructor(
-  
     private imagePicker: ImagePicker,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
@@ -57,19 +54,12 @@ export class DetailsFeedPage implements OnInit {
     private favoriteservice: FavoriteService,
     private CommentService: CommentService,
     public afAuth: AngularFireAuth
-  ) { 
-    this.route.params.subscribe(params=> {
-      this.firebaseService.getObjectById(params['data']).subscribe( i => {
-        this.item = i;
-                   })
-             });
-  }
+  ) { }
 
   ngOnInit() {
     this.getData();
     this.favoriteButton = false;
   }
-
   getData(){
     this.route.data.subscribe(routeData => {
      let data = routeData['data'];
@@ -77,7 +67,8 @@ export class DetailsFeedPage implements OnInit {
        this.item = data;
        this.image = this.item.image;   
      }
-    })   
+    }) 
+      
   }
 
   navigateBack() {
@@ -91,32 +82,6 @@ export class DetailsFeedPage implements OnInit {
     this.favoriteButton = true;
   }
   
-  favoriteUser(){
-    let currentUser = firebase.auth().currentUser;
-    let data = {
-      userFollowing : firebase.firestore.FieldValue.arrayUnion(currentUser.uid)
-    }
-    this.firebaseService.updatePost(this.item.id,data)
-    .then(
-      res => {
-     
-      }
-    )
-  }
  
-
-  addToComments(this){
-    this.comments.push({ comment: this.comment });
-    let data = {
-      comments: this.comments,
-    }
-    this.firebaseService.updatePost(this.item.id,data)
-    .then(
-      res => {
-       //do something else
-      }
-    )
-  }
-
 
 }

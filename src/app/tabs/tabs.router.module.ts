@@ -31,6 +31,8 @@ const routes: Routes = [
         path: 'follow-projects',
        loadChildren: '../follow-projects/follow-projects.module#FollowProjectsPageModule' 
       },
+      { path: 'follow-project-details/:id', 
+      loadChildren: '../follow-project-details/follow-project-details.module#FollowProjectDetailsPageModule' },
           {
          path: 'details/:id', 
          loadChildren: '../details/details.module#DetailsPageModule' 

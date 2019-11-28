@@ -1,0 +1,38 @@
+<ion-content >
+    <div class="container">
+    <div class="content">
+  
+         
+    
+      <div *ngFor ="let image of image" >
+          <ion-row>
+            <ion-col size="12" offset="0">
+              <img  id ="image" [src]="image" alt="this is the image"/>
+            </ion-col>  
+          </ion-row>
+        </div>
+      </div>
+      <div class="overlay">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button  color="dark"shape ="round" (click)="navigateBack()"> <ion-icon name="arrow-back"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button *ngIf ="!favoriteButton == true"color= "dark" shape ="round"  (click)="addToFavorites()"> <ion-icon name="heart"></ion-icon>Add to favorites</ion-button>
+                <ion-button *ngIf ="favoriteButton == true" color= "light" shape ="round" > <ion-icon name="heart"></ion-icon>Added to favorites</ion-button>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+            <h2>{{item.title}}</h2>
+            <p>{{item.description}}</p></div>
+            <ion-button  color="dark" (click)="favoriteUser()">Follow Project</ion-button>
+    </div>
+  <!--   <ion-item>
+      <ion-label position="stacked">Stacked Label</ion-label>
+      <ion-input [(ngModel)]="this.comment"></ion-input>
+    </ion-item>
+    <ion-button (click)="addToComments(this)">leave comment</ion-button> -->
+  </ion-content>
+  
+  
