@@ -37,7 +37,7 @@ export class DetailsFeedPage implements OnInit {
 
 
  
- comments: Array<{comment: string}> = [];
+ comments: any = [];
  comment: string;
  followButton: boolean;
   currentUser: any;
