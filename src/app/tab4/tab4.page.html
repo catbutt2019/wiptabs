@@ -2,7 +2,10 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title >Profile</ion-title>
-    <ion-buttons slot= "end">
+    <ion-buttons slot= "start">
+        <ion-button  color="light" (click)="goToFolowProjects()" >Following</ion-button>
+      </ion-buttons>
+      <ion-buttons slot= "end">
       <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
   <!--   <ion-button type ="round" slot="end"  (click)="gotoeditPage()" color="light">
@@ -12,7 +15,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page" color="medium">
-
+ 
 <!-- <ion-grid>
   <ion-row align-items-center>
     <ion-col ></ion-col>
@@ -42,7 +45,7 @@ right: 0;">
 <img  class="profileImg" [src]="profileImage || item.profileImage" style="margin-top: 10px;">
 </div>
 <ion-card style="text-align: center; z-index: 1; margin-top: 70px" *ngFor="let item of students" >
-    
+   
     <ion-card-header>
       <ion-card-title style="margin-top: 30px;">{{item.userName}}</ion-card-title>
     </ion-card-header>
@@ -50,7 +53,7 @@ right: 0;">
     <ion-card-content  style="padding-top: 0px !important;">
         {{item.userBio}}
     </ion-card-content>
-    <ion-button color="secondary" (click)="goToFolowProjects()" >Followed Projects</ion-button>
+    
   </ion-card>
 
 
