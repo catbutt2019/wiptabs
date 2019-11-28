@@ -26,9 +26,15 @@
           </ion-grid>
           <h2>{{item.title}}</h2>
           <p>{{item.description}}</p></div>
+          <p style="color:black !important">{{item?.comments[0]}}</p>
           <ion-button *ngIf ="!followButton == true"  color="dark" (click)="favoriteUser()">Follow Project</ion-button>
           <ion-button *ngIf ="followButton == true" color= "light"  >Followed Project</ion-button>
   </div>
+  <ion-item>
+  <ion-input [(ngModel)]="comment" placeholder="add comment"></ion-input>
+</ion-item>
+<ion-button 
+(click)="addComment()"></ion-button>
 <!--   <ion-item>
     <ion-label position="stacked">Stacked Label</ion-label>
     <ion-input [(ngModel)]="this.comment"></ion-input>

@@ -30,7 +30,7 @@ export class DetailsFeedPage implements OnInit {
   image: any;
   public imageLists: any[] = [];
   item: any;
-  load: boolean = false;
+  load: boolean = false
   category: string;
   favoriteButton: boolean;
   favoriteUsers : any =[];
@@ -40,6 +40,7 @@ export class DetailsFeedPage implements OnInit {
  comments: Array<{comment: string}> = [];
  comment: string;
  followButton: boolean;
+  currentUser: any;
 
 
 
@@ -76,7 +77,8 @@ export class DetailsFeedPage implements OnInit {
      let data = routeData['data'];
      if (data) {
        this.item = data;
-       this.image = this.item.image;   
+       this.image = this.item.image;  
+       console.log(this.item) 
      }
     })   
   }
@@ -102,10 +104,19 @@ export class DetailsFeedPage implements OnInit {
     
     this.followButton = true;
   }
+
+  addComment(){
+    let currentUser = firebase.auth().currentUser;
+    let data = {
+    comments: firebase.firestore.FieldValue.arrayUnion(this.comment)
+    }
+    this.firebaseService.updatePost(this.item.id,data)
+    this.getData();
+  }
  
 
   addToComments(this){
-    this.comments.push({ comment: this.comment });
+    this.comments.push({ comment: this.comment});
     let data = {
       comments: this.comments,
     }
