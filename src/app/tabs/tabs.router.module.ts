@@ -27,6 +27,8 @@ const routes: Routes = [
             path: 'tab4',
             loadChildren: '../tab4/tab4.module#Tab4PageModule'
       },
+      { path: 'follow-projects', 
+        loadChildren: '../follow-projects/follow-projects.module#FollowProjectsPageModule' },
           {
          path: 'details/:id', 
          loadChildren: '../details/details.module#DetailsPageModule' 

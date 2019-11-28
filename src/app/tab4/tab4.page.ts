@@ -212,4 +212,8 @@ favoriteList = [];
     })
   }
 
+  goToFolowProjects() {
+    this.navCtrl.navigateForward('tabs/follow-projects')
+  }
+
 }
