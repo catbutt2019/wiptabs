@@ -42,8 +42,7 @@ export class FirebaseService {
         if(currentUser){
           this.snapshotChangesSubscription = 
           this.afs.collection('posts', ref=> ref
-          .where("userFollowing", "array-contains", currentUser.uid)
-          .where('uid','==', currentUser.uid
+          .where("userFollowing", "array-contains", currentUser.uid
           ).orderBy("date", "desc")).snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }

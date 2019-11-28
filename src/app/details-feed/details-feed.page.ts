@@ -39,6 +39,7 @@ export class DetailsFeedPage implements OnInit {
  
  comments: Array<{comment: string}> = [];
  comment: string;
+ followButton: boolean;
 
 
 
@@ -94,14 +95,12 @@ export class DetailsFeedPage implements OnInit {
   favoriteUser(){
     let currentUser = firebase.auth().currentUser;
     let data = {
-      userFollowing : firebase.firestore.FieldValue.arrayUnion(currentUser.uid)
+      userFollowing: firebase.firestore.FieldValue.arrayUnion(currentUser.uid)
     }
     this.firebaseService.updatePost(this.item.id,data)
-    .then(
-      res => {
-     
-      }
-    )
+   
+    
+    this.followButton = true;
   }
  
 
