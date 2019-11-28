@@ -9,6 +9,14 @@ import { NavController } from '@ionic/angular';
 import { FavoriteService } from '../services/favorite.service';
 import { present } from '@ionic/core/dist/types/utils/overlays';
 import { CommentService } from '../services/comment.service';
+import 'firebase/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+
+
 
 @Component({
   selector: 'app-details-feed',
@@ -25,6 +33,8 @@ export class DetailsFeedPage implements OnInit {
   load: boolean = false;
   category: string;
   favoriteButton: boolean;
+  favoriteUsers : any =[];
+
 
  
  comments: Array<{comment: string}> = [];
@@ -45,7 +55,8 @@ export class DetailsFeedPage implements OnInit {
     private router: Router,
     private navCtrl: NavController,
     private favoriteservice: FavoriteService,
-    private CommentService: CommentService
+    private CommentService: CommentService,
+    public afAuth: AngularFireAuth
   ) { 
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
@@ -79,7 +90,19 @@ export class DetailsFeedPage implements OnInit {
     .addFavorite(this.item);
     this.favoriteButton = true;
   }
-
+  
+  favoriteUser(){
+    let currentUser = firebase.auth().currentUser;
+    let data = {
+      userFavorite : firebase.firestore.FieldValue.arrayUnion(currentUser.uid)
+    }
+    this.firebaseService.updatePost(this.item.id,data)
+    .then(
+      res => {
+        this.router.navigate(["/tabs/tab4"]);
+      }
+    )
+  }
  
 
   addToComments(this){
