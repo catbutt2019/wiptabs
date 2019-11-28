@@ -68,9 +68,28 @@ export class FavoritesPage implements OnInit {
         return false;
       });
     }); 
+
+  
     
   }
 
+  favoriteRefresh(event){
+      
+    this.favoriteService.getfavoriteList().then(favoriteListSnapshot => {
+      this.favoriteList = [];
+      favoriteListSnapshot.forEach(snap => {
+        this.favoriteList.push({
+          id: snap.id,
+          favoriteList: snap.data().favourite
+        });
+        console.log(snap.data().favourite)
+        return false;
+      });
+    }); 
+    setTimeout(()=>{
+      event.target.complete();
+    },2000);
+  }
   navigateBack() {
     this.router.navigate(['/tabs/tab4'])
   }

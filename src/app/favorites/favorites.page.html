@@ -7,6 +7,14 @@
 
 <ion-content>
   <ion-grid>
+      <div>
+          <ion-refresher  (ionRefresh)="favoriteRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" 
+             refreshingSpinner="circles" refreshingText="refreshing..">
+            </ion-refresher-content>
+            </ion-refresher>
+            
+          </div> 
       <ion-row  *ngIf="favorite?.favoriteList.length > 0">
             <ion-col>
               <p style="color: #383a3e">Find some works you like and favorite them :)</p>
