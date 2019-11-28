@@ -6,11 +6,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { FollowProjectDetailsPage } from './follow-project-details.page';
+import { DetailsFeedResolver } from '../details-feed/details-feed.resolver';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: FollowProjectDetailsPage
+    component: FollowProjectDetailsPage,
+    resolve: {
+      data: DetailsFeedResolver
+    }
   }
 ];
 
@@ -21,6 +26,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FollowProjectDetailsPage]
+  declarations: [FollowProjectDetailsPage],
+  providers:[DetailsFeedResolver]
 })
 export class FollowProjectDetailsPageModule {}
