@@ -35,11 +35,12 @@ export class DetailsFeedPage implements OnInit {
   category: string;
   favoriteButton: boolean;
   favoriteUsers : any =[];
+  items: any[] = [{name:'Penguin'},{name:'Seal'},{name:'Lion'}];
 
 
  
- comments: any = [];
- comment:any =[];
+ comments:any[];
+ comment:any[];
  followButton: boolean;
   currentUser: any;
   students:
@@ -132,6 +133,10 @@ export class DetailsFeedPage implements OnInit {
     this.followButton = true;
   }
 
+addToArray() {
+  this.items.push({name: 'Whale'});
+}
+
   addComment(){
     let currentUser = firebase.auth().currentUser;
     this.comments.push(this.comment);
@@ -140,6 +145,16 @@ export class DetailsFeedPage implements OnInit {
     ({comment: this.comment , profileImage: this.students[0].profileImage, username: this.students[0].userName})
     }
     this.firebaseService.updatePost(this.item.id,data)
+     this.route.data.subscribe(routeData => {
+      let data = routeData['data'];
+      this.comments = [];
+      if (data) {
+        this.item = data;
+        this.image = this.item.image;  
+        this.comments.push(this.item.comments)
+        console.log( this.comments ) 
+      }
+     })  
     
   }
  

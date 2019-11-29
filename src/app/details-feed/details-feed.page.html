@@ -34,30 +34,24 @@
   <div  *ngFor="let comment of item?.comments.comment" >
       <div  *ngFor="let comment of comments" ></div>
   <div  style="margin-top: 10px !important;" >   
-      <p>"{{comment}}"</p>
+      <p>"{{comment.comment}}"</p>
  </div>
 </div>
 </div>
-<ion-card style="margin-top: 10px !important;" *ngFor="let comment of comments">   
-    <ng-container *ngFor="let item of comment">
+<ion-card style="margin-top: 10px !important;" *ngFor="let comment of comments ">  
+<ng-container style="padding-top: 40px;"*ngFor="let item of comment">
       <div style="display: flex">
       <ion-avatar style="margin-left: 10px;" >
         <img  [src]="item?.profileImage">
       </ion-avatar>
-       <div style="color: black; margin-left: 20px;" style="flex: 0 0 65%;"><h5 style="margin-left: 10px; ">{{item?.username}}</h5></div>
+       <div style="color: black; margin-left: 20px;" style="flex: 0 0 65%;"><h5 style="margin-left: 10px; "><b>{{item?.username}}</b></h5></div>
       </div>
       <div style=" flex: 1; margin-left: 20px;"> <h6 style="color: rgb(73, 73, 73)">"{{item?.comment}}"</h6></div>
     </ng-container>
 </ion-card>
-
-
-  <ion-item>
-    
-  <ion-input [(ngModel)]="comment" placeholder="add comment"></ion-input>
+  <ion-item>   
+  <ion-textarea [(ngModel)]="comment" placeholder="add comment"></ion-textarea>
 </ion-item>
-
-
-
 <ion-button (click)="addComment()">Leave comment </ion-button>
 <!--   <ion-item>
     <ion-label position="stacked">Stacked Label</ion-label>
