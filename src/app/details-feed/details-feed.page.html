@@ -31,18 +31,34 @@
           <ion-button *ngIf ="followButton == true" color= "light"  >Followed Project</ion-button>
   </div>
   <div style="text-align: center !important"><h4>Comments</h4>
-  <div  *ngFor="let comment of item?.comments" >
+  <div  *ngFor="let comment of item?.comments.comment" >
       <div  *ngFor="let comment of comments" ></div>
   <div  style="margin-top: 10px !important;" >   
       <p>"{{comment}}"</p>
  </div>
 </div>
 </div>
+<ion-card style="margin-top: 10px !important;" *ngFor="let comment of comments">   
+    <ng-container *ngFor="let item of comment">
+      <div style="display: flex">
+      <ion-avatar style="margin-left: 10px;" >
+        <img  [src]="item?.profileImage">
+      </ion-avatar>
+       <div style="color: black; margin-left: 20px;" style="flex: 0 0 65%;"><h5 style="margin-left: 10px; ">{{item?.username}}</h5></div>
+      </div>
+      <div style=" flex: 1; margin-left: 20px;"> <h6 style="color: rgb(73, 73, 73)">"{{item?.comment}}"</h6></div>
+    </ng-container>
+</ion-card>
+
+
   <ion-item>
+    
   <ion-input [(ngModel)]="comment" placeholder="add comment"></ion-input>
 </ion-item>
-<ion-button 
-(click)="addComment()">Leave comment </ion-button>
+
+
+
+<ion-button (click)="addComment()">Leave comment </ion-button>
 <!--   <ion-item>
     <ion-label position="stacked">Stacked Label</ion-label>
     <ion-input [(ngModel)]="this.comment"></ion-input>

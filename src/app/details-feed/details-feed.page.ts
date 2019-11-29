@@ -15,6 +15,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
+import { ProfileService } from '../services/profile.service';
 
 
 
@@ -38,9 +39,18 @@ export class DetailsFeedPage implements OnInit {
 
  
  comments: any = [];
- comment: string;
+ comment:any =[];
  followButton: boolean;
   currentUser: any;
+  students:
+   { id: string; 
+    isEdit: boolean; 
+    userName: any; 
+    userBio: any;
+   profileImage: any; }[];
+
+  usernamecomment: any = [];
+  username: { userName: any; }[];
 
 
 
@@ -58,7 +68,8 @@ export class DetailsFeedPage implements OnInit {
     private navCtrl: NavController,
     private favoriteservice: FavoriteService,
     private CommentService: CommentService,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private profileservice: ProfileService
   ) { 
     this.route.params.subscribe(params=> {
       this.firebaseService.getObjectById(params['data']).subscribe( i => {
@@ -70,6 +81,20 @@ export class DetailsFeedPage implements OnInit {
   ngOnInit() {
     this.getData();
     this.favoriteButton = false;
+    this.profileservice.read_Students().subscribe(data => {
+      this.students = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          isEdit: false,
+          userName: e.payload.doc.data()['userName'],
+          userBio: e.payload.doc.data()['userBio'],
+          profileImage: e.payload.doc.data()['profileImage'],
+        };
+      })
+      console.log(this.students);
+    });
+
+
   }
 
   getData(){
@@ -109,14 +134,13 @@ export class DetailsFeedPage implements OnInit {
 
   addComment(){
     let currentUser = firebase.auth().currentUser;
-    this.item.comments.push(this.comment);
-
+    this.comments.push(this.comment);
     let data = {
-    comments: firebase.firestore.FieldValue.arrayUnion(this.comment)
+    comments: firebase.firestore.FieldValue.arrayUnion
+    ({comment: this.comment , profileImage: this.students[0].profileImage, username: this.students[0].userName})
     }
     this.firebaseService.updatePost(this.item.id,data)
     
-
   }
  
 
