@@ -35,7 +35,7 @@ export class DetailsFeedPage implements OnInit {
   category: string;
   favoriteButton: boolean;
   favoriteUsers : any =[];
-  items: any[] = [{name:'Penguin'},{name:'Seal'},{name:'Lion'}];
+  items: any[] = [];
 
 
  
@@ -139,7 +139,8 @@ addToArray() {
 
   addComment(){
     let currentUser = firebase.auth().currentUser;
-    this.comments.push(this.comment);
+    this.items.push(this.comment);
+    console.log(this.items)
     let data = {
     comments: firebase.firestore.FieldValue.arrayUnion
     ({comment: this.comment , profileImage: this.students[0].profileImage, username: this.students[0].userName})
