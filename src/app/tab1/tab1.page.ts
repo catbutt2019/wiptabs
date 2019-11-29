@@ -151,7 +151,7 @@ import { ProfileService } from '../services/profile.service';
       profileImage: value.profileImage,
       title: this.title || "",
       image: this.image,
-      category: "Wipping"
+      category: "Wipping",
     }
     this.firebaseService.createPost(data)
     .then(

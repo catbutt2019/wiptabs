@@ -30,10 +30,11 @@
           <ion-button *ngIf ="!followButton == true"  color="dark" (click)="favoriteUser()">Follow Project</ion-button>
           <ion-button *ngIf ="followButton == true" color= "light"  >Followed Project</ion-button>
   </div>
-  <div>
-  <div *ngFor="let comment of item.comments" >
+  <div style="text-align: center !important"><h4>Comments</h4>
+  <div  *ngFor="let comment of item?.comments" >
+      <div  *ngFor="let comment of comments" ></div>
   <div  style="margin-top: 10px !important;" >   
-      <p>{{comment}}</p>
+      <p>"{{comment}}"</p>
  </div>
 </div>
 </div>
