@@ -39,7 +39,7 @@
 </div>
 </div>
 <ion-card style="margin-top: 10px !important;" *ngFor="let comment of comments ">  
-<ng-container style="padding-top: 40px;"*ngFor="let item of comment">
+<ng-container style="padding-top: 40px;"*ngFor="let item of comment | slice:1">
       <div style="display: flex">
       <ion-avatar style="margin-left: 10px;" >
         <img  [src]="item?.profileImage">
