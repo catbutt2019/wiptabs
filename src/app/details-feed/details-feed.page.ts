@@ -75,10 +75,12 @@ export class DetailsFeedPage implements OnInit {
   getData(){
     this.route.data.subscribe(routeData => {
      let data = routeData['data'];
+     this.comments = [];
      if (data) {
        this.item = data;
        this.image = this.item.image;  
-       console.log(this.item) 
+       this.comments.push(this.item.comments)
+       console.log( this.comments ) 
      }
     })   
   }
@@ -107,11 +109,13 @@ export class DetailsFeedPage implements OnInit {
 
   addComment(){
     let currentUser = firebase.auth().currentUser;
+    this.item.comments.push(this.comment);
     let data = {
     comments: firebase.firestore.FieldValue.arrayUnion(this.comment)
     }
     this.firebaseService.updatePost(this.item.id,data)
-    this.getData();
+    
+
   }
  
 
