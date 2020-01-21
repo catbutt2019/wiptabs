@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyChkwA9qwuX8DWJb5m0Gjnsiqgsj0377Uc",
+    apiKey: "",
     authDomain: "wippy-1962c.firebaseapp.com",
     databaseURL: "https://wippy-1962c.firebaseio.com",
     projectId: "wippy-1962c",
